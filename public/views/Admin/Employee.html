@@ -1,0 +1,67 @@
+<html ng-controller=  "EmpCtrl">
+<div ng-init="init()">
+				<table ng-table="usersTable" class="table table-bordered table-striped">
+					<thead>
+						<tr>
+							<th>
+								<a href="#" ng-click="sortType = 'FirstName'; sortReverse = !sortReverse">
+                First Name 
+									
+									<span ng-show="sortType == 'FirstName' && !sortReverse" class="fa fa-caret-down"></span>
+									<span ng-show="sortType == 'FirstName' && sortReverse" class="fa fa-caret-up"></span>
+								</a>
+							</th>
+							<th>
+								<a href="#" ng-click="sortType = 'LastName'; sortReverse = !sortReverse">
+                Last Name 
+										
+									<span ng-show="sortType == 'LastName' && !sortReverse" class="fa fa-caret-down"></span>
+									<span ng-show="sortType == 'LastName' && sortReverse" class="fa fa-caret-up"></span>
+								</a>
+							</th>
+						</th>
+						<th>
+							<a href="#" ng-click="sortType = 'DOB'; sortReverse = !sortReverse">
+                Date Of Birth 
+										
+								<span ng-show="sortType == 'DOB' && !sortReverse" class="fa fa-caret-down"></span>
+								<span ng-show="sortType == 'DOB' && sortReverse" class="fa fa-caret-up"></span>
+							</a>
+						</th>
+					</th>
+					<th>
+						<a href="#" ng-click="sortType = 'City'; sortReverse = !sortReverse">
+                City
+										
+							<span ng-show="sortType == 'City' && !sortReverse" class="fa fa-caret-down"></span>
+							<span ng-show="sortType == 'City' && sortReverse" class="fa fa-caret-up"></span>
+						</a>
+					</th>
+					<th>
+						    View Profile
+					</th>
+				</tr>
+				<thead>
+					<tbody>
+						<tr ng-repeat="person in users | orderBy:sortType:sortReverse">
+							<td>
+                                {{person.FirstName}}
+                            </td>
+							<td>
+                                {{person.LastName}}
+                            </td>
+							<td>
+                                {{person.DOB}}
+                            </td>
+							<td>
+                                {{person.City}}
+                            </td>
+                            <td>
+                            	<a href = "#" ng-click = "open(person.id)">Open</a>
+                            </td>
+						</tr>
+					</tbody>
+				</tbody>
+			</table>
+		</div>
+		</thead></html>

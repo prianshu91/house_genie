@@ -1,0 +1,82 @@
+[
+	{
+		"id" : 1,
+		"category_id": 1,
+		"FirstName": "Umesh",
+		"LastName": "Yadav",
+		"DOB": "31/01/1987",
+		"City": "Motihari"
+	},
+	{
+		"id" : 2,
+		"category_id": 2,
+		"FirstName": "Naresh",
+		"LastName": "Yadav",
+		"DOB": "31/01/1987",
+		"City": "Nashik Phata"
+	},
+	{
+		"id" : 3,
+		"category_id": 3,
+		"FirstName": "Vimla",
+		"LastName": "Devi",
+		"DOB": "14/05/1981",
+		"City": "Dehu"
+	},
+	{
+		"id" : 4,
+		"category_id": 4,
+		"FirstName": "Suresh",
+		"LastName": "Yadav",
+		"DOB": "12/01/1979",
+		"City": "Moshi"
+	},
+	{
+		"id" : 5,
+		"category_id": 2,
+		"FirstName": "Amit",
+		"LastName": "Kumar Ingle",
+		"DOB": "31/01/1985",
+		"City": "Patna"
+	},
+	{
+		"id" : 6,
+		"category_id": 2,
+		"FirstName": "Sugandha",
+		"LastName": "More",
+		"DOB": "10/01/1956",
+		"City": "Chakan"
+	},
+	{
+		"id" : 7,
+		"category_id": 4,
+		"FirstName": "Suhail",
+		"LastName": "Kant",
+		"DOB": "15/06/1992",
+		"City": "Balewadi"
+	},
+	{
+		"id" : 8,
+		"category_id": 1,
+		"FirstName": "Sreekant",
+		"LastName": "Vamsee",
+		"DOB": "24/05/1989",
+		"City": "Sirsa"
+	},
+	{
+		"id" : 9,
+		"category_id": 3,
+		"FirstName": "Umesh",
+		"LastName": "Kumar",
+		"DOB": "22/06/1990",
+		"City": "Moshi"
+	},
+	{
+		"id" : 10,
+		"category_id": 4,
+		"FirstName": "Ramesh",
+		"LastName": "Pingle",
+		"DOB": "22/01/1985",
+		"City": "Pimpri"
+	}
+]
