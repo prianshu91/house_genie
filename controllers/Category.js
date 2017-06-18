@@ -21,7 +21,7 @@ module.exports = function( app ) {
             function( cb ) {
                 // Make sure account names are unique
                 schema.model( 'Category' ).forge({ name: name }).fetch().then( function( a ) {
-                    if ( a ) cb( new Error( 'The account name \'' + name + '\' is already taken.' ) );
+                    if ( a ) cb( new Error( 'The category name \'' + name + '\' is already taken.' ) );
                     else cb();
                 }, cb );
             },

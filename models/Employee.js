@@ -10,8 +10,8 @@ var moment = require('moment')
 
 var BaseModel = require( '../models/BaseModel' )();
 
-var Category = BaseModel.extend({
-    tableName: 'categories',
+var Employee = BaseModel.extend({
+    tableName: 'employees',
     defaults: function() {
         return {
             id: uuid.v4(),
@@ -30,11 +30,7 @@ var Category = BaseModel.extend({
         if ( attrs.data )
             attrs.data = JSON.parse( attrs.data );
         return attrs;
-    },
-    
-    employees: function(){
-        return this.belongsToMany('Employee','category_employees','category_id','employee_id')
-    },
+    }
 
     // orders: function() {
     //     return this.hasMany( 'Order', 'account_id' );
@@ -113,31 +109,31 @@ var Category = BaseModel.extend({
     // },
 
     // Do-all method for creating a new account
-    create: function( options ) {
-        var dfd = new Deferred();
-        var category;
-        async.series([
-            function( cb ) {
-                // Create the account
-                Bookshelf.model('Category').forge({
-                    name: options.name,
-                }).find_or_create().then(function (a) {
-                    console.log("category.........", a)
-                    category = a;
-                    category.save({data: options.metadata}, {patch: true}).then(function (a) {
-                        cb();
-                    });
-                });
-            }
-        ], function( err ) {
-            if ( err ) dfd.reject( err );
-            else dfd.resolve( account );
-        });
-
-        return dfd.promise;
-    }
+    // create: function( options ) {
+    //     var dfd = new Deferred();
+    //     var category;
+    //     async.series([
+    //         function( cb ) {
+    //             // Create the account
+    //             Bookshelf.model('Employee').forge({
+    //                 name: options.name,
+    //             }).find_or_create().then(function (a) {
+    //                 console.log("employee.........", a)
+    //                 category = a;
+    //                 category.save({data: options.metadata}, {patch: true}).then(function (a) {
+    //                     cb();
+    //                 });
+    //             });
+    //         }
+    //     ], function( err ) {
+    //         if ( err ) dfd.reject( err );
+    //         else dfd.resolve( account );
+    //     });
+    //
+    //     return dfd.promise;
+    // }
 });
 
 module.exports = function( app ) {
-    return Bookshelf.model( 'Category', Category );
+    return Bookshelf.model( 'Employee', Employee );
 };

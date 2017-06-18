@@ -108,6 +108,7 @@
         
    <field name="id" type="string" indexed="true" stored="true" required="true" multiValued="false" /> 
    <!--<field name="category" type="string" indexed="true"  stored="true" /> --> 
+    <field name="employeeId" type="string" indexed="true"  stored="true" />
     <field name="firstName" type="c_text" indexed="true"  stored="true" />
     <field name="lastName" type="c_text" indexed="true"  stored="true" />
     <field name="contactNumber" type="int" indexed="true"  stored="true" />

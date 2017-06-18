@@ -34,6 +34,8 @@
     "express-fileupload": "0.0.5",
     "express-load": "1.1.9",
     "connect": "latest",
+    "moment": "2.5.1",
+    "moment-timezone": "0.2.2",
     "request": "latest"
   }
 }

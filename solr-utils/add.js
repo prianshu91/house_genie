@@ -14,7 +14,7 @@ client.autoCommit = true;
 var docs = [];
 for(var i = 0; i <= 10 ; i++){
    var doc = {
-       id : 12345 + i,
+       id : 852 + i,
        firstName : "Title "+ i,
        lastName : "Text"+ i + "Alice"
    }
@@ -22,10 +22,19 @@ for(var i = 0; i <= 10 ; i++){
 }
 
 // Add documents
-client.add(docs,function(err,obj){
-   if(err){
-      console.log(err);
-   }else{
-      console.log(obj);
-   }
+
+client.deleteAll(function(err,obj){
+    if(err){
+        console.log(err);
+    }else{
+        console.log(obj);
+    }
 });
+
+// client.add(docs,function(err,obj){
+//    if(err){
+//       console.log(err);
+//    }else{
+//       console.log(obj);
+//    }
+// });
