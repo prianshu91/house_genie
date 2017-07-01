@@ -1,7 +1,6 @@
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
-var Router = require("./app/routes/router");
 var port = 8051;
 var i18n = require("i18n");
 var path = require('path');
@@ -138,6 +137,5 @@ loader( 'models' )
     .then( 'controllers' )
     .then( 'routes' )
     .into( app );
-console.log(app.controllers.Category)
 app.listen( port)
 

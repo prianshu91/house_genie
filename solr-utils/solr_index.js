@@ -106,7 +106,7 @@ function application() {
         function(series1Callback){
             console.log("re-inserting data..........");
             //Re-inserting data
-            knex.select('employees.id  as employee_id','employees.first_name', 'employees.last_name', 'employees.contact_number', 'employees.police_verified','employees.address', 'categories.name as category', 'user_comments', 'avg_rating','location.*')
+            knex.select('employees.id  as employee_id','employees.description as employee_description','employees.experience','employees.imageUrl','employees.first_name', 'employees.last_name', 'employees.contact_number', 'employees.police_verified','employees.address', 'categories.name as category', 'user_comments', 'avg_rating','location.*')
                 .from('categories')
                 .leftJoin('category_employees', 'category_employees.category_id', '=', 'categories.id ')
                 .leftJoin('employees', 'category_employees.employee_id', '=', 'employees.id')
@@ -138,9 +138,14 @@ function application() {
                                         state: row["state"],
                                         country: "India",
                                         city: row["city"],
-                                        areaName: row["area_name"]
+                                        areaName: row["area_name"],
+                                        shortDescription: row["employee_description"],
+                                        experience: row["experience"],
+                                        imageUrl: row["imageUrl"]
 
                                     };
+
+                                    console.log("doc...",doc)
                                     docs.push(doc);
                                     if( i === results.length){
                                         series2Callback();

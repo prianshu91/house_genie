@@ -253,7 +253,19 @@ Query.prototype.matchFilter = function(field,value){
    var self = this;
    value = format.dateISOify(value);
    var parameter = 'fq=';
-   parameter += field + ':' + encodeURIComponent(value);
+   parameter += field + ':\"' + encodeURIComponent(value)+"\"";
+   this.parameters.push(parameter);
+   return self;
+}
+
+Query.prototype.multipleMatchFilter = function(field,value){
+   var self = this;
+   value = format.dateISOify(value);
+   var parameter = 'fq=';
+   var arr = [];
+   arr.push('state:\"ANDHRA PRADESH\"')
+   arr.push('city:\"Hyderabad\"')
+   parameter += arr;
    this.parameters.push(parameter);
    return self;
 }

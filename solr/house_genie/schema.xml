@@ -120,6 +120,9 @@
     <field name="country" type="c_text" indexed="true"  stored="true" />
     <field name="city" type="c_text" indexed="true"  stored="true" />
     <field name="areaName" type="c_text" indexed="true"  stored="true" />
+    <field name="shortDescription" type="c_text" indexed="true"  stored="true" />
+    <field name="experience" type="double" indexed="true"  stored="true" />
+    <field name="imageUrl" type="string" indexed="true"  stored="true" />
    
    <!-- points to the root document of a block of nested documents. Required for nested
         document support, may be removed otherwise
