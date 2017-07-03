@@ -258,18 +258,6 @@ Query.prototype.matchFilter = function(field,value){
    return self;
 }
 
-Query.prototype.multipleMatchFilter = function(field,value){
-   var self = this;
-   value = format.dateISOify(value);
-   var parameter = 'fq=';
-   var arr = [];
-   arr.push('state:\"ANDHRA PRADESH\"')
-   arr.push('city:\"Hyderabad\"')
-   parameter += arr;
-   this.parameters.push(parameter);
-   return self;
-}
-
 /**
  * Specify a set of fields to return.
  *
@@ -423,6 +411,16 @@ Query.prototype.facet = function(options){
        self.parameters.push('facet.field=' + field);
      });
    }
+   if(options.range){
+      options.range = arrayUtils.toArray(options.range);
+      options.range.forEach(function(data) {
+       self.parameters.push('facet.range=' + data.field);
+       self.parameters.push('facet.range.start=' + data.start);
+       self.parameters.push('facet.range.end=' + data.end);
+       self.parameters.push('facet.range.gap=' + data.gap);
+     });
+   }
+
    if(options.prefix){
       this.parameters.push('facet.prefix=' + encodeURIComponent(options.prefix))
    }

@@ -2,10 +2,10 @@
  * Created by priyanshu on 7/6/17.
  */
 
-var solr = require('./../solr-utils/lib/solr');
-var client = solr.createClient();
+ var solr = require('./../solr-utils/lib/solr');
+ var client = solr.createClient();
 
-var addValuesToJson = function(newJson,attributeName,attributeValue){
+ var addValuesToJson = function(newJson,attributeName,attributeValue){
     if (attributeValue) {
         newJson[attributeName] = attributeValue
     }
@@ -47,14 +47,26 @@ module.exports = function( app ) {
         
 
         var query = client.createQuery()
-                  .q(queryJson)
-                  .start(offset)
-                  .rows(limit);
+        .q(queryJson)
+        .start(offset)
+        .rows(limit);
 
         addValuesToMatchFilter(query,"city",city);
         addValuesToMatchFilter(query,"state",state);
         addValuesToMatchFilter(query,"areaName",area);
         addValuesToMatchFilter(query,"policeVerified",policeVerified);
+
+
+        // faceting fields
+        if(req.param('faceting')){
+            query.facet({
+              field : ['category','policeVerified'],
+              query : 'imageUrl:*',
+              range : [{"field":"experience","start":0,"end":25,"gap":5},{"field":"rating","start":0,"end":5,"gap":1}]
+          });
+
+        }
+
         if(withImages)
             addValuesToMatchFilter(query,"imageUrl","*");
 
@@ -66,13 +78,13 @@ module.exports = function( app ) {
             query.rangeFilter({ field : 'rating', start : ratingStartValue, end : ratingEndValue})
         }
 
-                  console.log("query....",query,queryFilter)
+        console.log("query....",query,queryFilter)
 
         client.search(query, function (err, obj) {
             if (err) {
                 console.log(err);
             } else {
-                res.jsonp(obj.response);
+                res.jsonp({"employees": obj.response,"count":obj.facet_counts});
             }
         });
 
