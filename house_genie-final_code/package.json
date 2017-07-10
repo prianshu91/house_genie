@@ -1,0 +1,36 @@
+{
+  "name": "house_genie",
+  "version": "1.0.0",
+  "description": "software for household maids,cooks and seurity guards",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Sachin",
+  "license": "ISC",
+  "dependencies": {
+    "async": "^2.5.0",
+    "body-parser": "^1.17.2",
+    "bookshelf": "^0.10.3",
+    "connect": "^3.6.2",
+    "cookie-parser": "^1.4.3",
+    "express": "^4.15.3",
+    "express-json": "^1.0.0",
+    "express-load": "^1.1.16",
+    "express-session": "^1.15.3",
+    "i18n": "^0.8.3",
+    "knex": "^0.13.0",
+    "log4js": "^1.1.1",
+    "moment": "^2.18.1",
+    "mysql": "^2.13.0",
+    "mysql-insert-multiple": "^1.0.4",
+    "node-uuid": "^1.4.8",
+    "nodemon": "^1.11.0",
+    "object-mapper": "^3.0.1",
+    "passport": "^0.3.2",
+    "path": "^0.12.7",
+    "promise": "^7.1.1",
+    "promised-io": "^0.3.5",
+    "uuid": "^3.0.1"
+  }
+}
