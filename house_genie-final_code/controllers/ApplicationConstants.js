@@ -1,7 +1,7 @@
 module.exports = {
-    LOCATION: "location",
-    EMPLOYEE: "employee",
-    CATEGORY: "category",
+    LOCATION: "loc",
+    EMPLOYEE: "emp",
+    CATEGORY: "categ",
     INSERT: "insert",
     DELETE: "delete",
     UPDATE: "update",

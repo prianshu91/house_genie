@@ -17,7 +17,7 @@ function getVerificationId(verf_record) {
         dfd.resolve(obj);
     }, function(err) {
         dfd.reject(err)
-    })
+    });
 
     return dfd.promise;
 }
@@ -29,14 +29,14 @@ function insertEmpRecord(verf_record, emp, record) {
     let dfd = new Deferred();
     //Constructing Employee Record Object
     let emp_record = {
-            first_name: emp.fname,
-            last_name: emp.lname,
-            contact_number: emp.phone,
-            address: emp.address,
-            verification_id: verification_id,
-            police_verified: ((verification_id) ? 1 : 2)
-        }
-        //Saaving verification details
+        first_name: emp.fname,
+        last_name: emp.lname,
+        contact_number: emp.phone,
+        address: emp.address,
+        verification_id: verification_id,
+        police_verified: ((verification_id) ? 1 : 2)
+    }
+    //Saaving verification details
     getVerificationId(verf_record).then(
         function(obj) {
             let verification_id = obj.id;
@@ -97,13 +97,13 @@ function updateEmpRecord(empl) {
 function getEmployeeDetails(id) {
     let dfd = new Deferred();
 
-            Employee.where({ id: id }).fetch().
-            then(function(obj) {
-                    dfd.resolve(obj);
-                },
-                function(err) {
-                    dfd.reject(obj);
-                });
+    Employee.where({ id: id }).fetch().
+    then(function(obj) {
+            dfd.resolve(obj);
+        },
+        function(err) {
+            dfd.reject(obj);
+        });
     return dfd.promise;
 }
 
@@ -137,14 +137,26 @@ function getAllEmployees() {
         });
     return dfd.promise;
 }
-
+//Function for insert verification records
+function insertVerfRecord(verf_record) {
+    let verification = new Verification();
+    let response = new Object();
+    verification.save(verf_record).
+    then(function(obj) {
+        response.id = obj.id;
+    }, function(err) {
+        response.error = err
+    });
+    return response;
+}
 
 let EmployeeService = {
-        Insert: insertEmpRecord,
-        Update: updateEmpRecord,
-        Search: getEmployeeDetails,
-        InsertEmpCategory: insertEmpCateDetails,
-        View: getAllEmployees
-    }
-    //Exporting modules
+    Insert: insertEmpRecord,
+    Update: updateEmpRecord,
+    Search: getEmployeeDetails,
+    InsertEmpCategory: insertEmpCateDetails,
+    View: getAllEmployees,
+    Verify: getVerificationId
+}
+//Exporting modules
 module.exports = EmployeeService;

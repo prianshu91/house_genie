@@ -2,7 +2,7 @@ var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
 var Router = require("./routes/router");
-var port = 8065;
+var port = 8072;
 var i18n = require("i18n");
 var path = require('path');
 var passport = require('passport');
@@ -19,8 +19,8 @@ app.use(cookieParser());
  saveUninitialized : false
  }));*/
 app.use(bodyParser.json());
-//app.use(passport.initialize());
-//app.use(passport.session());
+app.use(passport.initialize());
+app.use(passport.session());
 app.use(bodyParser.urlencoded({
     extended: true
 }));
