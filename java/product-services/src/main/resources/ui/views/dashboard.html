@@ -1,0 +1,313 @@
+<ul class="nav nav-tabs col-md-12" style="margin-top: 20px;">
+    <li ng-repeat="tab in tabs" ng-class="{active:isActiveTab(tab)}"><a href="#" ng-click="onClickTab(tab)">{{tab}}</a></li>
+</ul>
+
+<div id="mainView">
+	<div ng-include="currentTab" class="col-md-12" style="padding-top: 10px;"></div>
+</div>
+
+<script type="text/ng-template" id="Product">
+	<div id="productModal" class="modal fade" role="dialog">
+		<div class="modal-dialog modal-lg">
+		    <div class="modal-content">
+    			<div class="modal-header">
+        			<h4 class="modal-title">Add Product<i class="fa fa-close font22 pull-right" data-dismiss="modal"></i></h4>
+      			</div>
+      			<div class="modal-body">
+					<div class="alert alert-danger" ng-if="newProduct.error != undefined && newProduct.error != ''">
+  						{{newProduct.error}}
+					</div>
+					<div class="col-md-12 top10 required">
+						<label class="col-md-3">Title</label><input class="col-md-5" type="text" ng-model="newProduct.title" />
+					</div>
+					<div class="col-md-12 top10">
+						<label class="col-md-3">Description</label><input class="col-md-5" type="text" ng-model="newProduct.description" />
+					</div>
+					<div class="col-md-12 top10 required">
+						<label class="col-md-3">Owner Id</label><input class="col-md-5" type="text" ng-model="newProduct.ownerId" />
+					</div>
+					<div class="col-md-12 top10">
+						<label class="col-md-3">Occasion</label><input class="col-md-5" type="text" ng-model="newProduct.occasionStr" />
+					</div>
+					<div class="col-md-12 top10 required">
+						<label class="col-md-3">Category</label><input class="col-md-5" type="text" ng-model="newProduct.categoryStr" />
+					</div>
+					<div class="col-md-12 top10">
+						<label class="col-md-3">Length</label><input class="col-md-5" type="text" ng-model="newProduct.length" />
+					</div>
+					<div class="col-md-12 top10">
+						<label class="col-md-3">Type</label><input class="col-md-5" type="text" ng-model="newProduct.type" />
+					</div>
+					<div class="col-md-12 top10">
+						<label class="col-md-3">Size</label><input class="col-md-5" type="text" ng-model="newProduct.size" />
+					</div>
+					<div class="col-md-12 top10">
+						<label class="col-md-3">Color</label><input class="col-md-5" type="text" ng-model="newProduct.colorStr" />
+					</div>
+					<div class="col-md-12 top10">
+						<label class="col-md-3">Care Instruction</label><input class="col-md-5" type="text" ng-model="newProduct.careInstructionStr" />
+					</div>
+					<div class="col-md-12 top10">
+						<label class="col-md-3">Brand</label><input class="col-md-5" type="text" ng-model="newProduct.brand" />
+					</div>
+					<div class="col-md-12 top10">
+						<label class="col-md-3">List As</label><input class="col-md-5" type="text" ng-model="newProduct.listAs" />
+					</div>
+					<div class="col-md-12 top10">
+						<label class="col-md-3">Rental Period</label><input class="col-md-5" type="text" ng-model="newProduct.rentalPeriod" />
+					</div>
+					<div class="col-md-12 top10">
+						<label class="col-md-3">Rental Price</label><input class="col-md-5" type="text" ng-model="newProduct.rentalPrice" />
+					</div>
+					<div class="col-md-12 top10">
+						<label class="col-md-3">Original Price</label><input class="col-md-5" type="text" ng-model="newProduct.originalPrice" />
+					</div>
+					<div class="col-md-12 top10">
+						<label class="col-md-3">Image1</label><input class="col-md-5" type="text" ng-model="newProduct.images['1']" />
+					</div>
+					<div class="col-md-12 top10">
+						<label class="col-md-3">Image2</label><input class="col-md-5" type="text" ng-model="newProduct.images['2']" />
+					</div>
+					<div class="col-md-12 top10">
+						<label class="col-md-3">Image3</label><input class="col-md-5" type="text" ng-model="newProduct.images['3']" />
+					</div>
+					<div class="col-md-12 top10">
+						<label class="col-md-3">Image4</label><input class="col-md-5" type="text" ng-model="newProduct.images['4']" />
+					</div>
+					<div class="col-md-12 top10">
+						<button class="btn btn-primary pull-right" ng-click="addProduct(newProduct)">Save</button>
+					</div>
+	      		</div>
+ 	     		<div class="modal-footer"></div>
+    		</div>
+		</div>
+	</div>
+	<div id="detailedModal" class="modal fade" role="dialog">
+		<div class="modal-dialog modal-lg">
+		    <div class="modal-content">
+    			<div class="modal-header">
+        			<h4 class="modal-title">{{selectedProduct.title}}<i class="fa fa-close font22 pull-right" data-dismiss="modal"></i></h4>
+      			</div>
+      			<div class="modal-body">
+					<div class="col-md-12 top10">
+						<label class="col-md-2">Description: </label><span class="col-md-10">{{selectedProduct.description}}</span>
+					</div>
+					<div class="col-md-12 top10">
+						<label class="col-md-2">Owner Id</label><span class="col-md-10">{{selectedProduct.ownerId}}</span>
+					</div>
+					<div class="col-md-6 top10">
+						<label class="col-md-4">Occasion</label><span class="col-md-8">{{selectedProduct.occasionStr}}</span>
+					</div>
+					<div class="col-md-6 top10">
+						<label class="col-md-4">Category</label><span class="col-md-8">{{selectedProduct.categoryStr}}</span>
+					</div>
+					<div class="col-md-6 top10">
+						<label class="col-md-4">Length</label><span class="col-md-8">{{selectedProduct.length}}</span>
+					</div>
+					<div class="col-md-6 top10">
+						<label class="col-md-4">Type</label><span class="col-md-8">{{selectedProduct.type}}</span>
+					</div>
+					<div class="col-md-6 top10">
+						<label class="col-md-4">Size</label><span class="col-md-8">{{selectedProduct.size}}</span>
+					</div>
+					<div class="col-md-6 top10">
+						<label class="col-md-4">Color</label><span class="col-md-8">{{selectedProduct.colorStr}}</span>
+					</div>
+					<div class="col-md-6 top10">
+						<label class="col-md-4">Care Instruction</label><span class="col-md-8">{{selectedProduct.careInstructionStr}}</span>
+					</div>
+					<div class="col-md-6 top10">
+						<label class="col-md-4">Brand</label><span class="col-md-8">{{selectedProduct.brand}}</span>
+					</div>
+					<div class="col-md-6 top10">
+						<label class="col-md-4">List As</label><span class="col-md-8">{{selectedProduct.listAs}}</span>
+					</div>
+					<div class="col-md-6 top10">
+						<label class="col-md-4">Rental Period</label><span class="col-md-8">{{selectedProduct.rentalPeriod}}</span>
+					</div>
+					<div class="col-md-6 top10">
+						<label class="col-md-4">Rental Price</label><span class="col-md-8">{{selectedProduct.rentalPrice}}</span>
+					</div>
+					<div class="col-md-6 top10">
+						<label class="col-md-4">Original Price</label><span class="col-md-8">{{selectedProduct.originalPrice}}</span>
+					</div>
+					<div class="col-md-6 top10">
+						<label class="col-md-4">Status</label><span class="col-md-8">{{selectedProduct.status == 1 ? 'Live' : selectedProduct.status == 2 ? 'Not Activated' : 'Deleted' }}</span>
+					</div>
+					<div class="col-md-3 top10">
+						<image style="height: 200px; width: 200px;" ng-src="{{selectedProduct.images['1']}}" alt="Image 1" />
+					</div>
+					<div class="col-md-3 top10">
+						<image style="height: 200px; width: 200px;" ng-src="{{selectedProduct.images['2']}}" alt="Image 2" />
+					</div>
+					<div class="col-md-3 top10">
+						<image style="height: 200px; width: 200px;" ng-src="{{selectedProduct.images['3']}}" alt="Image 3" />
+					</div>
+					<div class="col-md-3 top10">
+						<image style="height: 200px; width: 200px;" ng-src="{{selectedProduct.images['4']}}" alt="Image 4" />
+					</div>
+      			</div>
+ 	     		<div class="modal-footer"></div>
+    		</div>
+		</div>
+	</div>
+	<div class="col-md-12 top10" style="background: gray; padding: 5px;" ng-if="products != undefined && products.length > 0">
+		<label class="col-md-3">Title</label>
+		<label class="col-md-1">Category</label>
+		<label class="col-md-3">Owner Id</label>
+		<label class="col-md-1">Status</label>
+		<label class="col-md-1">View</label>
+		<label class="col-md-1">Edit</label>
+		<label class="col-md-1">Delete</label>
+		<label class="col-md-1">Activate</label>
+	</div>
+	<div class="col-md-12" style="padding: 5px;" ng-class="$even ? 'odd' : 'even'" ng-repeat="product in products">
+		<span class="col-md-3">{{product.title}}</span>
+		<span class="col-md-1">{{product.category[0]}}</span>
+		<span class="col-md-3">{{product.ownerId}}</span>
+		<span class="col-md-1">{{product.status == 1 ? 'Live' : product.status == 2 ? 'Not Activated' : 'Deleted' }}</span>
+		<i class="fa fa-search col-md-1 font22" ng-click="getProductDetail(product)" data-toggle="modal" data-target="#detailedModal"></i>
+		<i class="fa fa-pencil col-md-1 font22" ng-click="editProduct(product)" data-toggle="modal" data-target="#productModal"></i>
+		<i class="fa fa-close col-md-1 font22" ng-click="deleteProduct(product.id)"></i>
+		<i class="fa fa-thumbs-up col-md-1 font22" ng-if="product.status == 2" ng-click="activateProduct(product.id)"></i>
+	</div>
+	<div class="col-md-12 top10">
+		<button class="btn btn-primary pull-right" data-toggle="modal" ng-click="createNewProduct()" data-target="#productModal">New Product</button>
+	</div>
+</script>
+
+<script type="text/ng-template" id="Category">
+	<ul>
+		<li style="padding: 5px;" ng-repeat="category in categories">{{category}}</li>
+	</ul>
+</script>
+
+<script type="text/ng-template" id="Occasion">
+	<ul>
+		<li style="padding: 5px;" ng-repeat="occasion in occasions">{{occasion}}</li>
+	</ul>
+</script>
+
+<script type="text/ng-template" id="Length">
+	<ul>
+		<div ng-repeat="length in lengths">
+			<li style="padding: 5px;" ng-repeat="(key, value) in length">{{key}} {{ value.length > 0 ? '(' + value + ')' : '' }}</li>
+		</div>
+	</ul>
+</script>
+
+<script type="text/ng-template" id="Type">
+	<ul>
+		<li style="padding: 5px;" ng-repeat="type in types">{{type}}</li>
+	</ul>
+</script>
+
+<script type="text/ng-template" id="Color">
+	<ul>
+		<li style="padding: 5px;" ng-repeat="color in colors">{{color}}</li>
+	</ul>
+</script>
+
+<script type="text/ng-template" id="Size">
+	<div ng-repeat="(size, values) in sizes">
+		<b>{{size}}</b>
+		<ul>
+			<li style="padding: 5px;" ng-repeat="value in values">{{value}}</li>
+		</ul>
+	</div>
+</script>
+
+<script type="text/ng-template" id="Care Instructions">
+	<ul>
+		<li style="padding: 5px;" ng-repeat="careInstruction in careInstructions">{{careInstruction}}</li>
+	</ul>
+</script>
+
+<script type="text/ng-template" id="Review">
+	<div id="reviewModal" class="modal fade" role="dialog">
+		<div class="modal-dialog modal-lg">
+		    <div class="modal-content">
+    			<div class="modal-header">
+        			<h4 class="modal-title">Add Review<i class="fa fa-close font22 pull-right" data-dismiss="modal"></i></h4>
+      			</div>
+      			<div class="modal-body">
+					<div class="alert alert-danger" ng-if="newReview.error != undefined && newReview.error != ''">
+  						{{newReview.error}}
+					</div>
+					<div class="col-md-12 top10 required">
+						<label class="col-md-3">Title</label><input class="col-md-5" type="text" ng-model="newReview.title" />
+					</div>
+					<div class="col-md-12 top10">
+						<label class="col-md-3">Description</label><input class="col-md-5" type="text" ng-model="newReview.description" />
+					</div>
+					<div class="col-md-12 top10 required">
+						<label class="col-md-3">User Id</label><input class="col-md-5" type="text" ng-model="newReview.userId" />
+					</div>
+					<div class="col-md-12 top10">
+						<label class="col-md-3">User Name</label><input class="col-md-5" type="text" ng-model="newReview.userName" />
+					</div>
+					<div class="col-md-12 top10 required">
+						<label class="col-md-3">Rating</label><input class="col-md-5" type="text" ng-model="newReview.rating" />
+					</div>
+					<div class="col-md-12 top10">
+						<label class="col-md-3">Product Id</label><input class="col-md-5" type="text" ng-model="newReview.productId" />
+					</div>
+					<div class="col-md-12 top10">
+						<button class="btn btn-primary pull-right" ng-click="addReview(newReview)">Save</button>
+					</div>
+	      		</div>
+ 	     		<div class="modal-footer"></div>
+    		</div>
+		</div>
+	</div>
+	<div id="detailedModal" class="modal fade" role="dialog">
+		<div class="modal-dialog modal-lg">
+		    <div class="modal-content">
+    			<div class="modal-header">
+        			<h4 class="modal-title">{{selectedReview.title}}<i class="fa fa-close font22 pull-right" data-dismiss="modal"></i></h4>
+      			</div>
+      			<div class="modal-body">
+					<div class="col-md-12 top10">
+						<label class="col-md-2">Description: </label><span class="col-md-10">{{selectedReview.description}}</span>
+					</div>
+					<div class="col-md-12 top10">
+						<label class="col-md-2">User Id</label><span class="col-md-10">{{selectedReview.userId}}</span>
+					</div>
+					<div class="col-md-6 top10">
+						<label class="col-md-4">User Name</label><span class="col-md-8">{{selectedReview.userName}}</span>
+					</div>
+					<div class="col-md-6 top10">
+						<label class="col-md-4">Rating</label><span class="col-md-8">{{selectedReview.rating}}</span>
+					</div>
+					<div class="col-md-6 top10">
+						<label class="col-md-4">Product Id</label><span class="col-md-8">{{selectedReview.productId}}</span>
+					</div>
+      			</div>
+ 	     		<div class="modal-footer"></div>
+    		</div>
+		</div>
+	</div>
+	<div class="col-md-12 top10">
+		<select class="selectpicker pull-right" ng-model="productSelect" ng-init="productSelect='none'" ng-change="loadReviews(productSelect)" >
+			<option value="none">Select Product</option>
+			<option ng-repeat="product in products" ng-if="product.status == 1" value="{{product.id}}">{{product.title}}</option>
+		</select>
+	</div>
+	<div class="col-md-12 top10" style="background: gray; padding: 5px;" ng-if="reviews != undefined && reviews.length > 0">
+		<label class="col-md-3">User Name</label>
+		<label class="col-md-6">Title</label>
+		<label class="col-md-1">View</label>
+		<label class="col-md-1">Edit</label>
+		<label class="col-md-1">Delete</label>
+	</div>
+	<div class="col-md-12" style="padding: 5px;" ng-class="$even ? 'odd' : 'even'" ng-repeat="review in reviews">
+		<span class="col-md-3">{{review.userName}}</span>
+		<span class="col-md-6">{{review.title}}</span>
+		<i class="fa fa-search col-md-1 font22" ng-click="getReviewDetail(review)" data-toggle="modal" data-target="#detailedModal"></i>
+		<i class="fa fa-pencil col-md-1 font22" ng-click="editReview(review)" data-toggle="modal" data-target="#reviewModal"></i>
+		<i class="fa fa-close col-md-1 font22" ng-click="deleteReview(review)"></i>
+	</div>
+	<div class="col-md-12 top10">
+		<button class="btn btn-primary pull-right" data-toggle="modal" ng-click="createNewReview()" data-target="#reviewModal">New Review</button>
+	</div>
+</script>

@@ -1,0 +1,23 @@
+<div class="modal-content">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal"
+			ng-click="close()" aria-hidden="true">&times;</button>
+		<h4 class="modal-title">Upload Pod Logo</h4>
+	</div>
+	<div class="modal-body" style="overflow: auto; display: inline-block;">
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+			<button ngf-select ng-model="picFile" accept="image/*">Select Picture</button>
+            <div ngf-drop ng-model="picFile" ngf-pattern="image/*" class="cropArea">
+                <img-crop image="picFile | ngfDataUrl" result-image="myCroppedImage"></img-crop>
+            </div>
+            <div>Cropped Image:</div>
+            <div><img ng-src="{{myCroppedImage}}" /></div>
+		</div>
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-primary" ng-click="uploadPic(myCroppedImage, picFile.name)" ng-disabled="!picFile">
+			<i class="fa fa-paper-plane" aria-hidden="true"></i> Upload
+		</button>
+		<button type="button" class="btn btn-default" ng-click="close()">Cancel</button>
+	</div>
+</div>

@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html ng-app="promelleApp">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1">
+<base href="/web/promelle/">
+<link rel="icon" href="images/favicon.ico">
+<title ng-bind="$state.current.friendlyName">House Genie</title>
+<link rel="stylesheet"
+	href="lib/html5-boilerplate/dist/css/normalize.css">
+<link rel="stylesheet" href="lib/html5-boilerplate/dist/css/main.css">
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/font-awesome.min.css">
+<link rel="stylesheet" href="css/angular-bootstrap-lightbox.min.css">
+<link rel="stylesheet" href="css/mediaquery.css">
+<link rel="stylesheet" href="css/price-range.css">
+<link rel="stylesheet" href="css/rzslider.min.css">
+<link rel="stylesheet" href="css/style.css">
+
+<script src="lib/jquery-3.1.1.min.js"></script>
+<script src="lib/angular/angular.js"></script>
+<script src="lib/angular-animate.min.js"></script>
+<script src="lib/angular-touch.min.js"></script>
+
+<script src="lib/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
+<script src="lib/angular-local-storage.js"></script>
+<script src="lib/angular-ui-router.min.js"></script>
+<script src="lib/angular-breadcrumb.js"></script>
+<script src="lib/angular-resource.min.js"></script>
+<script src="lib/angular-bootstrap-lightbox.min.js"></script>
+<script src="lib/ng-infinite-scroll.min.js"></script>
+
+<script src="lib/rzslider.min.js"></script>
+
+<script src="lib/html5shiv.js"></script>
+<script src="lib/ie10-viewport-bug-workaround.js"></script>
+<script src="lib/main.js"></script>
+<script src="lib/price-range.js"></script>
+<script src="lib/respond.min.js"></script>
+
+<script src="config/config.js"></script>
+
+<script src="lib/bootstrap.min.js"></script>
+<script src="lib/ui-bootstrap-2.1.1.min.js"></script>
+<script src="lib/ui-bootstrap-tpls-2.1.1.min.js"></script>
+
+<script src="js/utils/utils.js"></script>
+
+<!-- directives -->
+<script src="js/directive/headerDirective.js"></script>
+<script src="js/directive/addthisToolbox.js"></script>
+<script src="js/directive/starRating.js"></script>
+
+<!-- controllers -->
+<script src="js/controller/homeCtrl.js"></script>
+<script src="js/controller/productListingCtrl.js"></script>
+<script src="js/controller/contactCtrl.js"></script>
+<script src="js/controller/productDetailCtrl.js"></script>
+<script src="js/controller/reviewDetailCtrl.js"></script>
+<script src="js/controller/termsConditionCtrl.js"></script>
+<script src="js/controller/privacyPolicyCtrl.js"></script>
+<script src="js/controller/FAQCtrl.js"></script>
+<script src="js/controller/aboutUsCtrl.js"></script>
+
+<!-- service -->
+<script src="js/service/productService.js"></script>
+
+<!-- Filters -->
+<script src="js/filters/publicFilters.js"></script>
+</head>
+<body>
+	<!--header-->
+	<header>
+		<!-- <input type="button"  class="goToTop" value="Scroll Top" style="display:none;background-color:red"  /> -->
+		<label type="button" class="btn btn-primary goToTop"
+			style="display: none;" title="Back to Top"><span
+			aria-hidden="true" class="fa fa-chevron-up"></span>
+		</label>
+		<nav class="navbar navbar-default">
+			<div class="container">
+				<div class="navbar-header">
+					<button aria-controls="navbar" aria-expanded="false"
+						data-target="#navbar" data-toggle="collapse"
+						class="navbar-toggle collapsed" type="button">
+						<span class="sr-only">Toggle navigation</span> <span
+							class="icon-bar"></span> <span class="icon-bar"></span> <span
+							class="icon-bar"></span>
+					</button>
+					<a href="#" class="navbar-brand"><img alt="PromElle"
+						src="images/logo.jpg"></a>
+				</div>
+				<div class="navbar-collapse collapse" id="navbar">
+					<ul class="nav navbar-nav">
+						<li ui-sref-active="active"><a ui-sref="home">Home</a></li>
+						<li ui-sref-active="active"><a ui-sref="about">About Us</a></li>
+						<li ui-sref-active="active"><a ui-sref="contact-us">Contact</a></li>
+						<li ui-sref-active="active"><a ui-sref="faq">FAQ</a></li>
+						<li ui-sref-active="active"><a ui-sref="productList">Browse Categories</a></li>
+					</ul>
+					<ul class="nav navbar-nav navbar-right">
+						<!--<li class="dropdown">
+                              <a aria-expanded="false" aria-haspopup="true" role="button" data-toggle="dropdown" class="dropdown-toggle" href="#">Dropdown <span class="caret"></span></a>
+                              <ul class="dropdown-menu">
+                                <li><a href="#">Action</a></li>
+                                <li><a href="#">Another action</a></li>
+                                <li><a href="#">Something else here</a></li>
+                                <li class="divider" role="separator"></li>
+                                <li class="dropdown-header">Nav header</li>
+                                <li><a href="#">Separated link</a></li>
+                                <li><a href="#">One more separated link</a></li>
+                              </ul>
+                            </li>-->
+						<!-- <form class="navbar-form">
+							<input type="text" placeholder="Search..." class="form-control">
+							<button class="search">
+								<i class="fa fa-search"></i>
+							</button>
+						</form> -->
+					</ul>
+				</div>
+				<!--/.nav-collapse -->
+			</div>
+		</nav>
+		<!--nav-->
+		<div class="clearfix"></div>
+	</header>
+	<!--/header-->
+	<!--view-->
+	<div class="container">
+		<div class="breadcrumb_style" ncy-breadcrumb ng-if="$state.current.ncyBreadcrumb.label != 'Home'"></div>
+	</div>
+	<div ui-view>
+	</div>
+	<!--/view-->
+	<!--Footer-->
+	<footer id="footer">
+		<div class="footer-widget">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-6">
+						<div class="footer-nav">
+							<ul>
+								<li ui-sref-active="active"><a ui-sref="about">About Us</a></li>
+								<li ui-sref-active="active"><a ui-sref="faq">FAQ</a></li>
+								<li ui-sref-active="active"><a ui-sref="termsCondition">Terms & Conditions</a></li>
+								<li ui-sref-active="active"><a ui-sref="privacyPolicy">Privacy Policy</a></li>
+								<li ui-sref-active="active"><a ui-sref="contact-us">Contact Us</a></li>
+							</ul>
+						</div>
+					</div>
+					
+					<div class="col-sm-6">
+						<div class="social-icons">					
+							<ul class="nav navbar-nav navbar-right">
+								<li class="share">Like and Follow us on:</li>
+								<li><a href="https://www.facebook.com/promelle.rentlend/" target="_blank"><i class="fa fa-facebook"></i></a></li>
+								<li><a href="https://www.instagram.com/promelle.ig/" target="_blank"><i class="fa fa-instagram"></i></a></li>								
+								<!--<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+								<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+								<li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+								<li><a href="#"><i class="fa fa-google-plus"></i></a></li>-->
+							</ul>
+						</div>
+					</div>
+					<div class="clearfix"></div>
+					<p class="text-center fs12">Copyright © 2018 House Genie. All rights reserved.</p>
+				</div>
+			</div>
+		</div>
+		
+		<!--<div class="footer-bottom">
+			<div class="container">
+				<div class="row">
+					<p class="pull-left">Copyright © 2013 PromEll. All rights reserved.</p>
+					<p class="pull-right"><a target="_blank" href="#">Privacy Policy</a></p>
+				</div>
+			</div>
+		</div>-->
+	</footer>
+	<!--/Footer-->
+	<script>
+		$(window).scroll(function() {
+			if ($(this).scrollTop() > 100) {
+				$('.goToTop').fadeIn();
+			} else {
+				$('.goToTop').fadeOut();
+			}
+		});
+		$('.goToTop').click(function() {
+			$("html, body").animate({
+				scrollTop : 0
+			}, 1000);
+			return false;
+		});
+	</script>
+
+</body>
+</html>

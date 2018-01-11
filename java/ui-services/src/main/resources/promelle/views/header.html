@@ -1,0 +1,29 @@
+<nav class="navbar navbar-inverse navbar-fixed-top">
+	<div class="container-fluid">
+		<div class="navbar-header" style="width: 100%">
+			<div class="col-md-12 pL0">
+			<button type="button" class="navbar-toggle collapsed"
+				data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+				aria-controls="navbar">
+				<span class="sr-only">Toggle navigation</span> <span
+					class="icon-bar"></span> <span class="icon-bar"></span> <span
+					class="icon-bar"></span>
+			</button>
+			<div class="col-md-12 pL0">
+				<span> <a class="navbar-brand pull-left pL0" href=""
+					ui-sref="admin"> <img class="header_logo"
+						src="/ui/promelle/images/promelle_logo.png"></img>PromElle
+						Dashboard
+				</a>
+				</span> <span> <a class="navbar-brand pull-right logout_btn" href=""
+					ng-click="logout()"><i class="fa fa-sign-out"
+						aria-hidden="true"></i> Logout</a>
+				</span> <span ng-if="showUserName"> <a
+					class="navbar-brand pull-right user_name"><i
+						class="fa fa-user-circle" aria-hidden="true"></i> Welcome
+						{{showUserName}}</a>
+				</span>
+			</div>
+		</div>
+	</div>
+</nav>

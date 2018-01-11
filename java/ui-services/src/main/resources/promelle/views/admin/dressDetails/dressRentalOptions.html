@@ -1,0 +1,64 @@
+<div ng-controller="dressRentalOptionsCtrl" class="dressDetails">
+	<fieldset>
+		<form class="form-horizontal">
+			<div class="form-group bdr-btm">
+				<label for="example-text-input" class="col-xs-2 col-form-label">List
+					as New/Used:</label>
+				<div class="col-xs-9">{{listAs}}</div>
+				<div class="col-xs-1">
+					<input type="checkbox" ng-if="isReadyToActive"
+						ng-disabled="disabledRentalCheckbox" ng-model="rentalListAs"
+						ng-change="stateChanged('List As New/Used')">
+				</div>
+			</div>
+
+			<div class="form-group bdr-btm">
+				<label for="example-text-input" class="col-xs-2 col-form-label">Original
+					Price:</label>
+				<div class="col-xs-9">{{originalPrice | currency}}</div>
+				<div class="col-xs-1">
+					<input type="checkbox" ng-if="isReadyToActive"
+						ng-disabled="disabledRentalCheckbox"
+						ng-model="rentalOriginalPrice"
+						ng-change="stateChanged('Original Price')">
+				</div>
+			</div>
+
+			<div class="form-group bdr-btm">
+				<label for="example-text-input" class="col-xs-2 col-form-label">Rental
+					Period:</label>
+				<div class="col-xs-9">{{rentalPeriod}}</div>
+				<div class="col-xs-1">
+					<input type="checkbox" ng-if="isReadyToActive"
+						ng-disabled="disabledRentalCheckbox" ng-model="rentalPeriod"
+						ng-change="stateChanged('Rental	Period')">
+				</div>
+			</div>
+
+			<div class="form-group bdr-btm">
+				<label for="example-text-input" class="col-xs-2 col-form-label">4-Day
+					Rental Price:</label>
+				<div class="col-xs-9">{{fourDayRentalPrice | currency}}</div>
+				<div class="col-xs-1">
+					<input type="checkbox" ng-if="isReadyToActive"
+						ng-disabled="disabledRentalCheckbox" ng-model="rentalPrice"
+						ng-change="stateChanged('Price')">
+				</div>
+			</div>
+
+			<div class="form-group bdr-btm"
+				ng-if="listingData.availForOtherPeriod">
+				<label for="example-text-input" class="col-xs-2 col-form-label">8-Day
+					Rental Price:</label>
+				<div class="col-xs-9">{{eightDayRentalPrice | currency}}</div>
+				<div class="col-xs-1">
+					<input type="checkbox" ng-if="isReadyToActive"
+						ng-disabled=true ng-model="rentalPrice"
+						ng-change="stateChanged('Price')">
+				</div>
+			</div>
+
+
+		</form>
+	</fieldset>
+</div>

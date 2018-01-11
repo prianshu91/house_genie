@@ -1,0 +1,40 @@
+<h2 class="sub-header">Broadcast</h2>
+
+<div class="form-group row">
+
+  <div class="col-xs-6 search-box">
+    <form name="searchForm" ng-submit="search()">
+      <div>
+        <label>Search:</label>
+      </div>
+      <div class="input-group">
+        <input type="text" class="form-control" ng-model="$parent.searchText" ng-change="searchButtonState(searchText)">
+        <span class="input-group-btn">
+          <button class="btn btn-danger" type="button"
+            ng-click="clearSearch()" ng-if="searchClicked">
+            <i class="fa fa-times" aria-hidden="true"></i>
+          </button>
+          <button class="btn btn-default" type="button" ng-click="search()"
+            ng-if="!searchClicked">
+            <i class="fa fa-search" aria-hidden="true"></i>
+          </button>
+        </span>
+      </div>
+    </form>
+  </div>
+
+  <div class="col-sm-6 mt30">
+    <div class="pull-right">
+      <button type="button" ng-click="open()" class="btn btn-primary" ng-disabled="!mySelectedRows.length"><i class="fa fa-envelope"></i> Broadcast Email</button>
+      <button type="button" class="btn btn-primary"><i class="fa fa-commenting"></i> Broadcast SMS</button>
+    </div>
+  </div>
+</div>
+
+<div class="col-lg-12">&nbsp;</div>
+
+<div class="form-group col-xs-12 pad0">
+  <div ui-grid="broadcastListOptions" ui-grid-resize-columns ui-grid-auto-resize ui-grid-selection ui-grid-pagination class="gridTable">
+    <div class="watermark" ng-if="!broadcastListOptions.data.length && noData">No results found</div>
+  </div>
+</div>

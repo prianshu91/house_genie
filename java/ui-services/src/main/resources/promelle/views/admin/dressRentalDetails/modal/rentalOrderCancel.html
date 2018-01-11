@@ -1,0 +1,21 @@
+<div class="modal-content">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal"
+			ng-click="close()" aria-hidden="true">&times;</button>
+		<h4 class="modal-title">Cancel Rental Order</h4>
+	</div>
+	<div class="modal-body" style="overflow: auto; display: inline-block;">
+		<div>
+			<label> <input type="radio" ng-model="user.type"
+				value="lender"> Order Canceled by lender.
+			</label> <br /> <label> <input type="radio" ng-model="user.type"
+				value="renter"> Order Canceled by renter.
+			</label>
+		</div>
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-danger" ng-disabled="!user.type"
+			ng-click="cancelOrder()">Confirm</button>
+		<button type="button" class="btn btn-default" ng-click="close()">Cancel</button>
+	</div>
+</div>

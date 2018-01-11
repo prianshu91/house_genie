@@ -1,0 +1,449 @@
+<ul class="nav nav-tabs col-md-12" style="margin-top: 20px;">
+    <li ng-repeat="tab in tabs" ng-class="{active:isActiveTab(tab)}"><a href="#" ng-click="onClickTab(tab)">{{tab}}</a></li>
+</ul>
+
+<div id="mainView">
+	<div ng-include="currentTab" class="col-md-12" style="padding-top: 10px;"></div>
+</div>
+
+<script type="text/ng-template" id="Permissions">
+	<div class="col-md-12 top10" style="background: gray; padding: 5px;" ng-if="permissions != undefined && permissions.length > 0">
+		<label class="col-md-2">Name</label>
+		<label class="col-md-3">Code</label>
+		<label class="col-md-5">Description</label>
+		<label class="col-md-2">Status</label>
+	</div>
+	<div class="col-md-12" style="padding: 5px;" ng-class="$even ? 'odd' : 'even'" ng-repeat="permission in permissions">
+		<span class="col-md-2">{{permission.name}}</span>
+		<span class="col-md-3">{{permission.code}}</span>
+		<span class="col-md-5">{{permission.description}}</span>
+		<span class="col-md-2">{{permission.status == 1 ? 'Live' : 'Deleted' }}</span>
+	</div>
+</script>
+
+<script type="text/ng-template" id="Roles">
+	<div id="detailedModal" class="modal fade" role="dialog">
+		<div class="modal-dialog modal-lg">
+		    <div class="modal-content">
+    			<div class="modal-header">
+        			<h4 class="modal-title">{{selectedRole}}<i class="fa fa-close font22 pull-right" data-dismiss="modal"></i></h4>
+      			</div>
+      			<div class="modal-body">
+					<div class="col-md-12" style="background: gray; padding: 5px;">
+						<label class="col-md-2">Name</label>
+						<label class="col-md-3">Code</label>
+						<label class="col-md-5">Description</label>
+						<label class="col-md-2">Status</label>
+					</div>
+					<div class="col-md-12" style="padding: 5px;" ng-class="$even ? 'odd' : 'even'" ng-repeat="selectedRolePermission in selectedRolePermissions">
+						<span class="col-md-2">{{selectedRolePermission.name}}</span>
+						<span class="col-md-3">{{selectedRolePermission.code}}</span>
+						<span class="col-md-5">{{selectedRolePermission.description}}</span>
+						<span class="col-md-2">{{selectedRolePermission.status == 1 ? 'Live' : 'Deleted' }}</span>
+					</div>
+	      		</div>
+ 	     		<div class="modal-footer"></div>
+    		</div>
+		</div>
+	</div>
+	<div class="col-md-12 top10" style="background: gray; padding: 5px;" ng-if="roles != undefined && roles.length > 0">
+		<label class="col-md-2">Name</label>
+		<label class="col-md-3">Code</label>
+		<label class="col-md-5">Description</label>
+		<label class="col-md-1">Status</label>
+		<label class="col-md-1">View</label>
+	</div>
+	<div class="col-md-12" style="padding: 5px;" ng-class="$even ? 'odd' : 'even'" ng-repeat="role in roles">
+		<span class="col-md-2">{{role.name}}</span>
+		<span class="col-md-3">{{role.code}}</span>
+		<span class="col-md-5">{{role.description}}</span>
+		<span class="col-md-1">{{role.status == 1 ? 'Live' : 'Deleted' }}</span>
+		<i class="fa fa-search col-md-1 font22" ng-click="getRolePermissions(role)" data-toggle="modal" data-target="#detailedModal"></i>
+	</div>
+</script>
+
+<script type="text/ng-template" id="Accounts">
+	<div id="accountModal" class="modal fade" role="dialog">
+		<div class="modal-dialog modal-lg">
+		    <div class="modal-content">
+    			<div class="modal-header">
+        			<h4 class="modal-title">Add Account<i class="fa fa-close font22 pull-right" data-dismiss="modal"></i></h4>
+      			</div>
+      			<div class="modal-body">
+					<div class="alert alert-danger" ng-if="newAccount.error != undefined && newAccount.error != ''">
+  						{{newAccount.error}}
+					</div>
+					<div class="col-md-12 top10 required">
+						<label class="col-md-3">Email Address</label><input class="col-md-5" type="text" ng-model="newAccount.email" />
+					</div>
+					<div class="col-md-12 top10 required">
+						<label class="col-md-3">Name</label><input class="col-md-5" type="text" ng-model="newAccount.name" />
+					</div>
+					<div class="col-md-12 top10 required">
+						<label class="col-md-3">Account Name</label><input class="col-md-5" type="text" ng-model="newAccount.accountName" />
+					</div>
+					<div class="col-md-12 top10 required">
+						<label class="col-md-3">Mobile</label><input class="col-md-5" type="text" ng-model="newAccount.mobile" />
+					</div>
+					<div class="col-md-12 top10">
+						<button class="btn btn-primary pull-right" ng-click="addAccount(newAccount)">Create</button>
+					</div>
+	      		</div>
+ 	     		<div class="modal-footer"></div>
+    		</div>
+		</div>
+	</div>
+	<div id="detailedModal" class="modal fade" role="dialog">
+		<div class="modal-dialog modal-lg">
+		    <div class="modal-content">
+    			<div class="modal-header">
+        			<h4 class="modal-title">{{selectedAccount}}<i class="fa fa-close font22 pull-right" data-dismiss="modal"></i></h4>
+      			</div>
+      			<div class="modal-body">
+					<div class="col-md-12" style="background: gray; padding: 5px;">
+						<label class="col-md-4">Name</label>
+						<label class="col-md-4">Email Address</label>
+						<label class="col-md-2">Status</label>
+					</div>
+					<div class="col-md-12" style="padding: 5px;" ng-class="$even ? 'odd' : 'even'" ng-repeat="selectedAccountUser in selectedAccountUsers">
+						<span class="col-md-4">{{selectedAccountUser.name}}</span>
+						<span class="col-md-4">{{selectedAccountUser.email}}</span>
+						<span class="col-md-2">{{selectedAccountUser.status == 1 ? 'Live' : selectedAccountUser.status == 2 ? 'Not Activated' : 'Deleted' }}</span>
+					</div>
+	      		</div>
+ 	     		<div class="modal-footer"></div>
+    		</div>
+		</div>
+	</div>
+	<div class="col-md-12 top10" style="background: gray; padding: 5px;" ng-if="accounts != undefined && accounts.length > 0">
+		<label class="col-md-3">Name</label>
+		<label class="col-md-2">Portal Name</label>
+		<label class="col-md-4">Owner Id</label>
+		<label class="col-md-1">Status</label>
+		<label class="col-md-1">View</label>
+		<label class="col-md-1">Delete</label>
+	</div>
+	<div class="col-md-12" style="padding: 5px;" ng-class="$even ? 'odd' : 'even'" ng-repeat="account in accounts">
+		<span class="col-md-3">{{account.name}}</span>
+		<span class="col-md-2">{{account.portalName}}</span>
+		<span class="col-md-4">{{account.ownerId}}</span>
+		<span class="col-md-1">{{account.status == 1 ? 'Live' : 'Deleted' }}</span>
+		<i class="fa fa-search col-md-1 font22" ng-click="getAccountUsers(account)" data-toggle="modal" data-target="#detailedModal"></i>
+		<i class="fa fa-close col-md-1 font22" ng-click="deleteAccount(account.id)"></i>
+	</div>
+	<div class="col-md-12 top10">
+		<button class="btn btn-primary pull-right" data-toggle="modal" ng-click="createNewAccount()" data-target="#accountModal">New Account</button>
+	</div>
+</script>
+
+<script type="text/ng-template" id="Users">
+	<div id="userModal" class="modal fade" role="dialog">
+		<div class="modal-dialog modal-lg">
+		    <div class="modal-content">
+    			<div class="modal-header">
+        			<h4 class="modal-title">Add User<i class="fa fa-close font22 pull-right" data-dismiss="modal"></i></h4>
+      			</div>
+      			<div class="modal-body">
+					<div class="alert alert-danger" ng-if="newUser.error != undefined && newUser.error != ''">
+  						{{newUser.error}}
+					</div>
+					<div class="col-md-12 top10 required">
+						<label class="col-md-3">Email Address</label><input class="col-md-5" type="text" ng-model="newUser.email" />
+					</div>
+					<div class="col-md-12 top10 required">
+						<label class="col-md-3">Name</label><input class="col-md-5" type="text" ng-model="newUser.name" />
+					</div>
+					<div class="col-md-12 top10">
+						<label class="col-md-3">Mobile</label><input class="col-md-5" type="text" ng-model="newUser.mobile" />
+					</div>
+					<div class="col-md-12 top10">
+						<label class="col-md-3">Picture</label><input class="col-md-5" type="text" ng-model="newUser.picture" />
+					</div>
+					<div class="col-md-12 top10">
+						<label class="col-md-3">Username</label><input class="col-md-5" type="text" ng-model="newUser.username" />
+					</div>
+					<div class="col-md-12 top10">
+						<label class="col-md-3">Organization Name</label><input class="col-md-5" type="text" ng-model="newUser.organizationName" />
+					</div>
+					<div class="col-md-12 top10">
+						<label class="col-md-3">Birthday</label><input class="col-md-5" type="text" ng-model="newUser.birthday" />
+					</div>
+					<div class="col-md-12 top10">
+						<label class="col-md-3">Address Line 1</label><input class="col-md-5" type="text" ng-model="newUser.homeAddress.addressLine1" />
+					</div>
+					<div class="col-md-12 top10">
+						<label class="col-md-3">Address Line 2</label><input class="col-md-5" type="text" ng-model="newUser.homeAddress.addressLine2" />
+					</div>
+					<div class="col-md-12 top10">
+						<label class="col-md-3">City</label><input class="col-md-5" type="text" ng-model="newUser.homeAddress.city" />
+					</div>
+					<div class="col-md-12 top10">
+						<label class="col-md-3">State</label><input class="col-md-5" type="text" ng-model="newUser.homeAddress.state" />
+					</div>
+					<div class="col-md-12 top10">
+						<label class="col-md-3">Zip Code</label><input class="col-md-5" type="text" ng-model="newUser.homeAddress.zipCode" />
+					</div>
+					<div class="col-md-12 top10">
+						<button class="btn btn-primary pull-right" ng-click="addUser(newUser)">Update</button>
+					</div>
+	      		</div>
+ 	     		<div class="modal-footer"></div>
+    		</div>
+		</div>
+	</div>
+	<div id="loginModal" class="modal fade" role="dialog">
+		<div class="modal-dialog modal-lg">
+		    <div class="modal-content">
+    			<div class="modal-header">
+        			<h4 class="modal-title">{{loginUser.email}}<i class="fa fa-close font22 pull-right" data-dismiss="modal"></i></h4>
+      			</div>
+      			<div class="modal-body">
+					<input class="col-md-6" type="text" ng-model="password" placeholder="Password" ng-init="password=''" />
+					<button class="btn btn-primary col-md-4 pull-right" ng-click="login(loginUser, password)">Login</button>
+	      		</div>
+ 	     		<div class="modal-footer"></div>
+    		</div>
+		</div>
+	</div>
+	<div id="activateModal" class="modal fade" role="dialog">
+		<div class="modal-dialog modal-lg">
+		    <div class="modal-content">
+    			<div class="modal-header">
+        			<h4 class="modal-title">{{activateUser.email}}<i class="fa fa-close font22 pull-right" data-dismiss="modal"></i></h4>
+      			</div>
+      			<div class="modal-body">
+					<input class="col-md-4" type="text" ng-model="password" placeholder="Password" ng-init="password=''" />
+					<input class="col-md-4" type="text" ng-model="confirmPassword" placeholder="Confirm Password" ng-init="confirmPassword=''" />
+					<button class="btn btn-primary col-md-3 pull-right" ng-click="activate(activateUser, password, confirmPassword)">Activate</button>
+	      		</div>
+ 	     		<div class="modal-footer"></div>
+    		</div>
+		</div>
+	</div>
+	<div id="detailedModal" class="modal fade" role="dialog">
+		<div class="modal-dialog modal-lg">
+		    <div class="modal-content">
+    			<div class="modal-header">
+        			<h4 class="modal-title">{{userAccess.name}}<i class="fa fa-close font22 pull-right" data-dismiss="modal"></i></h4>
+      			</div>
+      			<div class="modal-body">
+					<div class="col-md-6" style="padding: 5px;">
+						<label>Email :&nbsp;</label><span>{{userAccess.email}}</span>
+					</div>
+					<div class="col-md-6" style="padding: 5px;">
+						<label>Mobile :&nbsp;</label><span>{{userAccess.mobile}}</span>
+					</div>
+					<div class="col-md-6" style="padding: 5px;">
+						<label>Login Attempts :&nbsp;</label><span>{{userAccess.loginAttempts}}</span>
+					</div>
+
+
+					<div class="col-md-6" style="padding: 5px;">
+						<label>Username :&nbsp;</label><span>{{userAccess.username}}</span>
+					</div>
+					<div class="col-md-6" style="padding: 5px;">
+						<label>Organization Name :&nbsp;</label><span>{{userAccess.organizationName}}</span>
+					</div>
+					<div class="col-md-6" style="padding: 5px;">
+						<label>Birthday :&nbsp;</label><span>{{userAccess.birthday}}</span>
+					</div>
+					<div class="col-md-6" style="padding: 5px;">
+						<label>Address Line 1 :&nbsp;</label><span>{{userAccess.homeAddress.addressLine1}}</span>
+					</div>
+					<div class="col-md-6" style="padding: 5px;">
+						<label>Address Line 2 :&nbsp;</label><span>{{userAccess.homeAddress.addressLine2}}</span>
+					</div>
+					<div class="col-md-6" style="padding: 5px;">
+						<label>City :&nbsp;</label><span>{{userAccess.homeAddress.city}}</span>
+					</div>
+					<div class="col-md-6" style="padding: 5px;">
+						<label>State :&nbsp;</label><span>{{userAccess.homeAddress.state}}</span>
+					</div>
+					<div class="col-md-6" style="padding: 5px;">
+						<label>Zip Code :&nbsp;</label><span>{{userAccess.homeAddress.zipCode}}</span>
+					</div>
+					<div class="col-md-12" style="padding: 5px;">
+						<image style="height: 200px; width: 200px;" ng-src="{{userAccess.picture}}" alt="Image" />
+					</div>
+					<div class="col-md-12 well" style="padding-top: 0px;">
+						<h3>Permissions</h3>
+						<div class="col-md-12 top10" style="text-align: center" ng-if="userAccess.permissions == undefined || userAccess.permissions.length == 0">
+							<label>No results found!!</label>
+						</div>
+						<div class="col-md-12" style="background: gray; padding: 5px;" ng-if="userAccess.permissions != undefined && userAccess.permissions.length > 0">
+							<label class="col-md-3">Name</label>
+							<label class="col-md-3">Code</label>
+							<label class="col-md-3">Description</label>
+							<label class="col-md-3">Action</label>
+						</div>
+						<div class="col-md-12" style="padding: 5px;" ng-class="$even ? 'odd' : 'even'" ng-repeat="userAccessPermission in userAccess.permissions">
+							<span class="col-md-3">{{userAccessPermission.name}}</span>
+							<span class="col-md-3">{{userAccessPermission.code}}</span>
+							<span class="col-md-3">{{userAccessPermission.description}}</span>
+							<input type="checkbox" bs-switch ng-model="userAccessPermission.isSelected">
+						</div>
+					</div>
+					<div class="col-md-12 well" style="padding-top: 0px;">
+						<h3>Roles</h3>
+						<div class="col-md-12 top10" style="text-align: center" ng-if="userAccess.roles == undefined || userAccess.roles.length == 0">
+							<label>No results found!!</label>
+						</div>
+						<div class="col-md-12" style="background: gray; padding: 5px;" ng-if="userAccess.roles != undefined && userAccess.roles.length > 0">
+							<label class="col-md-3">Name</label>
+							<label class="col-md-3">Code</label>
+							<label class="col-md-3">Description</label>
+							<label class="col-md-3">Action</label>
+						</div>
+						<div class="col-md-12" style="padding: 5px;" ng-class="$even ? 'odd' : 'even'" ng-repeat="userAccessRole in userAccess.roles">
+							<span class="col-md-3">{{userAccessRole.name}}</span>
+							<span class="col-md-3">{{userAccessRole.code}}</span>
+							<span class="col-md-3">{{userAccessRole.description}}</span>
+							<input type="checkbox" bs-switch ng-model="userAccessRole.isSelected">
+						</div>
+					</div>
+					<div class="col-md-12 well" style="padding-top: 0px;">
+						<h3>Groups</h3>
+						<div class="col-md-12 top10" style="text-align: center" ng-if="userAccess.groups == undefined || userAccess.groups.length == 0">
+							<label>No results found!!</label>
+						</div>
+						<div class="col-md-12" style="background: gray; padding: 5px;" ng-if="userAccess.groups != undefined && userAccess.groups.length > 0">
+							<label class="col-md-3">Name</label>
+							<label class="col-md-3">Code</label>
+							<label class="col-md-3">Description</label>
+							<label class="col-md-3">Action</label>
+						</div>
+						<div class="col-md-12" style="padding: 5px;" ng-class="$even ? 'odd' : 'even'" ng-repeat="userAccessGroup in userAccess.groups">
+							<span class="col-md-3">{{userAccessGroup.name}}</span>
+							<span class="col-md-3">{{userAccessGroup.code}}</span>
+							<span class="col-md-3">{{userAccessGroup.description}}</span>
+							<input type="checkbox" bs-switch ng-model="userAccessGroup.isSelected">
+						</div>
+					</div>
+					<div class="col-md-12 top10">
+						<button class="btn btn-primary pull-right" ng-click="updateUserAccess(userAccess)">Update</button>
+					</div>
+	      		</div>
+ 	     		<div class="modal-footer"></div>
+    		</div>
+		</div>
+	</div>
+	<div class="col-md-12 top10">
+		<select class="selectpicker pull-right" ng-model="accountSelect" ng-init="accountSelect='none'" ng-change="selectAccountForUsers(accountSelect)" >
+			<option value="none">Select Account</option>
+			<option ng-repeat="account in accounts" ng-if="account.status == 1" value="{{account.id}}">{{account.name}}</option>
+		</select>
+	</div>
+	<div class="col-md-12 top10" ng-if="accountSelect != 'none'" style="background: gray; padding: 5px;" ng-if="selectedAccountUsers != undefined && selectedAccountUsers.length > 0">
+		<label class="col-md-3">Name</label>
+		<label class="col-md-3">Email Address</label>
+		<label class="col-md-1">Status</label>
+		<label class="col-md-1">Edit</label>
+		<label class="col-md-1">View</label>
+		<label class="col-md-1">Delete</label>
+		<label class="col-md-1">Activate</label>
+		<label class="col-md-1">Login</label>
+	</div>
+	<div class="col-md-12"  ng-if="accountSelect != 'none'" style="padding: 5px;" ng-class="$even ? 'odd' : 'even'" ng-repeat="selectedUser in selectedAccountUsers">
+		<span class="col-md-3">{{selectedUser.name}}</span>
+		<span class="col-md-3">{{selectedUser.email}}</span>
+		<span class="col-md-1">{{selectedUser.status == 1 ? 'Live' : selectedUser.status == 2 ? 'Not Activated' : 'Deleted' }}</span>
+		<i class="fa fa-edit col-md-1 font22" ng-click="editUser(selectedUser)" data-toggle="modal" data-target="#userModal"></i>
+		<i class="fa fa-search col-md-1 font22" ng-click="getUserAccess(selectedUser)" data-toggle="modal" data-target="#detailedModal"></i>
+		<i class="fa fa-close col-md-1 font22" ng-click="deleteUser(selectedUser.id)"></i>
+		<div class="col-md-1">
+			<i class="fa fa-thumbs-up font22" ng-if="selectedUser.status == 2" ng-click="activateUserSelect(selectedUser)" data-toggle="modal" data-target="#activateModal"></i>
+		</div>
+		<div class="col-md-1">
+			<i class="fa fa-at font22" ng-if="selectedUser.status == 1" ng-click="loginUserSelect(selectedUser, 'email')" data-toggle="modal" data-target="#loginModal"></i>
+			<i class="fa fa-phone font22" ng-if="selectedUser.status == 1" ng-click="loginUserSelect(selectedUser, 'mobile')" data-toggle="modal" data-target="#loginModal"></i>
+		</div>
+	</div>
+	<div class="col-md-12 top10" ng-if="accountSelect != 'none'">
+		<button class="btn btn-primary pull-right" data-toggle="modal" ng-click="createNewUser()" data-target="#userModal">New User</button>
+	</div>
+</script>
+
+<script type="text/ng-template" id="Groups">
+	<div id="groupModal" class="modal fade" role="dialog">
+		<div class="modal-dialog modal-lg">
+		    <div class="modal-content">
+    			<div class="modal-header">
+        			<h4 class="modal-title">Add Group<i class="fa fa-close font22 pull-right" data-dismiss="modal"></i></h4>
+      			</div>
+      			<div class="modal-body">
+					<div class="alert alert-danger" ng-if="newGroup.error != undefined && newGroup.error != ''">
+  						{{newGroup.error}}
+					</div>
+					<div class="col-md-12 top10 required">
+						<label class="col-md-3">Name</label><input class="col-md-5" type="text" ng-model="newGroup.name" />
+					</div>
+					<div class="col-md-12 top10 required">
+						<label class="col-md-3">Code</label><input class="col-md-5" type="text" ng-model="newGroup.code" />
+					</div>
+					<div class="col-md-12 top10">
+						<label class="col-md-3">Description</label><input class="col-md-5" type="text" ng-model="newGroup.description" />
+					</div>
+					<div class="col-md-12 top10">
+						<button class="btn btn-primary pull-right" ng-click="addGroup(newGroup)">Create</button>
+					</div>
+	      		</div>
+ 	     		<div class="modal-footer"></div>
+    		</div>
+		</div>
+	</div>
+	<div id="detailedModal" class="modal fade" role="dialog">
+		<div class="modal-dialog modal-lg">
+		    <div class="modal-content">
+    			<div class="modal-header">
+        			<h4 class="modal-title">Roles<i class="fa fa-close font22 pull-right" data-dismiss="modal"></i></h4>
+      			</div>
+      			<div class="modal-body">
+					<div class="col-md-12 top10" style="text-align: center" ng-if="groupRoles == undefined || groupRoles.length == 0">
+						<label>No results found!!</label>
+					</div>
+					<div class="col-md-12" style="background: gray; padding: 5px;" ng-if="groupRoles != undefined && groupRoles.length > 0">
+						<label class="col-md-3">Name</label>
+						<label class="col-md-3">Code</label>
+						<label class="col-md-3">Description</label>
+						<label class="col-md-3">Action</label>
+					</div>
+					<div class="col-md-12" style="padding: 5px;" ng-class="$even ? 'odd' : 'even'" ng-repeat="groupRole in groupRoles">
+						<span class="col-md-3">{{groupRole.name}}</span>
+						<span class="col-md-3">{{groupRole.code}}</span>
+						<span class="col-md-3">{{groupRole.description}}</span>
+						<input type="checkbox" bs-switch ng-model="groupRole.isSelected">
+					</div>
+					<div class="col-md-12 top10">
+						<button class="btn btn-primary pull-right" data-dismiss="modal" ng-click="saveGroupRoles(groupRoles)">Save</button>
+					</div>
+	      		</div>
+ 	     		<div class="modal-footer"></div>
+    		</div>
+		</div>
+	</div>
+	<div class="col-md-12 top10">
+		<select class="selectpicker pull-right" ng-model="accountSelect" ng-init="accountSelect='none'" ng-change="selectAccountForGroups(accountSelect)" >
+			<option value="none">Select Account</option>
+			<option ng-repeat="account in accounts" ng-if="account.status == 1" value="{{account.id}}">{{account.name}}</option>
+		</select>
+	</div>
+	<div class="col-md-12 top10" style="background: gray; padding: 5px;" ng-if="accountSelect != 'none' && selectedAccountGroups != undefined && selectedAccountGroups.length > 0">
+		<label class="col-md-2">Name</label>
+		<label class="col-md-2">Code</label>
+		<label class="col-md-3">Description</label>
+		<label class="col-md-2">Status</label>
+		<label class="col-md-1">View</label>
+		<label class="col-md-1">Delete</label>
+	</div>
+	<div class="col-md-12"  ng-if="accountSelect != 'none'" style="padding: 5px;" ng-class="$even ? 'odd' : 'even'" ng-repeat="selectedGroup in selectedAccountGroups">
+		<span class="col-md-2">{{selectedGroup.name}}</span>
+		<span class="col-md-2">{{selectedGroup.code}}</span>
+		<span class="col-md-3">{{selectedGroup.description}}</span>
+		<span class="col-md-2">{{selectedGroup.status == 1 ? 'Live' : selectedGroup.status == 2 ? 'Not Activated' : 'Deleted' }}</span>
+		<i class="fa fa-search col-md-1 font22" ng-click="getGroupRoles(selectedGroup)" data-toggle="modal" data-target="#detailedModal"></i>
+		<i class="fa fa-close col-md-1 font22" ng-click="deleteGroup(selectedGroup.id)"></i>
+	</div>
+	<div class="col-md-12 top10" ng-if="accountSelect != 'none'">
+		<button class="btn btn-primary pull-right" data-toggle="modal" ng-click="createNewGroup()" data-target="#groupModal">New Group</button>
+	</div>
+</script>

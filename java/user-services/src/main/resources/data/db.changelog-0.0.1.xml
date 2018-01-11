@@ -1,0 +1,710 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+	<changeSet author="hemant" id="ACCOUNT_01">
+		<createTable tableName="account">
+			<column name="id" type="VARCHAR(36)">
+				<constraints nullable="false" />
+			</column>
+			<column name="name" type="NVARCHAR(50)">
+				<constraints nullable="false" />
+			</column>
+			<column name="portalName" type="NVARCHAR(100)" />
+			<column name="ownerId" type="VARCHAR(36)" />
+			<column name="parentId" type="VARCHAR(36)" />
+			<column name="status" type="tinyint(4)" />
+			<column name="createdOn" type="BIGINT" />
+			<column name="modifiedOn" type="BIGINT" />
+			<column name="createdBy" type="varchar(36)" />
+			<column name="modifiedBy" type="varchar(36)" />
+		</createTable>
+		<addPrimaryKey columnNames="id" constraintName="PRIMARY"
+			tableName="account" />
+	</changeSet>
+
+	<changeSet author="hemant" id="USER_01">
+		<createTable tableName="user">
+			<column name="id" type="VARCHAR(36)">
+				<constraints nullable="false" />
+			</column>
+			<column name="email" type="NVARCHAR(100)">
+				<constraints nullable="false" />
+			</column>
+			<column name="password" type="NVARCHAR(100)" />
+			<column name="accountId" type="VARCHAR(36)" />
+			<column name="name" type="VARCHAR(50)" />
+			<column name="mobile" type="VARCHAR(15)" />
+			<column name="picture" type="VARCHAR(200)" />
+			<column name="username" type="VARCHAR(50)" />
+			<column name="organizationName" type="VARCHAR(50)" />
+			<column name="portalName" type="VARCHAR(50)" />
+			<column name="homeAddress" type="VARCHAR(500)" />
+			<column name="birthday" type="BIGINT" />
+			<column name="status" type="TINYINT" />
+			<column name="createdOn" type="BIGINT" />
+			<column name="modifiedOn" type="BIGINT" />
+			<column name="createdBy" type="varchar(36)" />
+			<column name="modifiedBy" type="varchar(36)" />
+			<column name="otp" type="varchar(6)" />
+		</createTable>
+		<addPrimaryKey columnNames="id" constraintName="PRIMARY"
+			tableName="user" />
+	</changeSet>
+
+	<changeSet author="hemant" id="USER_02">
+		<createTable tableName="group">
+			<column name="id" type="VARCHAR(36)">
+				<constraints nullable="false" />
+			</column>
+			<column name="name" type="NVARCHAR(50)">
+				<constraints nullable="false" />
+			</column>
+			<column name="code" type="NVARCHAR(50)">
+				<constraints nullable="false" />
+			</column>
+			<column name="description" type="NVARCHAR(255)" />
+			<column name="accountId" type="VARCHAR(36)" />
+			<column name="status" type="TINYINT" />
+			<column name="createdOn" type="BIGINT" />
+			<column name="modifiedOn" type="BIGINT" />
+			<column name="createdBy" type="varchar(36)" />
+			<column name="modifiedBy" type="varchar(36)" />
+		</createTable>
+		<addPrimaryKey columnNames="id" constraintName="PRIMARY"
+			tableName="group" />
+	</changeSet>
+
+	<changeSet author="hemant" id="USER_03">
+		<createTable tableName="role">
+			<column name="id" type="VARCHAR(36)">
+				<constraints nullable="false" />
+			</column>
+			<column name="name" type="NVARCHAR(50)">
+				<constraints nullable="false" />
+			</column>
+			<column name="code" type="NVARCHAR(50)">
+				<constraints nullable="false" />
+			</column>
+			<column name="description" type="NVARCHAR(255)" />
+			<column name="status" type="TINYINT" />
+			<column name="createdOn" type="BIGINT" />
+			<column name="modifiedOn" type="BIGINT" />
+			<column name="createdBy" type="varchar(36)" />
+			<column name="modifiedBy" type="varchar(36)" />
+		</createTable>
+		<addPrimaryKey columnNames="id" constraintName="PRIMARY"
+			tableName="role" />
+	</changeSet>
+
+	<changeSet author="hemant" id="USER_04">
+		<createTable tableName="groupRole">
+			<column name="id" type="VARCHAR(36)">
+				<constraints nullable="false" />
+			</column>
+			<column name="roleId" type="VARCHAR(36)" />
+			<column name="groupId" type="VARCHAR(36)" />
+		</createTable>
+		<addPrimaryKey columnNames="id" constraintName="PRIMARY"
+			tableName="groupRole" />
+	</changeSet>
+
+	<changeSet author="hemant" id="USER_05">
+		<createTable tableName="permission">
+			<column name="id" type="VARCHAR(36)">
+				<constraints nullable="false" />
+			</column>
+			<column name="name" type="NVARCHAR(50)">
+				<constraints nullable="false" />
+			</column>
+			<column name="code" type="NVARCHAR(50)">
+				<constraints nullable="false" />
+			</column>
+			<column name="description" type="NVARCHAR(255)" />
+			<column name="status" type="TINYINT" />
+		</createTable>
+		<addPrimaryKey columnNames="id" constraintName="PRIMARY"
+			tableName="permission" />
+	</changeSet>
+
+	<changeSet author="hemant" id="USER_06">
+		<createTable tableName="userGroup">
+			<column name="id" type="VARCHAR(36)">
+				<constraints nullable="false" />
+			</column>
+			<column name="userId" type="VARCHAR(36)" />
+			<column name="groupId" type="VARCHAR(36)" />
+		</createTable>
+		<addPrimaryKey columnNames="id" constraintName="PRIMARY"
+			tableName="userGroup" />
+	</changeSet>
+
+	<changeSet author="hemant" id="USER_07">
+		<createTable tableName="userRole">
+			<column name="id" type="VARCHAR(36)">
+				<constraints nullable="false" />
+			</column>
+			<column name="userId" type="VARCHAR(36)" />
+			<column name="roleId" type="VARCHAR(36)" />
+		</createTable>
+		<addPrimaryKey columnNames="id" constraintName="PRIMARY"
+			tableName="userRole" />
+	</changeSet>
+
+	<changeSet author="hemant" id="USER_08">
+		<createTable tableName="userPermission">
+			<column name="id" type="VARCHAR(36)">
+				<constraints nullable="false" />
+			</column>
+			<column name="userId" type="VARCHAR(36)" />
+			<column name="permissionId" type="VARCHAR(36)" />
+		</createTable>
+		<addPrimaryKey columnNames="id" constraintName="PRIMARY"
+			tableName="userPermission" />
+	</changeSet>
+
+	<changeSet author="hemant" id="USER_09">
+		<createTable tableName="rolePermission">
+			<column name="id" type="VARCHAR(36)">
+				<constraints nullable="false" />
+			</column>
+			<column name="roleId" type="VARCHAR(36)" />
+			<column name="permissionId" type="VARCHAR(36)" />
+		</createTable>
+		<addPrimaryKey columnNames="id" constraintName="PRIMARY"
+			tableName="rolePermission" />
+	</changeSet>
+
+	<changeSet author="hemant" id="USER_10">
+		<createTable tableName="permissionExclusion">
+			<column name="id" type="VARCHAR(36)">
+				<constraints nullable="false" />
+			</column>
+			<column name="type" type="VARCHAR(36)" />
+			<column name="permisssionId" type="VARCHAR(36)" />
+			<column name="refId" type="VARCHAR(36)" />
+		</createTable>
+		<addPrimaryKey columnNames="id" constraintName="PRIMARY"
+			tableName="permissionExclusion" />
+	</changeSet>
+
+	<changeSet author="hemant" id="USER_11">
+		<insert tableName="permission">
+			<column name="id" value="877e27c1cfb24c7b90cc34cbfb1c1e91" />
+			<column name="name" value="Account Manage" />
+			<column name="code" value="ACCOUNT_MANAGE" />
+			<column name="description" value="Permission to add, edit and delete account" />
+			<column name="status" valueNumeric="1" />
+		</insert>
+		<insert tableName="permission">
+			<column name="id" value="859472f3ba43444eaba4221a5430cd63" />
+			<column name="name" value="Account View" />
+			<column name="code" value="ACCOUNT_VIEW" />
+			<column name="description" value="Permission to view account" />
+			<column name="status" valueNumeric="1" />
+		</insert>
+	</changeSet>
+
+	<changeSet author="hemant" id="USER_12">
+		<insert tableName="role">
+			<column name="id" value="e89a49f5acb94bae96bd43e63e425501" />
+			<column name="name" value="Default Role" />
+			<column name="code" value="DEFAULT_ROLE" />
+			<column name="description" value="Role for normal user" />
+			<column name="status" valueNumeric="1" />
+		</insert>
+		<insert tableName="role">
+			<column name="id" value="a97886d6d21444cba4eaf9aaa04e86ba" />
+			<column name="name" value="Admin Role" />
+			<column name="code" value="ADMIN_ROLE" />
+			<column name="description" value="Role for admin user" />
+			<column name="status" valueNumeric="1" />
+		</insert>
+	</changeSet>
+
+	<changeSet author="hemant" id="USER_13">
+		<insert tableName="rolePermission">
+			<column name="id" value="bac60edf4378477b98261ff5809874ee" />
+			<column name="roleId" value="a97886d6d21444cba4eaf9aaa04e86ba" />
+			<column name="permissionId" value="877e27c1cfb24c7b90cc34cbfb1c1e91" />
+		</insert>
+		<insert tableName="rolePermission">
+			<column name="id" value="bf5cd5954c674bb0be3be8f4470ad895" />
+			<column name="roleId" value="a97886d6d21444cba4eaf9aaa04e86ba" />
+			<column name="permissionId" value="859472f3ba43444eaba4221a5430cd63" />
+		</insert>
+		<insert tableName="rolePermission">
+			<column name="id" value="3607cddd1e9d49c8b5eaf6491f83595f" />
+			<column name="roleId" value="e89a49f5acb94bae96bd43e63e425501" />
+			<column name="permissionId" value="859472f3ba43444eaba4221a5430cd63" />
+		</insert>
+	</changeSet>
+
+	<changeSet author="hemant" id="USER_14">
+		<insert tableName="permission">
+			<column name="id" value="19f87eec08454ba49abcc587010deeb0" />
+			<column name="name" value="User Manage" />
+			<column name="code" value="USER_MANAGE" />
+			<column name="description" value="Permission to add, edit and delete user" />
+			<column name="status" valueNumeric="1" />
+		</insert>
+		<insert tableName="permission">
+			<column name="id" value="3d72366c323d4a23a670215e3ef47aff" />
+			<column name="name" value="User View" />
+			<column name="code" value="USER_VIEW" />
+			<column name="description" value="Permission to view user" />
+			<column name="status" valueNumeric="1" />
+		</insert>
+	</changeSet>
+
+	<changeSet author="hemant" id="USER_15">
+		<insert tableName="rolePermission">
+			<column name="id" value="828e3cdac79d41e892c5bb8e18f3ae3e" />
+			<column name="roleId" value="a97886d6d21444cba4eaf9aaa04e86ba" />
+			<column name="permissionId" value="19f87eec08454ba49abcc587010deeb0" />
+		</insert>
+		<insert tableName="rolePermission">
+			<column name="id" value="88df0850943347c5a7597b10687c8ad7" />
+			<column name="roleId" value="a97886d6d21444cba4eaf9aaa04e86ba" />
+			<column name="permissionId" value="3d72366c323d4a23a670215e3ef47aff" />
+		</insert>
+		<insert tableName="rolePermission">
+			<column name="id" value="0b2fbc648822420781d7b291dabaefd6" />
+			<column name="roleId" value="e89a49f5acb94bae96bd43e63e425501" />
+			<column name="permissionId" value="3d72366c323d4a23a670215e3ef47aff" />
+		</insert>
+	</changeSet>
+
+	<!-- Device table used to APNS push notification -->
+	<changeSet author="satish" id="USER_16">
+		<createTable tableName="devices">
+			<column name="id" type="VARCHAR(36)">
+				<constraints nullable="false" />
+			</column>
+			<column name="deviceId" type="NVARCHAR(64)">
+				<constraints nullable="false" />
+			</column>
+			<column name="deviceType" type="NVARCHAR(10)" />
+			<column name="deviceToken" type="NVARCHAR(100)">
+				<constraints nullable="false" />
+			</column>
+			<column name="userId" type="VARCHAR(36)">
+				<constraints nullable="false" />
+			</column>
+			<column name="status" type="tinyint(4)" />
+			<column name="createdOn" type="BIGINT" />
+			<column name="modifiedOn" type="BIGINT" />
+			<column name="createdBy" type="varchar(36)" />
+			<column name="modifiedBy" type="varchar(36)" />
+		</createTable>
+		<addPrimaryKey columnNames="id" constraintName="PRIMARY"
+			tableName="devices" />
+	</changeSet>
+
+	<!-- Payments table used to future stripe payments -->
+	<changeSet author="satish" id="USER_17">
+		<createTable tableName="payments">
+			<column name="id" type="VARCHAR(36)">
+				<constraints nullable="false" />
+			</column>
+			<column name="stripeCustomerId" type="NVARCHAR(36)">
+				<constraints nullable="false" />
+			</column>
+			<column name="userId" type="VARCHAR(36)">
+				<constraints nullable="false" />
+			</column>
+			<column name="status" type="tinyint(4)" />
+			<column name="createdOn" type="BIGINT" />
+			<column name="modifiedOn" type="BIGINT" />
+			<column name="createdBy" type="varchar(36)" />
+			<column name="modifiedBy" type="varchar(36)" />
+		</createTable>
+		<addPrimaryKey columnNames="id" constraintName="PRIMARY"
+			tableName="payments" />
+	</changeSet>
+
+	<changeSet author="hemant" id="USER_18" failOnError="true">
+		<sql dbms="mysql" endDelimiter=";" splitStatements="true"
+			stripComments="true">
+			alter table user modify column organizationName text;
+		</sql>
+	</changeSet>
+
+	<!-- schools table used to PromElle schools management -->
+	<changeSet author="satish" id="USER_19">
+		<createTable tableName="schools">
+			<column name="id" type="VARCHAR(36)">
+				<constraints nullable="false" />
+			</column>
+			<column name="schoolName" type="VARCHAR(200)" />
+			<column name="schoolAddress" type="VARCHAR(500)" />
+			<column name="status" type="tinyint(4)" />
+			<column name="createdOn" type="BIGINT" />
+			<column name="modifiedOn" type="BIGINT" />
+			<column name="createdBy" type="varchar(36)" />
+			<column name="modifiedBy" type="varchar(36)" />
+		</createTable>
+		<addPrimaryKey columnNames="id" constraintName="PRIMARY"
+			tableName="schools" />
+	</changeSet>
+
+	<!-- Add a new column in user table for school-id -->
+	<changeSet author="satish" id="user_20">
+	    <addColumn tableName="user">
+	        <column name="schoolId" type="varchar(36)"/>
+	    </addColumn>
+	</changeSet>
+
+	<!-- Insert default data in schools table for first time -->
+	<changeSet author="satish" id="USER_21">
+		<insert tableName="schools">
+			<column name="id" value="f8ad8d9355f34177a907b26caa87b491" />
+			<column name="schoolName" value="Archbishop Mitty High School" />
+			<column name="schoolAddress" value='{"addressLine1":"5000 Mitty Way","addressLine2":"","city":"San Jose","state":"CA","zipCode":"95129"}' />
+			<column name="status" valueNumeric="1" />
+			<column name="createdOn" valueDate="1488949921288" />
+			<column name="modifiedOn" valueDate="1488949921288" />
+		</insert>
+		<insert tableName="schools">
+			<column name="id" value="0a71b49875714d7ba7d6016f7e3c2d92" />
+			<column name="schoolName" value="The Harker School - Middle School Campus" />
+			<column name="schoolAddress" value='{"addressLine1":"3800 Blackford Ave","addressLine2":"","city":"San Jose","state":"CA","zipCode":"95117"}' />
+			<column name="status" valueNumeric="1" />
+			<column name="createdOn" valueDate="1488949921288" />
+			<column name="modifiedOn" valueDate="1488949921288" />
+		</insert>
+		<insert tableName="schools">
+			<column name="id" value="2c3642011d41464facfaf8947f1567e5" />
+			<column name="schoolName" value="Westmont High School" />
+			<column name="schoolAddress" value='{"addressLine1":"4805 Westmont Ave","addressLine2":"","city":"Campbell","state":"CA","zipCode":"95008"}' />
+			<column name="status" valueNumeric="1" />
+			<column name="createdOn" valueDate="1488949921288" />
+			<column name="modifiedOn" valueDate="1488949921288" />
+		</insert>
+		<insert tableName="schools">
+			<column name="id" value="fb509bbe0d0c41b6afcb6fe4399b5ae9" />
+			<column name="schoolName" value="Prospect High School" />
+			<column name="schoolAddress" value='{"addressLine1":"18900 Prospect Rd","addressLine2":"","city":"Saratoga","state":"CA","zipCode":"95070"}' />
+			<column name="status" valueNumeric="1" />
+			<column name="createdOn" valueDate="1488949921288" />
+			<column name="modifiedOn" valueDate="1488949921288" />
+		</insert>
+		<insert tableName="schools">
+			<column name="id" value="ebc7fd14fe2b4b9ea5b19063c71a86c5" />
+			<column name="schoolName" value="Los Gatos High School" />
+			<column name="schoolAddress" value='{"addressLine1":"20 High School Ct","addressLine2":"","city":"Los Gatos","state":"CA","zipCode":"95030"}' />
+			<column name="status" valueNumeric="1" />
+			<column name="createdOn" valueDate="1488949921288" />
+			<column name="modifiedOn" valueDate="1488949921288" />
+		</insert>
+		<insert tableName="schools">
+			<column name="id" value="fb9814c504614bf2b70858cf39c64c39" />
+			<column name="schoolName" value="Saratoga High School" />
+			<column name="schoolAddress" value='{"addressLine1":"20300 Herriman Ave","addressLine2":"","city":"Saratoga","state":"CA","zipCode":"95070"}' />
+			<column name="status" valueNumeric="1" />
+			<column name="createdOn" valueDate="1488949921288" />
+			<column name="modifiedOn" valueDate="1488949921288" />
+		</insert>
+		<insert tableName="schools">
+			<column name="id" value="4524e17c0041446f9e2d3d027e51fdae" />
+			<column name="schoolName" value="Lynbrook High School" />
+			<column name="schoolAddress" value='{"addressLine1":"1280 Johnson Ave","addressLine2":"","city":"San Jose","state":"CA","zipCode":"95129"}' />
+			<column name="status" valueNumeric="1" />
+			<column name="createdOn" valueDate="1488949921288" />
+			<column name="modifiedOn" valueDate="1488949921288" />
+		</insert>
+		<insert tableName="schools">
+			<column name="id" value="a5dd485059634ab28a97879999c1748e" />
+			<column name="schoolName" value="The Harker School - Upper School Campus" />
+			<column name="schoolAddress" value='{"addressLine1":"500 Saratoga Ave","addressLine2":"","city":"San Jose","state":"CA","zipCode":"95128"}' />
+			<column name="status" valueNumeric="1" />
+			<column name="createdOn" valueDate="1488949921288" />
+			<column name="modifiedOn" valueDate="1488949921288" />
+		</insert>
+	</changeSet>	
+	
+	<!-- Update user table's schoolId column value -->
+	<changeSet author="satish" id="USER_22">
+    	<update tableName="user">
+        	<column name="schoolId" type="varchar(36)" value="a5dd485059634ab28a97879999c1748e"/>
+        	<where>organizationName LIKE '%The Harker School - Upper School Campus%'</where>
+    	</update>
+	</changeSet>	
+	
+	<!-- Insert default data in schools table for first time -->
+	<changeSet author="satish" id="USER_23">
+		<insert tableName="schools">
+			<column name="id" value="f98a3df868ce47b7a27542b9afdd1823" />
+			<column name="schoolName" value="Presentation High School" />
+			<column name="schoolAddress" value='{"addressLine1":"2281 Plummer Avenue","addressLine2":"","city":"San Jose","state":"CA","zipCode":"95125"}' />
+			<column name="status" valueNumeric="1" />
+			<column name="createdOn" valueDate="1489487734156" />
+			<column name="modifiedOn" valueDate="1489487734156" />
+		</insert>
+	</changeSet>
+	
+	<!-- Insert/Update 3 additional schools data -->
+	<changeSet author="satish" id="USER_24" failOnError="true">
+		<sql dbms="mysql" endDelimiter=";" splitStatements="true" stripComments="true">
+			INSERT INTO schools(id, schoolName, schoolAddress, status, createdOn, modifiedOn) SELECT * FROM (SELECT "9aba07217af14c9f92c75bb984c817fc", "Monta Vista High School", '{"addressLine1":"21840 McClellan Rd","addressLine2":"","city":"Cupertino","state":"CA","zipCode":"95014"}', 1, 1490781020000, 1490781020100) as schoolInfo WHERE NOT EXISTS (SELECT * FROM schools WHERE schoolName="Monta Vista High School");
+		</sql>
+		<update tableName="schools">
+        	<column name="schoolAddress" type="varchar(500)" value='{"addressLine1":"21840 McClellan Rd","addressLine2":"","city":"Cupertino","state":"CA","zipCode":"95014"}'/>
+        	<column name="status" type="tinyint(4)" valueNumeric="1"/>
+        	<where>schoolName="Monta Vista High School" AND status=0</where>
+    	</update>
+		<sql dbms="mysql" endDelimiter=";" splitStatements="true" stripComments="true">
+			INSERT INTO schools(id, schoolName, schoolAddress, status, createdOn, modifiedOn) SELECT * FROM (SELECT "fbf0c0affdfa466597a5d2cc0384329b", "Notre Dame High School", '{"addressLine1":"596 S 2nd St","addressLine2":"","city":"San Jose","state":"CA","zipCode":"95112"}', 1, 1490781020000, 1490781020100) as schoolInfo WHERE NOT EXISTS (SELECT * FROM schools WHERE schoolName="Notre Dame High School");
+		</sql>
+		<update tableName="schools">
+        	<column name="schoolAddress" type="varchar(500)" value='{"addressLine1":"596 S 2nd St","addressLine2":"","city":"San Jose","state":"CA","zipCode":"95112"}'/>
+        	<column name="status" type="tinyint(4)" valueNumeric="1"/>
+        	<where>schoolName="Notre Dame High School" AND status=0</where>
+    	</update>
+		<sql dbms="mysql" endDelimiter=";" splitStatements="true" stripComments="true">
+			INSERT INTO schools(id, schoolName, schoolAddress, status, createdOn, modifiedOn) SELECT * FROM (SELECT "23688558a77740db9ddc35e91a454c1e", "Homestead High School", '{"addressLine1":"21370 Homestead Rd","addressLine2":"","city":"Cupertino","state":"CA","zipCode":"95014"}', 1, 1490781020000, 1490781020100) as schoolInfo WHERE NOT EXISTS (SELECT * FROM schools WHERE schoolName="Homestead High School");
+		</sql>
+		<update tableName="schools">
+        	<column name="schoolAddress" type="varchar(500)" value='{"addressLine1":"21370 Homestead Rd","addressLine2":"","city":"Cupertino","state":"CA","zipCode":"95014"}'/>
+        	<column name="status" type="tinyint(4)" valueNumeric="1"/>
+        	<where>schoolName="Homestead High School" AND status=0</where>
+    	</update>
+	</changeSet>
+	
+	<!-- Insert/Update 10 additional schools data -->
+	<changeSet author="satish" id="USER_25" failOnError="true">
+		<sql dbms="mysql" endDelimiter=";" splitStatements="true" stripComments="true">
+			INSERT INTO schools(id, schoolName, schoolAddress, status, createdOn, modifiedOn) SELECT * FROM (SELECT "80777008986841399298af82ac7e14ec", "Boynton High School", '{"addressLine1":"901 Boynton Avenue","addressLine2":"","city":"San Jose","state":"CA","zipCode":"95117"}', 1, 1490871040000, 1490871050000) as schoolInfo WHERE NOT EXISTS (SELECT * FROM schools WHERE schoolName="Boynton High School");
+		</sql>
+		<update tableName="schools">
+        	<column name="schoolAddress" type="varchar(500)" value='{"addressLine1":"901 Boynton Avenue","addressLine2":"","city":"San Jose","state":"CA","zipCode":"95117"}'/>
+        	<column name="status" type="tinyint(4)" valueNumeric="1"/>
+        	<where>schoolName="Boynton High School" AND status=0</where>
+    	</update>
+		<sql dbms="mysql" endDelimiter=";" splitStatements="true" stripComments="true">
+			INSERT INTO schools(id, schoolName, schoolAddress, status, createdOn, modifiedOn) SELECT * FROM (SELECT "bca12c182d204592bedfd6b5798b0f43", "Branham High School", '{"addressLine1":"1570 Branham Lane","addressLine2":"","city":"San Jose","state":"California","zipCode":"95118"}', 1, 1490871040000, 1490871050000) as schoolInfo WHERE NOT EXISTS (SELECT * FROM schools WHERE schoolName="Branham High School");
+		</sql>
+		<update tableName="schools">
+        	<column name="schoolAddress" type="varchar(500)" value='{"addressLine1":"1570 Branham Lane","addressLine2":"","city":"San Jose","state":"California","zipCode":"95118"}'/>
+        	<column name="status" type="tinyint(4)" valueNumeric="1"/>
+        	<where>schoolName="Branham High School" AND status=0</where>
+    	</update>
+		<sql dbms="mysql" endDelimiter=";" splitStatements="true" stripComments="true">
+			INSERT INTO schools(id, schoolName, schoolAddress, status, createdOn, modifiedOn) SELECT * FROM (SELECT "6e6ecd7955fc42fba4dd547d212318aa", "Leigh High School", '{"addressLine1":"5210 Leigh Avenue","addressLine2":"","city":"San Jose","state":"CA","zipCode":"95124"}', 1, 1490871040000, 1490871050000) as schoolInfo WHERE NOT EXISTS (SELECT * FROM schools WHERE schoolName="Leigh High School");
+		</sql>
+		<update tableName="schools">
+        	<column name="schoolAddress" type="varchar(500)" value='{"addressLine1":"5210 Leigh Avenue","addressLine2":"","city":"San Jose","state":"CA","zipCode":"95124"}'/>
+        	<column name="status" type="tinyint(4)" valueNumeric="1"/>
+        	<where>schoolName="Leigh High School" AND status=0</where>
+    	</update>
+		<sql dbms="mysql" endDelimiter=";" splitStatements="true" stripComments="true">
+			INSERT INTO schools(id, schoolName, schoolAddress, status, createdOn, modifiedOn) SELECT * FROM (SELECT "e4be44d2a9f643299b8f012a66d99cc3", "Willow Glen High School", '{"addressLine1":"2001 Cottle Ave","addressLine2":"","city":"San Jose","state":"CA","zipCode":"95125"}', 1, 1490871040000, 1490871050000) as schoolInfo WHERE NOT EXISTS (SELECT * FROM schools WHERE schoolName="Willow Glen High School");
+		</sql>
+		<update tableName="schools">
+        	<column name="schoolAddress" type="varchar(500)" value='{"addressLine1":"2001 Cottle Ave","addressLine2":"","city":"San Jose","state":"CA","zipCode":"95125"}'/>
+        	<column name="status" type="tinyint(4)" valueNumeric="1"/>
+        	<where>schoolName="Willow Glen High School" AND status=0</where>
+    	</update>
+		<sql dbms="mysql" endDelimiter=";" splitStatements="true" stripComments="true">
+			INSERT INTO schools(id, schoolName, schoolAddress, status, createdOn, modifiedOn) SELECT * FROM (SELECT "3a8e9c8faabc4c5b813ec463411ff13c", "Del Mar High School", '{"addressLine1":"1224 Del Mar Ave","addressLine2":"","city":"San Jose","state":"CA","zipCode":"95128"}', 1, 1490871040000, 1490871050000) as schoolInfo WHERE NOT EXISTS (SELECT * FROM schools WHERE schoolName="Del Mar High School");
+		</sql>
+		<update tableName="schools">
+        	<column name="schoolAddress" type="varchar(500)" value='{"addressLine1":"1224 Del Mar Ave","addressLine2":"","city":"San Jose","state":"CA","zipCode":"95128"}'/>
+        	<column name="status" type="tinyint(4)" valueNumeric="1"/>
+        	<where>schoolName="Del Mar High School" AND status=0</where>
+    	</update>
+		<sql dbms="mysql" endDelimiter=";" splitStatements="true" stripComments="true">
+			INSERT INTO schools(id, schoolName, schoolAddress, status, createdOn, modifiedOn) SELECT * FROM (SELECT "040f727129084ac6aef69100422a4f0c", "Cupertino High School", '{"addressLine1":"10100 Finch Ave","addressLine2":"","city":"Cupertino","state":"CA","zipCode":"95014"}', 1, 1490871040000, 1490871050000) as schoolInfo WHERE NOT EXISTS (SELECT * FROM schools WHERE schoolName="Cupertino High School");
+		</sql>
+		<update tableName="schools">
+        	<column name="schoolAddress" type="varchar(500)" value='{"addressLine1":"10100 Finch Ave","addressLine2":"","city":"Cupertino","state":"CA","zipCode":"95014"}'/>
+        	<column name="status" type="tinyint(4)" valueNumeric="1"/>
+        	<where>schoolName="Cupertino High School" AND status=0</where>
+    	</update>
+		<sql dbms="mysql" endDelimiter=";" splitStatements="true" stripComments="true">
+			INSERT INTO schools(id, schoolName, schoolAddress, status, createdOn, modifiedOn) SELECT * FROM (SELECT "404199e11e7342179d36c8bf2921b8d6", "Fremont High School", '{"addressLine1":"1279 Sunnyvale Saratoga Rd","addressLine2":"","city":"Sunnyvale","state":"CA","zipCode":"94087"}', 1, 1490871040000, 1490871050000) as schoolInfo WHERE NOT EXISTS (SELECT * FROM schools WHERE schoolName="Fremont High School");
+		</sql>
+		<update tableName="schools">
+        	<column name="schoolAddress" type="varchar(500)" value='{"addressLine1":"1279 Sunnyvale Saratoga Rd","addressLine2":"","city":"Sunnyvale","state":"CA","zipCode":"94087"}'/>
+        	<column name="status" type="tinyint(4)" valueNumeric="1"/>
+        	<where>schoolName="Fremont High School" AND status=0</where>
+    	</update>
+		<sql dbms="mysql" endDelimiter=";" splitStatements="true" stripComments="true">
+			INSERT INTO schools(id, schoolName, schoolAddress, status, createdOn, modifiedOn) SELECT * FROM (SELECT "5bc4126e3fd840d1bd9ee4233f199220", "Mountain View High School", '{"addressLine1":"3535 Truman Ave","addressLine2":"","city":"Mountain View","state":"CA","zipCode":"94040"}', 1, 1490871040000, 1490871050000) as schoolInfo WHERE NOT EXISTS (SELECT * FROM schools WHERE schoolName="Mountain View High School");
+		</sql>
+		<update tableName="schools">
+        	<column name="schoolAddress" type="varchar(500)" value='{"addressLine1":"3535 Truman Ave","addressLine2":"","city":"Mountain View","state":"CA","zipCode":"94040"}'/>
+        	<column name="status" type="tinyint(4)" valueNumeric="1"/>
+        	<where>schoolName="Mountain View High School" AND status=0</where>
+    	</update>
+		<sql dbms="mysql" endDelimiter=";" splitStatements="true" stripComments="true">
+			INSERT INTO schools(id, schoolName, schoolAddress, status, createdOn, modifiedOn) SELECT * FROM (SELECT "2c654ea4ef4d4c8bb3f70733b7309424", "Gunn High School", '{"addressLine1":"780 Arastradero Rd","addressLine2":"","city":"Palo Alto","state":"CA","zipCode":"94306"}', 1, 1490871040000, 1490871050000) as schoolInfo WHERE NOT EXISTS (SELECT * FROM schools WHERE schoolName="Gunn High School");
+		</sql>
+		<update tableName="schools">
+        	<column name="schoolAddress" type="varchar(500)" value='{"addressLine1":"780 Arastradero Rd","addressLine2":"","city":"Palo Alto","state":"CA","zipCode":"94306"}'/>
+        	<column name="status" type="tinyint(4)" valueNumeric="1"/>
+        	<where>schoolName="Gunn High School" AND status=0</where>
+    	</update>
+		<sql dbms="mysql" endDelimiter=";" splitStatements="true" stripComments="true">
+			INSERT INTO schools(id, schoolName, schoolAddress, status, createdOn, modifiedOn) SELECT * FROM (SELECT "4f34470ad37c4fe9a0e1938df2228a7e", "Palo Alto High School", '{"addressLine1":"50 Embarcadero Rd","addressLine2":"","city":"Palo Alto","state":"CA","zipCode":"94301"}', 1, 1490871040000, 1490871050000) as schoolInfo WHERE NOT EXISTS (SELECT * FROM schools WHERE schoolName="Palo Alto High School");
+		</sql>
+		<update tableName="schools">
+        	<column name="schoolAddress" type="varchar(500)" value='{"addressLine1":"50 Embarcadero Rd","addressLine2":"","city":"Palo Alto","state":"CA","zipCode":"94301"}'/>
+        	<column name="status" type="tinyint(4)" valueNumeric="1"/>
+        	<where>schoolName="Palo Alto High School" AND status=0</where>
+    	</update>
+	</changeSet> 
+	
+	<!-- Insert/Update 2 new additional schools data -->
+	<changeSet author="satish" id="USER_26" failOnError="true">
+		<!-- <sql dbms="mysql" endDelimiter=";" splitStatements="true" stripComments="true">
+			INSERT INTO schools(id, schoolName, schoolAddress, status, createdOn, modifiedOn) SELECT * FROM (SELECT "1b15e58df9804db5b3b5187fdffbd171", "Saint Francis High School", '{"addressLine1":"1885 Miramonte Ave","addressLine2":"","city":"Mountain View","state":"CA","zipCode":"94040"}', 1, 1491979000250, 1491979100250) as schoolInfo WHERE NOT EXISTS (SELECT * FROM schools WHERE schoolName="Saint Francis High School");
+		</sql>
+		<update tableName="schools">
+        	<column name="schoolAddress" type="varchar(500)" value='{"addressLine1":"1885 Miramonte Ave","addressLine2":"","city":"Mountain View","state":"CA","zipCode":"94040"}'/>
+        	<column name="status" type="tinyint(4)" valueNumeric="1"/>
+        	<where>schoolName="Saint Francis High School" AND status=0</where>
+    	</update> -->
+		<sql dbms="mysql" endDelimiter=";" splitStatements="true" stripComments="true">
+			INSERT INTO schools(id, schoolName, schoolAddress, status, createdOn, modifiedOn) SELECT * FROM (SELECT "ff9fc60f6c5d4f589a31ab3821346c05", "Los Altos High School", '{"addressLine1":"201 Almond Ave","addressLine2":"","city":"Los Altos","state":"CA","zipCode":"94022"}', 1, 1491979000250, 1491979100250) as schoolInfo WHERE NOT EXISTS (SELECT * FROM schools WHERE schoolName="Los Altos High School");
+		</sql>
+		<update tableName="schools">
+        	<column name="schoolAddress" type="varchar(500)" value='{"addressLine1":"201 Almond Ave","addressLine2":"","city":"Los Altos","state":"CA","zipCode":"94022"}'/>
+        	<column name="status" type="tinyint(4)" valueNumeric="1"/>
+        	<where>schoolName="Los Altos High School" AND status=0</where>
+    	</update>
+	</changeSet>	
+	
+	<!-- Insert/Update a list of new additional schools data and activate for rent process -->
+	<changeSet author="satish" id="USER_27" failOnError="true"> 
+		<sql dbms="mysql" endDelimiter=";" splitStatements="true" stripComments="true">
+			INSERT INTO schools(id, schoolName, schoolAddress, status, createdOn, modifiedOn) SELECT * FROM (SELECT "bc730c13b44941fa8bf44077992ad884", "Valley Christian High School", '{"addressLine1":"100 Skyway Dr","addressLine2":"","city":"San Jose","state":"CA","zipCode":"95111"}', 1, 1493268600517, 1493268618675) as schoolInfo WHERE NOT EXISTS (SELECT * FROM schools WHERE schoolName="Valley Christian High School");
+		</sql>
+		<update tableName="schools">
+        	<column name="schoolAddress" type="varchar(500)" value='{"addressLine1":"100 Skyway Dr","addressLine2":"","city":"San Jose","state":"CA","zipCode":"95111"}'/>
+        	<column name="status" type="tinyint(4)" valueNumeric="1"/>
+        	<where>schoolName="Valley Christian High School" AND status=0</where>
+    		</update>
+
+		<sql dbms="mysql" endDelimiter=";" splitStatements="true" stripComments="true">
+			INSERT INTO schools(id, schoolName, schoolAddress, status, createdOn, modifiedOn) SELECT * FROM (SELECT "9d528ec919f74c2c87cac3f0f2f53d3b", "Independence High School", '{"addressLine1":"1776 Educational Park Dr","addressLine2":"","city":"San Jose","state":"CA","zipCode":"95133"}', 1, 1493268600517, 1493268618675) as schoolInfo WHERE NOT EXISTS (SELECT * FROM schools WHERE schoolName="Independence High School");
+		</sql>
+		<update tableName="schools">
+        	<column name="schoolAddress" type="varchar(500)" value='{"addressLine1":"1776 Educational Park Dr","addressLine2":"","city":"San Jose","state":"CA","zipCode":"95133"}'/>
+        	<column name="status" type="tinyint(4)" valueNumeric="1"/>
+        	<where>schoolName="Independence High School" AND status=0</where>
+    		</update> 
+
+		<sql dbms="mysql" endDelimiter=";" splitStatements="true" stripComments="true">
+			INSERT INTO schools(id, schoolName, schoolAddress, status, createdOn, modifiedOn) SELECT * FROM (SELECT "f1ab02f8dd76476cbf642db1d896080c", "Pioneer High School", '{"addressLine1":"1290 Blossom Hill Rd","addressLine2":"","city":"San Jose","state":"CA","zipCode":"95118"}', 1, 1493268600517, 1493268618675) as schoolInfo WHERE NOT EXISTS (SELECT * FROM schools WHERE schoolName="Pioneer High School");
+		</sql>
+		<update tableName="schools">
+        	<column name="schoolAddress" type="varchar(500)" value='{"addressLine1":"1290 Blossom Hill Rd","addressLine2":"","city":"San Jose","state":"CA","zipCode":"95118"}'/>
+        	<column name="status" type="tinyint(4)" valueNumeric="1"/>
+        	<where>schoolName="Pioneer High School" AND status=0</where>
+    		</update> 
+
+		<sql dbms="mysql" endDelimiter=";" splitStatements="true" stripComments="true">
+			INSERT INTO schools(id, schoolName, schoolAddress, status, createdOn, modifiedOn) SELECT * FROM (SELECT "843ebf4fb9cb4d7cb5966ff3f070ebb8", "Santa Teresa High School", '{"addressLine1":"1290 Blossom Hill Rd","addressLine2":"","city":"San Jose","state":"CA","zipCode":"95118"}', 1, 1493268600517, 1493268618675) as schoolInfo WHERE NOT EXISTS (SELECT * FROM schools WHERE schoolName="Santa Teresa High School");
+		</sql>
+		<update tableName="schools">
+        	<column name="schoolAddress" type="varchar(500)" value='{"addressLine1":"1290 Blossom Hill Rd","addressLine2":"","city":"San Jose","state":"CA","zipCode":"95118"}'/>
+        	<column name="status" type="tinyint(4)" valueNumeric="1"/>
+        	<where>schoolName="Santa Teresa High School" AND status=0</where>
+    		</update> 
+
+		<sql dbms="mysql" endDelimiter=";" splitStatements="true" stripComments="true">
+			INSERT INTO schools(id, schoolName, schoolAddress, status, createdOn, modifiedOn) SELECT * FROM (SELECT "6492e6580eef428582e5527abfef2548", "Leland High School", '{"addressLine1":"6677 Camden Ave","addressLine2":"","city":"San Jose","state":"CA","zipCode":"95120"}', 1, 1493268600517, 1493268618675) as schoolInfo WHERE NOT EXISTS (SELECT * FROM schools WHERE schoolName="Leland High School");
+		</sql>
+		<update tableName="schools">
+        	<column name="schoolAddress" type="varchar(500)" value='{"addressLine1":"6677 Camden Ave","addressLine2":"","city":"San Jose","state":"CA","zipCode":"95120"}'/>
+        	<column name="status" type="tinyint(4)" valueNumeric="1"/>
+        	<where>schoolName="Leland High School" AND status=0</where>
+    		</update> 
+
+		<sql dbms="mysql" endDelimiter=";" splitStatements="true" stripComments="true">
+			INSERT INTO schools(id, schoolName, schoolAddress, status, createdOn, modifiedOn) SELECT * FROM (SELECT "a7485569a12d4fe192c5f66d2b00100b", "Liberty High School", '{"addressLine1":"4849 Pearl Ave","addressLine2":"","city":"San Jose","state":"CA","zipCode":"95136"}', 1, 1493268600517, 1493268618675) as schoolInfo WHERE NOT EXISTS (SELECT * FROM schools WHERE schoolName="Liberty High School");
+		</sql>
+		<update tableName="schools">
+        	<column name="schoolAddress" type="varchar(500)" value='{"addressLine1":"4849 Pearl Ave","addressLine2":"","city":"San Jose","state":"CA","zipCode":"95136"}'/>
+        	<column name="status" type="tinyint(4)" valueNumeric="1"/>
+        	<where>schoolName="Liberty High School" AND status=0</where>
+    		</update> 
+
+		<sql dbms="mysql" endDelimiter=";" splitStatements="true" stripComments="true">
+			INSERT INTO schools(id, schoolName, schoolAddress, status, createdOn, modifiedOn) SELECT * FROM (SELECT "99f0374e9c704bc4ab6409dfcd0fe819", "Andrew P Hill High School", '{"addressLine1":"3200 Senter Rd","addressLine2":"","city":"San Jose","state":"CA","zipCode":"95111"}', 1, 1493268600517, 1493268618675) as schoolInfo WHERE NOT EXISTS (SELECT * FROM schools WHERE schoolName="Andrew P Hill High School");
+		</sql>
+		<update tableName="schools">
+        	<column name="schoolAddress" type="varchar(500)" value='{"addressLine1":"3200 Senter Rd","addressLine2":"","city":"San Jose","state":"CA","zipCode":"95111"}'/>
+        	<column name="status" type="tinyint(4)" valueNumeric="1"/>
+        	<where>schoolName="Andrew P Hill High School" AND status=0</where>
+    		</update> 
+
+		<sql dbms="mysql" endDelimiter=";" splitStatements="true" stripComments="true">
+			INSERT INTO schools(id, schoolName, schoolAddress, status, createdOn, modifiedOn) SELECT * FROM (SELECT "5eedf57854fc4d2aa68cd6cdace4d654", "Downtown College Preparatory", '{"addressLine1":"1402 Monterey Hwy","addressLine2":"","city":"San Jose","state":"CA","zipCode":"95110"}', 1, 1493268600517, 1493268618675) as schoolInfo WHERE NOT EXISTS (SELECT * FROM schools WHERE schoolName="Downtown College Preparatory");
+		</sql>
+		<update tableName="schools">
+        	<column name="schoolAddress" type="varchar(500)" value='{"addressLine1":"1402 Monterey Hwy","addressLine2":"","city":"San Jose","state":"CA","zipCode":"95110"}'/>
+        	<column name="status" type="tinyint(4)" valueNumeric="1"/>
+        	<where>schoolName="Downtown College Preparatory" AND status=0</where>
+    		</update> 
+
+		<sql dbms="mysql" endDelimiter=";" splitStatements="true" stripComments="true">
+			INSERT INTO schools(id, schoolName, schoolAddress, status, createdOn, modifiedOn) SELECT * FROM (SELECT "b30d2c47ea5645299134a55bfe021ada", "Silver Creek High School", '{"addressLine1":"1402 Monterey Hwy","addressLine2":"","city":"San Jose","state":"CA","zipCode":"95110"}', 1, 1493268600517, 1493268618675) as schoolInfo WHERE NOT EXISTS (SELECT * FROM schools WHERE schoolName="Silver Creek High School");
+		</sql>
+		<update tableName="schools">
+        	<column name="schoolAddress" type="varchar(500)" value='{"addressLine1":"1402 Monterey Hwy","addressLine2":"","city":"San Jose","state":"CA","zipCode":"95110"}'/>
+        	<column name="status" type="tinyint(4)" valueNumeric="1"/>
+        	<where>schoolName="Silver Creek High School" AND status=0</where>
+    		</update> 
+
+		<sql dbms="mysql" endDelimiter=";" splitStatements="true" stripComments="true">
+			INSERT INTO schools(id, schoolName, schoolAddress, status, createdOn, modifiedOn) SELECT * FROM (SELECT "71af65a5e2184052b7d21bf54f912d82", "Menlo-Atherton High School", '{"addressLine1":"555 Middlefield Rd","addressLine2":"","city":"Atherton","state":"CA","zipCode":"94027"}', 1, 1493268600517, 1493268618675) as schoolInfo WHERE NOT EXISTS (SELECT * FROM schools WHERE schoolName="Menlo-Atherton High School");
+		</sql>
+		<update tableName="schools">
+        	<column name="schoolAddress" type="varchar(500)" value='{"addressLine1":"555 Middlefield Rd","addressLine2":"","city":"Atherton","state":"CA","zipCode":"94027"}'/>
+        	<column name="status" type="tinyint(4)" valueNumeric="1"/>
+        	<where>schoolName="Menlo-Atherton High School" AND status=0</where>
+    		</update> 
+
+		<sql dbms="mysql" endDelimiter=";" splitStatements="true" stripComments="true">
+			INSERT INTO schools(id, schoolName, schoolAddress, status, createdOn, modifiedOn) SELECT * FROM (SELECT "863dda15290044619aba7c47b81ace0e", "Eastside College Preparatory", '{"addressLine1":"1041 Myrtle St","addressLine2":"","city":"East Palo Alto","state":"CA","zipCode":"94303"}', 1, 1493268600517, 1493268618675) as schoolInfo WHERE NOT EXISTS (SELECT * FROM schools WHERE schoolName="Eastside College Preparatory");
+		</sql>
+		<update tableName="schools">
+        	<column name="schoolAddress" type="varchar(500)" value='{"addressLine1":"1041 Myrtle St","addressLine2":"","city":"East Palo Alto","state":"CA","zipCode":"94303"}'/>
+        	<column name="status" type="tinyint(4)" valueNumeric="1"/>
+        	<where>schoolName="Eastside College Preparatory" AND status=0</where>
+    		</update> 
+
+		<sql dbms="mysql" endDelimiter=";" splitStatements="true" stripComments="true">
+			INSERT INTO schools(id, schoolName, schoolAddress, status, createdOn, modifiedOn) SELECT * FROM (SELECT "071954db1d004ac485b37e27cc01f291", "Castilleja School", '{"addressLine1":"1310 Bryant St","addressLine2":"","city":"Palo Alto","state":"CA","zipCode":"94301"}', 1, 1493268600517, 1493268618675) as schoolInfo WHERE NOT EXISTS (SELECT * FROM schools WHERE schoolName="Castilleja School");
+		</sql>
+		<update tableName="schools">
+        	<column name="schoolAddress" type="varchar(500)" value='{"addressLine1":"1310 Bryant St","addressLine2":"","city":"Palo Alto","state":"CA","zipCode":"94301"}'/>
+        	<column name="status" type="tinyint(4)" valueNumeric="1"/>
+        	<where>schoolName="Castilleja School" AND status=0</where>
+    		</update>
+	</changeSet>
+	
+	<!-- Insert *Menlo School* entry within promelle schools list in not exists otherwise update previous -->
+	<changeSet author="satish" id="USER_28" failOnError="true">
+		<sql dbms="mysql" endDelimiter=";" splitStatements="true" stripComments="true">
+			INSERT INTO schools(id, schoolName, schoolAddress, status, createdOn, modifiedOn) SELECT * FROM (SELECT "0accf8c602bc4391af52cc36027c9d73", "Menlo School", '{"addressLine1":"50 Valparaiso Ave","addressLine2":"","city":"Atherton","state":"CA","zipCode":"94027"}', 1, 1500619171019, 1500619171219) as schoolInfo WHERE NOT EXISTS (SELECT * FROM schools WHERE schoolName="Menlo School");
+		</sql>
+		<update tableName="schools">
+        	<column name="schoolAddress" type="varchar(500)" value='{"addressLine1":"50 Valparaiso Ave","addressLine2":"","city":"Atherton","state":"CA","zipCode":"94027"}'/>
+        	<column name="status" type="tinyint(4)" valueNumeric="1"/>
+        	<where>schoolName="Menlo School" AND status=0</where>
+    	</update>
+    	
+    	<!-- Add two new columns for schools table for school POD implementation -->
+    	 <addColumn tableName="schools">
+	        <column name="schoolPodName" type="varchar(100)"/>
+	        <column name="schoolPodLogo" type="varchar(200)"/>
+	    </addColumn>
+	    <sql dbms="mysql" endDelimiter=";" splitStatements="true" stripComments="true">
+			UPDATE schools SET schoolPodName = schoolName;
+		</sql>	 
+	</changeSet>
+</databaseChangeLog>

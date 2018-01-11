@@ -1,0 +1,169 @@
+@charset "utf-8";
+/* CSS Document */
+
+
+/* lg */ 
+@media (min-width: 1200px) {
+
+}
+
+
+
+
+/* md */
+@media (min-width: 992px) and (max-width: 1199px) {
+.slider.slider-horizontal{
+	width: 100% !important;
+}
+
+}
+
+
+
+
+
+/* sm */
+@media (min-width: 768px) and (max-width: 991px) {
+#slider-carousel .item{
+	padding-left: 30px;
+}
+
+.item h2{
+	font-size: 24px;
+}
+
+.girl{
+	margin-left: 0;
+}
+.slider.slider-horizontal{
+	width: 100% !important;
+}
+}
+
+
+
+
+
+/* xs */
+@media (max-width: 767px) {
+	header .navbar-collapse {
+	margin-top: 0;
+}
+	header .navbar-form {
+		margin: 8px 0px;
+	}
+	header .navbar-toggle {
+		margin-top: 78px;
+		
+	}
+
+.goToTop {
+	width: 33px;
+    height: 31px;
+    bottom: 70px;
+    right: 5px;
+}
+
+.video-iframe iframe{
+  width: 560px;
+  height: 315px;
+}
+
+.carousel-caption div{
+	font-size: 16px;
+}
+
+.carousel-caption p{
+	font-size: 12px;
+}
+
+.works h1, .testimonial h1, .recommend h1 {
+	font-size: 35px;
+}
+
+#slider-carousel .item{
+	padding-left: 0;
+}
+.sidebar {
+    display: none;
+}
+.slider.slider-horizontal{
+	width: 100% !important;
+}
+.equal-inner {
+	float: left;
+	display:table-cell;
+}
+.side-bdr {
+    border: 0;
+	margin-bottom: 15px;
+}
+	
+.works-item {
+	margin-bottom: 94px;
+}
+.works-item::after {
+	font-family: 'FontAwesome';
+	content: "\f063";
+    position: absolute;
+    right: 48%;
+    top: 155px;
+}
+}
+	
+	
+	
+	
+	
+/* XS Portrait */
+@media (max-width: 480px) {
+	.item{
+	padding-left: 0;
+}
+.carousel-indicators{
+	bottom: -12px;
+}
+.carousel-caption{
+	bottom: 0;
+	padding: 8px 0px;
+}
+.carousel-caption div{
+	font-size: 12px;
+}
+
+.carousel-caption p{
+	font-size: 10px;
+}
+.item h1{
+	font-size: 30px;
+	margin-top: 0;
+}
+
+.item h2{
+	font-size: 20px;
+}
+
+.video-iframe iframe{
+  width: 360px;
+  height: 215px;
+}
+
+.download {
+    bottom: 22%;
+    max-width: 75px;
+    position: absolute;
+    right: 6%;
+}
+
+.get-app img{
+	height: 50px;
+}
+
+h2.get::before {
+	display: none;    
+}
+h2.get::after {    
+    display: none;
+}
+
+}

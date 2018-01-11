@@ -1,0 +1,183 @@
+{
+  "filters": {
+    "Dress": [
+      {
+        "Type": [
+          "Bodycon",
+          "Fit & Flare",
+          "Shift Dresses",
+          "Shirt Dresses",
+          "Slip Dresses"
+        ]
+      },
+      {
+        "Length": [
+          "Asymmetrical (Long/Short)",
+          "Full Length (Gown)",
+          "Knee Length",
+          "Midi (Below Knees)",
+          "Mini (Short, Above Knees)"
+        ]
+      },
+      {
+        "Sleeve": [
+          "3/4",
+          "Half Sleeve",
+          "Full Sleeve",
+          "One-Shoulder",
+          "Sleeveless",
+          "Strapless"
+        ]
+      }
+    ],
+    "Rompers/Jumpsuits": [
+      {
+        "Type": []
+      },
+      {
+        "Length": [
+          "Jumpsuits (long)",
+          "Rompers (short)"
+        ]
+      },
+      {
+        "Sleeve": [
+          "3/4",
+          "Half Sleeve",
+          "Full Sleeve",
+          "One-Shoulder",
+          "Sleeveless",
+          "Strapless"
+        ]
+      }
+    ],
+    "Tops": [
+      {
+        "Type": [
+          "Bodysuits",
+          "Hoodies/Sweatshirts",
+          "Shirts",
+          "Sweaters/Cardigan",
+          "Tank Tops",
+          "Tees"
+        ]
+      },
+      {
+        "Length": [
+          "Crop",
+          "Long",
+          "Regular"
+        ]
+      },
+      {
+        "Sleeve": [
+          "3/4",
+          "Half Sleeve",
+          "Full Sleeve",
+          "One-Shoulder",
+          "Sleeveless",
+          "Strapless"
+        ]
+      }
+    ],
+    "Bottoms": [
+      {
+        "Type": [
+          {
+            "Jeans": [
+              "Crop",
+              "Regular"
+            ]
+          },
+          {
+            "Leggings": [
+              "Crop",
+              "Regular"
+            ]
+          },
+          {
+            "Pants": [
+              "Crop",
+              "Regular"
+            ]
+          },
+          {
+            "Shorts": [
+              "Bermuda Shorts",
+              "Regular Shorts",
+              "Shortie Shorts"
+            ]
+          },
+          {
+            "Skirts": [
+              "Asymmetrical",
+              "Full Length",
+              "Midi",
+              "Mini"
+            ]
+          },
+          {
+            "Sweatpants": [
+              "Crop",
+              "Regular"
+            ]
+          }
+        ]
+      }
+    ],
+    "Jackets": [
+      {
+        "Type": [
+          "Bomber",
+          "Blazer",
+          "Denim",
+          "Kimonos",
+          "Lightweight",
+          "Military",
+          "Puffer",
+          "Ski",
+          "Vests"
+        ]
+      },
+      {
+        "Length": [
+          "Long",
+          "Regular",
+          "Short"
+        ]
+      }
+    ],
+    "Costume": [
+      {
+        "Type": [
+          "Halloween"
+        ]
+      }
+    ],
+    "International": [
+      {
+        "Type": [
+          "Anarkali Set",
+          "Kurta",
+          "Lehenga Blouse",
+          "Lehenga Set",
+          "Lehenga Skirt",
+          "Salwar Kameez/Churidaar",
+          "Saree",
+          "Saree blouse",
+          "Saree Slip (petticoat)"
+        ]
+      },
+      {
+        "Sleeve": [
+          "3/4",
+          "Half Sleeve",
+          "Full Sleeve",
+          "One-Shoulder",
+          "Sleeveless",
+          "Strapless"
+        ]
+      }
+    ]
+  }
+}

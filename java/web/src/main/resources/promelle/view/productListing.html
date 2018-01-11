@@ -1,0 +1,323 @@
+<section class="all-listing">
+	<div class="visible-xs">
+		<div class="sidebar-toggle">
+			<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#FilterModal">
+				<i class="fa fa-angle-right"></i>
+			</button>
+		</div>
+	</div>
+
+	<!--Sidebar panel for mobile filters-->
+	<div class="modal left fade" id="FilterModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title" id="myModalLabel">Filters</h4>
+				</div>
+				<div class="modal-body">
+					<div id="sidebar-wrapper">
+					  	<!-- Occasion -->
+						<uib-accordion>
+							<div uib-accordion-group class="panel-default" is-open="true">
+								<uib-accordion-heading>
+									<div>Occasion <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i></div>
+								</uib-accordion-heading>
+								<div class="checkbox" ng-repeat="occasion in dressOccasionsList">
+									<label>
+										<input type="checkbox" value="{{occasion}}" ng-click="toggleSelection(occasion, 'occasion')" ng-checked="occasionSelection.indexOf(occasion) > -1">{{occasion}}
+									</label>
+								</div>
+							</div>
+						</uib-accordion>
+						<!--Categories-->
+						<uib-accordion>
+							<div uib-accordion-group class="panel-default" is-open="true">
+								<uib-accordion-heading>
+									<div>Categories <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i></div>
+								</uib-accordion-heading>
+								<div class="checkbox" ng-repeat="(key, value) in categoriesList">
+									<label>
+										<input type="checkbox" value="{{key}}" ng-click="toggleCategories(key, value); toggleSelection(key, 'categories')" ng-checked="categoriesSelection.indexOf(key) > -1">{{key}}
+									</label>
+								</div>
+							</div>
+						</uib-accordion>
+						<!--Categories Types-->
+						<uib-accordion ng-if="!(typeList | isEmpty)">
+							<div uib-accordion-group class="panel-default" is-open="true">
+								<uib-accordion-heading>
+									<div>Types <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i></div>
+								</uib-accordion-heading>
+								<div class="checkbox" ng-repeat="(key, value) in typeList">
+									<label>
+										<input type="checkbox" value="{{key}}" ng-click="toogleType(key, value); toggleSelection(key, 'categoriesType');" ng-checked="categoriesTypeSelection.indexOf(key) > -1">{{key}}
+									</label>
+								</div>
+							</div>
+						</uib-accordion>
+						<!--Categories Types Length-->
+						<uib-accordion ng-if="typeLengthList.length">
+							<div uib-accordion-group class="panel-default" is-open="true">
+								<uib-accordion-heading>
+									<div>Length <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i></div>
+								</uib-accordion-heading>
+								<div class="checkbox" ng-repeat="length in typeLengthList">
+									<label>
+										<input type="checkbox" value="{{length}}" ng-click="toggleSelection(length, 'categoriesTypeLength')" ng-checked="categoriesTypeLengthSelection.indexOf(length) > -1">{{length}}
+									</label>
+								</div>
+							</div>
+						</uib-accordion>
+						<!--Categories Sleeve-->
+						<uib-accordion ng-if="sleeveList.length">
+							<div uib-accordion-group class="panel-default" is-open="true">
+								<uib-accordion-heading>
+									<div>Sleeve <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i></div>
+								</uib-accordion-heading>
+								<div class="checkbox" ng-repeat="sleeve in sleeveList">
+									<label>
+										<input type="checkbox" value="{{sleeve.sleeves}}" ng-click="toggleSelection(sleeve.sleeves, 'categoriesSleeve');" ng-checked="categoriesSleeveSelection.indexOf(sleeve.sleeves) > -1">{{sleeve.sleeves}}
+									</label>
+								</div>
+							</div>
+						</uib-accordion>
+						<!-- price range -->
+						<uib-accordion>
+							<div uib-accordion-group class="panel-default" is-open="true">
+								<uib-accordion-heading>
+									<div>Price Range <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i></div>
+								</uib-accordion-heading>
+								<rzslider rz-slider-model="minSlider.value" rz-slider-options="minSlider.options"></rzslider>
+							</div>
+						</uib-accordion>
+						<!-- Color -->
+						<uib-accordion>
+							<div uib-accordion-group class="panel-default" is-open="true">
+								<uib-accordion-heading>
+									<div>Color <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i></div>
+								</uib-accordion-heading>
+								<div class="checkbox" ng-repeat="color in dressColorsList">
+									<label>
+										<input type="checkbox" value="{{color.name}}" ng-click="toggleSelection(color.name, 'color')" ng-checked="colorSelection.indexOf(color.name) > -1">
+										<span class="badge" ng-style="{'background-color': color.code}">&nbsp;</span>{{color.name}}</label>
+									</label>
+								</div>
+							</div>
+						</uib-accordion>
+						<!-- Size -->
+						<uib-accordion>
+							<div uib-accordion-group class="panel-default" is-open="true">
+								<uib-accordion-heading>
+									<div>Size <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i></div>
+								</uib-accordion-heading>
+								<uib-tabset active="activeForm">
+									<uib-tab index="0" heading="Regular">
+										<div class="checkbox" ng-repeat="regular in dressSizesList[0]">
+											<label>
+												<input type="checkbox" value="{{regular}}" ng-click="toggleSelection(regular, 'regular')" ng-checked="sizeSelectionOrignal.indexOf(regular) > -1">{{regular}}
+											</label>
+										</div>
+									</uib-tab>
+									<uib-tab index="1" heading="Juniors">
+										<div class="checkbox" ng-repeat="junior in dressSizesList[1]">
+											<label>
+												<input type="checkbox" value="{{junior}}" ng-click="toggleSelection(junior, 'junior')" ng-checked="sizeSelectionOrignal.indexOf(junior) > -1">{{junior}}
+											</label>
+										</div>
+									</uib-tab>
+									<uib-tab index="2" heading="Waist" ng-if="showWaistList">
+										<div class="checkbox" ng-repeat="waist in waistList">
+											<label>
+												<input type="checkbox" value="{{waist}}" ng-click="toggleSelection(waist, 'waist')" ng-checked="waistSelection.indexOf(waist) > -1">{{waist}}
+											</label>
+										</div>
+									</uib-tab>
+								</uib-tabset>
+							</div>
+						</uib-accordion>
+						<div>
+							<label type="button" style="margin-bottom: 15px;" ng-disabled="isResetDisabled" class="btn btn-primary pull-right" ng-click="clearResults()">
+								<span aria-hidden="true" class="fa fa-refresh fa-sm"></span> Reset
+							</label>
+							<!-- <label type="button" class="btn btn-primary pull-right" ng-click="filterResults()">
+								<span aria-hidden="true" class="fa fa-filter fa-sm"></span> Apply Filter
+							</label> -->
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section><!--/sidebar xs-->
+
+<section>
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-3 sidebar">
+				<h2 class="sub-header">Filters</h2>
+				<!-- Occasion -->
+				<uib-accordion>
+				    <div uib-accordion-group class="panel-default" is-open="true">
+					    <uib-accordion-heading>
+					        <div>Occasion <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i></div>
+					    </uib-accordion-heading>
+					    <div class="checkbox" ng-repeat="occasion in dressOccasionsList">
+							<label>
+								<input type="checkbox" value="{{occasion}}" ng-click="toggleSelection(occasion, 'occasion')" ng-checked="occasionSelection.indexOf(occasion) > -1">{{occasion}}
+							</label>
+						</div>
+				    </div>
+				</uib-accordion>
+				<!--Categories-->
+				<uib-accordion>
+				    <div uib-accordion-group class="panel-default" is-open="true">
+					    <uib-accordion-heading>
+					        <div>Categories <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i></div>
+					    </uib-accordion-heading>
+					    <div class="checkbox" ng-repeat="(key, value) in categoriesList">
+							<label>
+								<input type="checkbox" value="{{key}}" ng-click="toggleCategories(key, value); toggleSelection(key, 'categories')" ng-checked="categoriesSelection.indexOf(key) > -1">{{key}}
+							</label>
+						</div>
+				    </div>
+				</uib-accordion>
+				<!--Categories Types-->
+				<uib-accordion ng-if="!(typeList | isEmpty)">
+				    <div uib-accordion-group class="panel-default" is-open="true">
+					    <uib-accordion-heading>
+					        <div>Types <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i></div>
+					    </uib-accordion-heading>
+					    <div class="checkbox" ng-repeat="(key, value) in typeList">
+							<label>
+								<input type="checkbox" value="{{key}}" ng-click="toogleType(key, value); toggleSelection(key, 'categoriesType');" ng-checked="categoriesTypeSelection.indexOf(key) > -1">{{key}}
+							</label>
+						</div>
+				    </div>
+				</uib-accordion>
+				<!--Categories Types Length-->
+				<uib-accordion ng-if="typeLengthList.length">
+				    <div uib-accordion-group class="panel-default" is-open="true">
+					    <uib-accordion-heading>
+					        <div>Length <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i></div>
+					    </uib-accordion-heading>
+					    <div class="checkbox" ng-repeat="length in typeLengthList">
+							<label>
+								<input type="checkbox" value="{{length}}" ng-click="toggleSelection(length, 'categoriesTypeLength')" ng-checked="categoriesTypeLengthSelection.indexOf(length) > -1">{{length}}
+							</label>
+						</div>
+				    </div>
+				</uib-accordion>
+				<!--Categories Sleeve-->
+				<uib-accordion ng-if="sleeveList.length">
+				    <div uib-accordion-group class="panel-default" is-open="true">
+					    <uib-accordion-heading>
+					        <div>Sleeve <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i></div>
+					    </uib-accordion-heading>
+					    <div class="checkbox" ng-repeat="sleeve in sleeveList">
+							<label>
+								<input type="checkbox" value="{{sleeve.sleeves}}" ng-click="toggleSelection(sleeve.sleeves, 'categoriesSleeve');" ng-checked="categoriesSleeveSelection.indexOf(sleeve.sleeves) > -1">{{sleeve.sleeves}}
+							</label>
+						</div>
+				    </div>
+				</uib-accordion>
+				<!-- price range -->
+				<uib-accordion>
+					<div uib-accordion-group class="panel-default" is-open="true">
+					    <uib-accordion-heading>
+					        <div>Price Range <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i></div>
+					    </uib-accordion-heading>
+					    <rzslider rz-slider-model="minSlider.value" rz-slider-options="minSlider.options"></rzslider>
+				    </div>
+				</uib-accordion>
+				<!-- Color -->
+				<uib-accordion>
+					<div uib-accordion-group class="panel-default" is-open="true">
+					    <uib-accordion-heading>
+					        <div>Color <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i></div>
+					    </uib-accordion-heading>
+					    <div class="checkbox" ng-repeat="color in dressColorsList">
+							<label>
+								<input type="checkbox" value="{{color.name}}" ng-click="toggleSelection(color.name, 'color')" ng-checked="colorSelection.indexOf(color.name) > -1">
+								<span class="badge" ng-style="{'background-color': color.code}">&nbsp;</span>{{color.name}}</label>
+							</label>
+						</div>
+				    </div>
+				</uib-accordion>
+				<!-- Size -->
+				<uib-accordion>
+					<div uib-accordion-group class="panel-default" is-open="true">
+					    <uib-accordion-heading>
+					        <div>Size <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i></div>
+					    </uib-accordion-heading>
+					    <uib-tabset active="activeForm">
+						    <uib-tab index="0" heading="Regular">
+						        <div class="checkbox" ng-repeat="regular in dressSizesList[0]">
+									<label>
+										<input type="checkbox" value="{{regular}}" ng-click="toggleSelection(regular, 'regular')" ng-checked="sizeSelectionOrignal.indexOf(regular) > -1">{{regular}}
+									</label>
+								</div>
+						    </uib-tab>
+						    <uib-tab index="1" heading="Juniors">
+						        <div class="checkbox" ng-repeat="junior in dressSizesList[1]">
+									<label>
+										<input type="checkbox" value="{{junior}}" ng-click="toggleSelection(junior, 'junior')" ng-checked="sizeSelectionOrignal.indexOf(junior) > -1">{{junior}}
+									</label>
+								</div>
+						    </uib-tab>
+							<uib-tab index="2" heading="Waist" ng-if="showWaistList">
+						        <div class="checkbox" ng-repeat="waist in waistList">
+									<label>
+										<input type="checkbox" value="{{waist}}" ng-click="toggleSelection(waist, 'waist')" ng-checked="waistSelection.indexOf(waist) > -1">{{waist}}
+									</label>
+								</div>
+						    </uib-tab>
+					    </uib-tabset>
+				    </div>
+				</uib-accordion>
+				<div>
+					<button style="margin-bottom: 15px;" class="btn btn-primary pull-right" ng-click="clearResults()" ng-disabled="isResetDisabled">
+						<span aria-hidden="true" class="fa fa-refresh fa-sm"></span> Reset
+					</button>
+					<!-- <label type="button" class="btn btn-primary pull-right" ng-click="filterResults()">
+						<span aria-hidden="true" class="fa fa-filter fa-sm"></span> Apply Filter
+					</label> -->
+				</div>
+			</div>
+			
+			<div class="col-md-9">
+				<h2 class="sub-header">All Items</h2>
+				<div class="features_items"><!--features_items-->
+					<div class="col-sm-6 col-xs-12 col-md-4 product-card" ng-repeat="dress in listingData">
+						<div class="product-image-wrapper outer-shadow" ng-class="($index % 3 == 0?'shadow-effect2':($index % 2 == 0?'shadow-effect3':'shadow-effect1'))">
+							<div class="shadow-wrapper">
+							  	<div class="single-products">
+									<div class="productinfo text-center">
+										<div class="product-image" ng-click="openDressDetails(dress)" style="cursor: pointer;" ng-style="{'background-image':'url({{dress.imageUrl}})'}"></div>
+										<p class="ellipsis" title="{{dress.title}}">{{dress.title}}</p>
+										<p class="pull-left">{{dress.rentalPrice | currency}}</p>
+										<p class="pull-right">
+											<span ng-repeat="item in dress.size">{{item}} {{$last ? '' : ($index==size.length-2) ? ' and ' : ', '}}</span>
+										</p>
+										<div class="clearfix"></div>
+									</div>
+							  	</div>
+							</div>
+						</div>
+					</div>
+					<div class="clearfix"></div>
+					<div class="loader">
+						<img src="images/spinner.gif" alt="loading..." ng-if="isLoading">
+					</div>
+					<div class="col-md-12 noResult" ng-if="!listingData.length && !isLoading">
+						No Result Found
+					</div>
+					<div class="col-md-12">
+						<ul uib-pagination ng-click="pageChangeClicked(currentPage)" total-items="totalItems" ng-if="!isLoading && listingData.length" ng-model="currentPage" ng-change="pageChanged(currentPage)" items-per-page="itemsPerPage"></ul>
+					</div>
+				</div>			
+			</div>
+			<div class="clearfix"></div>
+		</div>
+	</div>
+</section>

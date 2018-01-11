@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.rockwell</groupId>
+	<artifactId>promelle</artifactId>
+	<version>1.0</version>
+	<name>Build promelle</name>
+	<description>Full build of the Promelle app.</description>
+	<packaging>pom</packaging>
+	<modules>
+		<module>platform</module>
+		<module>amazon-utils</module>
+		<module>common-dto</module>
+		<module>rule-engine</module>
+		<module>eureka-client</module>
+		<module>service-core</module>
+		<module>mongo-utils</module>
+		<module>payment-utils</module>
+		<module>product-services</module>
+		<module>user-services</module>
+		<module>communication-services</module>
+		<!--<module>location-service</module> -->
+		
+		<!--module>alarm-synthesizer-services</module-->
+    
+  </modules>
+</project>

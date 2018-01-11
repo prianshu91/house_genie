@@ -1,0 +1,41 @@
+<h2 class="sub-header">{{podData.schoolName}}</h2>
+<div class="row form-group">
+    <div class="col-sm-6">
+        <fieldset style="min-height: 142px">
+            <legend>Current school logo</legend>
+            <p class="noImageText" ng-if="!podData.schoolPodLogo && noData">
+                No logo available, please upload a new one.
+            </p>
+            <div ng-if="podData.schoolPodLogo" class="podLogo">
+                <img ng-show="podData.schoolPodLogo != null" ng-src="{{podData.schoolPodLogo}}">
+            </div>
+        </fieldset>
+    </div>
+    <div class="col-sm-6">
+        <!--<form name="podLogoForm">
+            <fieldset>
+                <legend>Upload school logo</legend>
+                <input type="file" file-model="picFile" ngf-select
+                    ng-model="picFile" name="file" accept="image/*"
+                    ngf-max-size="2MB" required ngf-model-invalid="errorFile">
+                <br>
+                <i ng-show="podLogoForm.file.$error.maxSize">File too large
+                    {{errorFile.size / 1000000|number:1}}MB: max 2MB</i>
+                <div>
+                    <span ng-show="podLogoForm.file.$valid"><img
+                        ngf-thumbnail="picFile" class="thumb"></span>
+                    <button ng-click="picFile = null" ng-show="podLogoForm.file.$valid">Remove</button>
+                </div>
+                <br>
+                <button class="btn btn-primary" ng-disabled="!podLogoForm.$valid" ng-click="uploadPic()">Upload</button>
+            </fieldset>
+        </form>-->
+        <button class="btn btn-primary mt10" ng-click="uploadLogo()">Upload New Logo</button>
+    </div>
+</div>
+<div class="form-group col-xs-12 pad0">
+        <label>Pod Members</label>
+		<div ui-grid="podMembersListing" ui-grid-resize-columns ui-grid-pagination ui-grid-auto-resize class="gridTable">
+            <div class="watermark" ng-if="!podMembersListing.data.length && noData">No results found</div>
+        </div>
+</div>

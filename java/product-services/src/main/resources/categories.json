@@ -1,0 +1,307 @@
+{
+  "filters": {
+    "Dress": [
+      {
+        "Type": [
+          {
+            "Bodycon": [
+              "Mini (Short, Above Knees)",
+              "Midi (Below Knees)",
+              "Asymmetrical (Long/Short)",
+              "Knee Length",
+              "Full Length (Gown)"
+            ]
+          },
+          {
+            "Fit & Flare": [
+              "Mini (Short, Above Knees)",
+              "Midi (Below Knees)",
+              "Asymmetrical (Long/Short)",
+              "Knee Length",
+              "Full Length (Gown)"
+            ]
+          },
+          {
+            "Shift Dresses": [
+              "Mini (Short, Above Knees)",
+              "Midi (Below Knees)",
+              "Asymmetrical (Long/Short)",
+              "Knee Length",
+              "Full Length (Gown)"
+            ]
+          },
+          {
+            "Slip Dresses": [
+              "Mini (Short, Above Knees)",
+              "Midi (Below Knees)",
+              "Asymmetrical (Long/Short)",
+              "Knee Length",
+              "Full Length (Gown)"
+            ]
+          },
+          {
+            "Shirt Dresses": [
+              "Mini (Short, Above Knees)",
+              "Midi (Below Knees)",
+              "Asymmetrical (Long/Short)",
+              "Knee Length",
+              "Full Length (Gown)"
+            ]
+          }
+        ]
+      },
+      {
+        "Sleeve": [
+          "3/4",
+          "Half Sleeve",
+          "Full Sleeve",
+          "One-Shoulder",
+          "Sleeveless",
+          "Strapless"
+        ]
+      }
+    ],
+    "Rompers/Jumpsuits": [
+      {
+        "Length": [
+          "Rompers (short)",
+          "Jumpsuits (long)"
+        ]
+      },
+      {
+        "Sleeve": [
+          "3/4",
+          "Half Sleeve",
+          "Full Sleeve",
+          "One-Shoulder",
+          "Sleeveless",
+          "Strapless"
+        ]
+      }
+    ],
+    "Tops": [
+      {
+        "Type": [
+          {
+            "Bodysuits": [
+              "Crop",
+              "Regular",
+              "Long"
+            ]
+          },
+          {
+            "Hoodies/Sweatshirts": [
+              "Crop",
+              "Regular",
+              "Long"
+            ]
+          },
+          {
+            "Shirts": [
+              "Crop",
+              "Regular",
+              "Long"
+            ]
+          },
+          {
+            "Sweaters/Cardigan": [
+              "Crop",
+              "Regular",
+              "Long"
+            ]
+          },
+          {
+            "Tank Tops": [
+              "Crop",
+              "Regular",
+              "Long"
+            ]
+          },
+          {
+            "Tees": [
+              "Crop",
+              "Regular",
+              "Long"
+            ]
+          }
+        ]
+      },
+      {
+        "Sleeve": [
+          "3/4",
+          "Half Sleeve",
+          "Full Sleeve",
+          "One-Shoulder",
+          "Sleeveless",
+          "Strapless"
+        ]
+      }
+    ],
+    "Bottoms": [
+      {
+        "Type": [
+          {
+            "Skirts": [
+              "Mini",
+              "Midi",
+              "Maxi",
+              "Asymmetrical"
+            ]
+          },
+          {
+            "Sweatpants": [
+              "Crop",
+              "Regular"
+            ]
+          },
+          {
+            "Leggings": [
+              "Crop",
+              "Regular"
+            ]
+          },
+          {
+            "Shorts": [
+              "Shortie Shorts",
+              "Regular Shorts",
+              "Bermuda Shorts"
+            ]
+          },
+          {
+            "Pants": [
+              "Crop",
+              "Regular"
+            ]
+          },
+          {
+            "Jeans": [
+              "Crop",
+              "Regular"
+            ]
+          }
+        ]
+      }
+    ],
+    "Jackets": [
+      {
+        "Type": [
+          {
+            "Bomber": [
+              "Short",
+              "Regular",
+              "Long"
+            ]
+          },
+          {
+            "Blazer": [
+              "Short",
+              "Regular",
+              "Long"
+            ]
+          },
+          {
+            "Denim": [
+              "Short",
+              "Regular",
+              "Long"
+            ]
+          },
+          {
+            "Kimonos": [
+              "Short",
+              "Regular",
+              "Long"
+            ]
+          },
+          {
+            "Lightweight": [
+              "Short",
+              "Regular",
+              "Long"
+            ]
+          },
+          {
+            "Military": [
+              "Short",
+              "Regular",
+              "Long"
+            ]
+          },
+          {
+            "Puffer": [
+              "Short",
+              "Regular",
+              "Long"
+            ]
+          },
+          {
+            "Ski": [
+              "Short",
+              "Regular",
+              "Long"
+            ]
+          },
+          {
+            "Vests": [
+              "Short",
+              "Regular",
+              "Long"
+            ]
+          }
+        ]
+      }
+    ],
+    "Costume": [
+      {
+        "Type": [
+          {
+            "Halloween": []
+          }
+        ]
+      }
+    ],
+    "International": [
+      {
+        "Type": [
+          {
+            "Anarkali Set": []
+          },
+          {
+            "Kurta": []
+          },
+          {
+            "Lehenga Blouse": []
+          },
+          {
+            "Lehenga Set": []
+          },
+          {
+            "Lehenga Skirt": []
+          },
+          {
+            "Salwar Kameez/Churidaar": []
+          },
+          {
+            "Saree": []
+          },
+          {
+            "Saree blouse": []
+          },
+          {
+            "Saree Slip (petticoat)": []
+          }
+        ]
+      },
+      {
+        "Sleeve": [
+          "3/4",
+          "Half Sleeve",
+          "Full Sleeve",
+          "One-Shoulder",
+          "Sleeveless",
+          "Strapless"
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,17 @@
+<h2 class="sub-header">Pods Listings</h2>
+<div class="form-group row pad0">
+	<div class="col-xs-8"></div>
+	<div class="col-xs-4 pull-right">
+		<label for="sel1">Select status:</label> <select class="form-control"
+			ng-model="selectedPodStatus"
+			ng-change="changePodStatus(selectedPodStatus)"
+			ng-options="option.id as option.value for option in podStatusOptions">
+			<option>{{selectedPodStatus}}</option>
+		</select>
+	</div>
+</div>
+<div class="form-group col-xs-12 pad0">
+		<div ui-grid="podListings" ui-grid-resize-columns ui-grid-pagination ui-grid-auto-resize class="gridTable">
+            <div class="watermark" ng-if="!podListings.data.length && noData">No results found</div>
+        </div>
+</div>

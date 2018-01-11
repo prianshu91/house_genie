@@ -1,0 +1,44 @@
+<div class="modal-content">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal"
+			ng-click="close()" aria-hidden="true">&times;</button>
+		<h4 class="modal-title">Notify Renter for order cancellation</h4>
+	</div>
+	<div class="modal-body" style="overflow: auto; display: inline-block;">
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+			<fieldset>
+				<form class="form-horizontal">
+					<div class="form-group">
+						<label for="example-text-input" class="col-xs-2 col-form-label"><i
+							class="fa fa-envelope fa-lg mr10" aria-hidden="true"></i> To:</label>
+						<div class="col-xs-10">{{renterEmailId}}</div>
+					</div>
+					<div class="form-group reasonRadiobox">
+						<label class="col-xs-2 col-form-label">Reason: </label>
+						<div class="col-xs-10">
+							<label style="display: block" ng-repeat="reason in reasonArray">
+								<input style="margin-right: 5px; margin-top:" type="checkbox"
+								name="checkbox" ng-click="toggleReasonSelection(reason)"
+								value="{{reason}}">{{reason}}
+							</label>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-xs-2 col-form-label">Reason: </label>
+						<div class="col-xs-12">
+							<textarea class="form-control" rows="5" placeholder="Reason"
+								ng-model="blockedReason" ng-disabled="!otherChecked"></textarea>
+						</div>
+					</div>
+				</form>
+			</fieldset>
+		</div>
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-primary"
+			ng-click="sendCancelNotify()" ng-disabled="!checkBoxChecked">
+			<i class="fa fa-paper-plane" aria-hidden="true"></i> Send
+		</button>
+		<button type="button" class="btn btn-default" ng-click="close()">Cancel</button>
+	</div>
+</div>

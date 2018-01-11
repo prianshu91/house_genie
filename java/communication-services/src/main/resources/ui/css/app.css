@@ -1,0 +1,48 @@
+.font22 {
+	font-size: 22px;
+}
+
+.pad0 {
+    padding: 0px;	
+}
+
+.right-radius0 {
+	border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+
+.left-radius0 {
+	border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+}
+
+.font22 {
+	font-size: 22px;
+}
+
+.even {
+	background: aliceblue;
+}
+
+.odd {
+	background: white;
+}
+
+.modal-footer {
+	border-top: none;
+}
+
+button {
+	height: 25px; 
+	padding-top: 1px !important; 
+	margin-left: 5px;
+}
+
+.top10 {
+	margin-top: 10px
+}
+
+.required label:after {
+	content:" *";
+	color:#f8522c;
+}

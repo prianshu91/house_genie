@@ -1,0 +1,96 @@
+<ul class="nav nav-tabs col-md-12" style="margin-top: 20px;">
+    <li ng-repeat="tab in tabs" ng-class="{active:isActiveTab(tab)}"><a href="#" ng-click="onClickTab(tab)">{{tab}}</a></li>
+</ul>
+
+<div id="mainView">
+	<div ng-include="currentTab" class="col-md-12" style="padding-top: 10px;"></div>
+</div>
+
+<script type="text/ng-template" id="Message">
+	<div id="messageModal" class="modal fade" role="dialog">
+		<div class="modal-dialog modal-lg">
+		    <div class="modal-content">
+    			<div class="modal-header">
+        			<h4 class="modal-title">Add Message<i class="fa fa-close font22 pull-right" data-dismiss="modal"></i></h4>
+      			</div>
+      			<div class="modal-body">
+					<div class="alert alert-danger" ng-if="newMessage.error != undefined && newMessage.error != ''">
+  						{{newMessage.error}}
+					</div>
+					<div class="col-md-12 top10 required">
+						<label class="col-md-3">Text</label><input class="col-md-5" type="text" ng-model="newMessage.text" />
+					</div>
+					<div class="col-md-12 top10 required">
+						<label class="col-md-3">Sender Id</label><input class="col-md-5" type="text" ng-model="newMessage.senderId" />
+					</div>
+					<div class="col-md-12 top10 required">
+						<label class="col-md-3">Sender Name</label><input class="col-md-5" type="text" ng-model="newMessage.senderName" />
+					</div>
+					<div class="col-md-12 top10 required">
+						<label class="col-md-3">Receiver Id</label><input class="col-md-5" type="text" ng-model="newMessage.receiverId" />
+					</div>
+					<div class="col-md-12 top10 required">
+						<label class="col-md-3">Receiver Name</label><input class="col-md-5" type="text" ng-model="newMessage.receiverName" />
+					</div>
+					<div class="col-md-12 top10">
+						<button class="btn btn-primary pull-right" ng-click="addMessage(newMessage)">Send</button>
+					</div>
+	      		</div>
+ 	     		<div class="modal-footer"></div>
+    		</div>
+		</div>
+	</div>
+	<div class="col-md-12 top10" style="background: gray; padding: 5px;" ng-if="messages != undefined && messages.length > 0">
+		<label class="col-md-3">Sender</label>
+		<label class="col-md-3">Receiver</label>
+		<label class="col-md-6">Text</label>
+	</div>
+	<div class="col-md-12" style="padding: 5px;" ng-class="$even ? 'odd' : 'even'" ng-repeat="message in messages">
+		<span class="col-md-3">{{message.senderName}}</span>
+		<span class="col-md-3">{{message.receiverName}}</span>
+		<span class="col-md-6">{{message.text}}</span>
+	</div>
+	<div class="col-md-12 top10">
+		<button class="btn btn-primary pull-right" data-toggle="modal" ng-click="createNewMessage()" data-target="#messageModal">New Message</button>
+	</div>
+</script>
+
+
+<script type="text/ng-template" id="Inbox">
+	<div id="detailedModal" class="modal fade" role="dialog">
+		<div class="modal-dialog modal-lg">
+		    <div class="modal-content">
+    			<div class="modal-header">
+        			<h4 class="modal-title">Messages<i class="fa fa-close font22 pull-right" data-dismiss="modal"></i></h4>
+      			</div>
+      			<div class="modal-body">
+					<div class="col-md-12" style="padding: 5px;" ng-class="$even ? 'odd' : 'even'" ng-repeat="singleUserMessage in singleUserMessages">
+						<span class="col-md-3">{{singleUserMessage.senderName}}</span>
+						<span class="col-md-3">{{singleUserMessage.receiverName}}</span>
+						<span class="col-md-6">{{singleUserMessage.text}}</span>
+					</div>
+	      		</div>
+ 	     		<div class="modal-footer"></div>
+    		</div>
+		</div>
+	</div>
+	<div class="col-md-12 top10">
+		<select class="selectpicker pull-right" ng-model="userSelect" ng-init="userSelect='none'" ng-change="getInbox(userSelect)" >
+			<option value="none">Select User</option>
+			<option ng-repeat="(key, value) in users" value="{{key}}">{{value}}</option>
+		</select>
+	</div>
+	<div class="col-md-12 top10" style="background: gray; padding: 5px;" ng-if="userSelect != 'none' && userMessages != undefined && userMessages.length > 0">
+		<label class="col-md-3">Sender</label>
+		<label class="col-md-3">Receiver</label>
+		<label class="col-md-5">Text</label>
+		<label class="col-md-1">All</label>
+	</div>
+	<div class="col-md-12" style="padding: 5px;" ng-class="$even ? 'odd' : 'even'" ng-if="userSelect != 'none'" ng-repeat="userMessage in userMessages">
+		<span class="col-md-3">{{userMessage.senderName}}</span>
+		<span class="col-md-3">{{userMessage.receiverName}}</span>
+		<span class="col-md-5">{{userMessage.text}}</span>
+		<i class="fa fa-search col-md-1 font22" ng-click="getMessages(userMessage.receiverId, userMessage.senderId)" data-toggle="modal" data-target="#detailedModal"></i>
+	</div>
+</script>
+

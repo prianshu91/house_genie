@@ -1,0 +1,94 @@
+# Server settings.
+server:
+  applicationConnectors:
+    - type: http
+      port: 8800
+  adminConnectors:
+    - type: http
+      port: 8801
+  rootPath: '/service/*'
+
+#Eureka properties 
+eureka:
+  name: communication:8800
+  vipAddress: communication
+  serverUrl: http://eureka:8080/eureka/v2/
+
+# Kafka settings.
+kafka:
+  zookepperUrl: kafka:2181
+  brokers: kafka:9092
+  handlers:
+    - com.promelle.communication.handler.UserSignupOTPHandler
+    - com.promelle.communication.handler.ProductActivatonHandler
+    - com.promelle.communication.handler.UserCreateHandler
+    - com.promelle.communication.handler.OrderPlacedHandler
+    - com.promelle.communication.handler.ForgotPasswordOTPHandler
+    - com.promelle.communication.handler.ProductMessageCreateHandler
+    - com.promelle.communication.handler.EarningCancelledHandler
+    - com.promelle.communication.handler.EarningAwaitingHandler
+    - com.promelle.communication.handler.ProductCreationHandler
+    - com.promelle.communication.handler.ProductUpdationHandler
+    - com.promelle.communication.handler.ShipmentDeliveredHandler
+    - com.promelle.communication.handler.ShipmentCompletedHandler
+    - com.promelle.communication.handler.ReviewCreatedHandler
+    - com.promelle.communication.handler.ProductDeletionHandler
+    - com.promelle.communication.handler.BroadcastEmailHandler
+    - com.promelle.communication.handler.UserDeleteHandler
+
+smtpCredentials:
+  user: "Promelle"
+  pass: "!Riya+Nishka123"
+
+smsCredentials:
+  accuntSid: "AC4cd6dada79ed49858ef8aefd36676828"
+  authToken: "670629b52afba99f6973f9f6fecb33b2" 
+  defaultFrom: "+16463928405" 
+  
+# APNS settings.
+apnsCredentials:
+  p12FilePath: /data/PromelleDevPushCert.p12
+  p12AccessPass: Infoobjects1!
+
+# MySQL settings.
+dataSourceFactory:
+  driverClass: com.mysql.jdbc.Driver
+  user: root
+  password: 
+  url: jdbc:mysql://maria:3306/promelle
+  properties:
+    charSet: UTF-8
+  maxWaitForConnection: 1s
+  minSize: 8
+  maxSize: 32
+  checkConnectionWhileIdle: false
+  evictionInterval: 10s
+  minIdleTime: 1 minute
+  checkConnectionOnBorrow: true
+
+# Mongo settings.
+mongo:
+  serverList: localhost:27017
+  dbName: promelle
+
+# Logging settings.
+logging:
+
+  # The default level of all loggers. Can be OFF, ERROR, WARN, INFO, DEBUG, TRACE, or ALL.
+  level: INFO
+
+  # Logger-specific levels.
+  loggers:
+    com.promelle: INFO
+
+  appenders:
+    - type: console
+      threshold: INFO
+      logFormat: "%-6level [%d{MM-dd-yyyy HH:mm:ss.SSS}] [%t] %logger{5} - %X{code} %msg %n"
+    - type: file
+      threshold: INFO
+      logFormat: "%-6level [%d{MM-dd-yyyy HH:mm:ss.SSS}] [%t] %logger{5} - %X{code} %msg %n"
+      currentLogFilename: /promelle/logs/communication.log
+      archivedLogFilenamePattern: /promelle/logs/communication-%d{yyyy-MM-dd}.log.gz
+      archivedFileCount: 5
+      archive: true

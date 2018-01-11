@@ -1,0 +1,52 @@
+<h2 class="sub-header">Add School</h2>
+
+<div class="col-xs-12 pad0">
+	<form>
+		<div class="form-group col-xs-12">
+			<label class="col-xs-2 col-form-label">School Name: </label>
+			<div class="col-xs-5">
+				<input class="form-control" type="text" name="schoolName"
+					ng-model="school.schoolName">
+			</div>
+		</div>
+		<div class="form-group col-xs-12">
+			<label class="col-xs-2 col-form-label">Address: </label>
+			<div class="col-xs-5">
+				<div class="form-group">
+					<input class="form-control" type="text" name="street1"
+						placeholder="Street 1" ng-model="school.street1">
+				</div>
+				<div class="form-group">
+					<input class="form-control" type="text" name="street2"
+						placeholder="Street 2" ng-model="school.street2">
+				</div>
+				<div class="form-group">
+					<input class="form-control" type="text" name="city"
+						placeholder="City" ng-model="school.city">
+				</div>
+				<div class="form-group">
+					<div class="col-xs-6 pad0">
+						<input class="form-control" type="text" name="state"
+							placeholder="State" ng-model="school.state">
+					</div>
+					<div class="col-xs-6 pR0">
+						<input class="form-control" type="text" name="zipcode"
+							placeholder="Zipcode" ng-model="school.zipcode">
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="form-group col-xs-12 mt15">
+			<div class="col-xs-2"></div>
+			<div class="col-xs-5">
+				<div class="pull-right">
+					<button type="button" class="btn btn-default"
+						ng-click="resetPage()">Reset</button>
+					<button type="button" class="btn btn-primary"
+						ng-click="saveSchool()"
+						ng-disabled="!(school.schoolName && school.street1 && school.city && school.state && school.zipcode)">Save</button>
+				</div>
+			</div>
+		</div>
+	</form>
+</div>

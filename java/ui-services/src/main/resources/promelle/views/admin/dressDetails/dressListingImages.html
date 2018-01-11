@@ -1,0 +1,43 @@
+<div ng-controller="dressListingImagesCtrl" class="dressImages">
+	<div class="row placeholders">
+		<div class="col-xs-6 col-sm-3 placeholder"
+			ng-repeat="image in images track by $index">
+			<div class="img-box">
+				<a href="" ng-click="openLightboxModal($index)"> <img
+					ng-src="{{image.thumbUrl}}" class="img-thumbnail img-responsive">
+				</a>
+			</div>
+			<h4>{{image.caption}}</h4>
+			<span class="text-muted"> <input type="checkbox"
+				ng-if="isReadyToActive" ng-model="listImage[image.caption]"
+				ng-change="stateChanged(image.url, image.caption)">
+			</span>
+		</div>
+		<div class="form-group col-xs-12" ng-if="isReadyToActive">
+			<h4>
+				<span for="example-text-input" class="col-xs-1">Other</span>
+			</h4>
+			<div class="col-xs-1">
+				<input type="checkbox" ng-disabled="disabledRentalCheckbox"
+					ng-model="other" ng-change="stateChanged('Other')">
+			</div>
+		</div>
+	</div>
+	<div class="form-group" ng-if="showNoImageFound"
+		style="text-align: center">
+		<img src="/ui/promelle/images/no-image.jpg">
+	</div>
+	<div class="form-group pull-right">
+		<button type="button" class="btn btn-primary"
+			ng-click="confirmListing()" ng-disabled="disableConfirm"
+			ng-if="!corruptData && isReadyToActive">
+			<i class="fa fa-check" aria-hidden="true"></i> Approve Listing
+		</button>
+		<button type="button" class="btn btn-danger"
+			ng-click="rejectListing()" ng-disabled="disableReject"
+			ng-if="isReadyToActive">Reject Listing</button>
+		<button type="button" class="btn btn-danger"
+			ng-click="deleteListing()" ng-if="isReadyToDelete">Delete
+			Listing</button>
+	</div>
+</div>

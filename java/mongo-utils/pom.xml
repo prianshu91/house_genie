@@ -1,0 +1,80 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>mongo-utils</artifactId>
+	<name>Mongo Utils</name>
+
+	<groupId>com.promelle</groupId>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<dropwizard.version>1.0.2</dropwizard.version>
+		<sonar.host.url>http://sonar.server:9000</sonar.host.url>
+	</properties>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-shade-plugin</artifactId>
+				<version>2.3</version>
+				<configuration>
+					<filters>
+						<filter>
+							<artifact>*:*</artifact>
+							<excludes>
+								<exclude>META-INF/*.SF</exclude>
+								<exclude>META-INF/*.DSA</exclude>
+								<exclude>META-INF/*.RSA</exclude>
+							</excludes>
+						</filter>
+					</filters>
+					<transformers>
+						<transformer
+							implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer" />
+					</transformers>
+					<createDependencyReducedPom>false</createDependencyReducedPom>
+				</configuration>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>shade</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.0</version>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
+			</plugin>
+		</plugins>
+		<resources>
+			<resource>
+				<directory>src/main/resources/META-INF/</directory>
+				<targetPath>META-INF</targetPath>
+			</resource>
+		</resources>
+	</build>
+	<dependencies>
+		<dependency>
+			<groupId>org.mongodb</groupId>
+			<artifactId>mongo-java-driver</artifactId>
+			<version>2.13.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.promelle</groupId>
+			<artifactId>common-dto</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>io.dropwizard</groupId>
+			<artifactId>dropwizard-core</artifactId>
+			<version>${dropwizard.version}</version>
+		</dependency>
+	</dependencies>
+	<version>2.0.0</version>
+</project>

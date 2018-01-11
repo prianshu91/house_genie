@@ -1,0 +1,30 @@
+server:
+  applicationConnectors:
+  - type: http
+    port: 8720
+  adminConnectors:
+  - type: http
+    port: 8721
+
+eureka:
+  name: ui:8900
+  vipAddress: ui
+  serverUrl: http://eureka:8080/eureka/v2/
+
+logging:
+  level: INFO
+  loggers:
+    com.promelle: INFO
+  appenders:
+  - type: console
+    threshold: INFO
+    logFormat: '%-6level [%d{MM-dd-yyyy HH:mm:ss.SSS}] [%t] %logger{5} - %X{code}
+      %msg %n'
+  - type: file
+    threshold: INFO
+    logFormat: '%-6level [%d{MM-dd-yyyy HH:mm:ss.SSS}] [%t] %logger{5} - %X{code}
+      %msg %n'
+    currentLogFilename: /promelle/logs/web.log
+    archivedLogFilenamePattern: /promelle/logs/web-%d{yyyy-MM-dd}.log.gz
+    archivedFileCount: 5
+    archive: true

@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en" ng-app="manageApp">
+<head>
+<meta charset="utf-8">
+<title>Product Management</title>
+<link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+<link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="css/app.css">
+<script src="jquery/jquery-1.11.2.min.js"></script>
+<script src="angularjs/angular.min.js"></script>
+<script src="angularjs/angular-ui-router.js"></script>
+<script src="angularjs/angular-route.min.js"></script>
+<script src="angularjs/angular-sanitize.js"></script>
+<script src="angularjs/breadcrumb.js"></script>
+<script src="ext-libs/underscore-min.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+<link href="bootstrap/css/bootstrap-switch.min.css" rel="stylesheet">
+<script src="bootstrap/js/bootstrap-switch.min.js"></script>
+<script src="module.js"></script>
+<script src="angularjs/angular-local-storage.min.js"></script>
+<script src="angularjs/angular-bootstrap-switch.js"></script>
+<script src="js/controllers.js"></script>
+<script>
+	$(document).ready(function(){
+    	$('[data-toggle="tooltip"]').tooltip();
+	});
+</script>
+</head>
+<body>
+	<div class="container">
+		<div class="col-md-12" style="text-align: center; margin-top: 5px; height: 60px;background: #2980b9; border-radius: 5px; padding: 10px;">
+		    <span style="font-size: x-large; font-weight: bolder;" class="col-md-12">{{pageTitle}}</span>
+		</div>
+		<div ui-view="main"></div>
+	</div>
+</body>
+</html>

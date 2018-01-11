@@ -1,0 +1,25 @@
+<div ng-controller="userListingsCtrl">
+	<fieldset>
+		<div ui-grid="userListings" ui-grid-resize-columns ui-grid-pagination
+			ui-grid-auto-resize style="border-top: none;"
+			class="gridTable"></div>
+	</fieldset>
+</div>
+
+
+<!-- <div ng-controller="userListingsCtrl" class="table-responsive">
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Listing Date</th>
+				<th>Listing Title</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="item in userListings">
+				<td>{{item.createdOn | date:'medium'}}</td>
+				<td><a href="" ng-click="openListingDetails(item.id)">{{item.title}}</a></td>
+			</tr>
+		</tbody>
+	</table>
+</div> -->

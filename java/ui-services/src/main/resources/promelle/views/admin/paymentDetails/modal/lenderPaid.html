@@ -1,0 +1,78 @@
+<div class="modal-content">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal"
+			ng-click="close()" aria-hidden="true">&times;</button>
+		<h4 class="modal-title">Check Details</h4>
+	</div>
+	<div class="modal-body" style="overflow: auto; display: inline-block;">
+		<fieldset>
+			<!-- <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 pad0"> -->
+			<div class="well well-sm">
+				<div class="clearfix"></div>
+				<h5 class="modal-title" style="margin: 0px 15px">Payment
+					Details</h5>
+				<div class="uploadCheck form-horizontal">
+					<div class="form-group">
+						<label class="col-xs-6">Lender's Full Name:</label>
+						<div class="col-xs-6">{{lenderFullName}}</div>
+					</div>
+					<div class="form-group" ng-if="lenderMobile">
+						<label class="col-xs-6">Lender's Mobile Number:</label>
+						<div class="col-xs-6">{{lenderMobile}}</div>
+					</div>
+					<div class="form-group">
+						<label class="col-xs-6">Earnings Check Amount:</label>
+						<div class="col-xs-6">{{amount | currency}}</div>
+					</div>
+					<div class="form-group">
+						<label class="col-xs-6">Lending Order #:</label>
+						<div class="col-xs-6">{{lendingOrderId}}</div>
+					</div>
+					<div class="form-group">
+						<label class="col-xs-6">Check Number:</label>
+						<div class="col-xs-6">{{checkNumber}}</div>
+					</div>
+					<div class="form-group">
+						<label class="col-xs-6">Name on Check:</label>
+						<div class="col-xs-6">{{nameOnCheck}}</div>
+					</div>
+					<div class="form-group">
+						<label class="col-xs-6">Address Check is to be sent at:</label>
+						<div class="col-xs-6">{{checkAddress}}</div>
+					</div>
+
+
+
+					<!-- <div class="col-sm-6 col-md-6">
+					<div class="form-group">
+						<label>Check Recipient:</label> <span>{{chequeRecipient}}</span>
+					</div>
+				</div>
+				<div class="col-sm-6 col-md-6">
+					<div class="form-group">
+						<label>Check Amount:</label> <span>{{amount | currency}}</span>
+					</div>
+				</div>
+				<div class="col-sm-6 col-md-6">
+					<div class="form-group">
+						<label>Check Number:</label> <span>{{checkNumber}}</span>
+					</div>
+				</div>
+				<div class="col-sm-12 col-md-12">
+					<label style="vertical-align: top;">Check image:</label> <span
+						style="margin-left: 10px"> <img ng-src="{{checkImageUrl}}"
+						alt="" class="img-rounded img-responsive" />
+
+					</span>
+				</div> -->
+					<!-- </div> -->
+
+
+				</div>
+			</div>
+		</fieldset>
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-default" ng-click="close()">Cancel</button>
+	</div>
+</div>

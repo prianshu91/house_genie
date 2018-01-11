@@ -1,0 +1,17 @@
+<div ng-controller="promoCodeInUseCtrl">
+	<fieldset class="noBdrTop">
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 pad0">
+			<uib-accordion close-others="oneAtATime">
+            <div uib-accordion-group class="panel-default" is-open="status.open">
+                <uib-accordion-heading>
+                    Code 1 <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
+                </uib-accordion-heading>
+                <div class="form-group bdr-btm promo-code">
+                    <label class="col-xs-2 col-form-label">Description:</label>
+                    <div class="col-xs-10">fdsafdsa</div>
+                </div>
+            </div>
+        </uib-accordion>
+		</div>
+	</fieldset>
+</div>

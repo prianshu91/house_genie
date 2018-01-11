@@ -1,0 +1,210 @@
+<div class="loader" ng-if="isLoading">
+	<img src="images/spinner.gif" alt="loading...">
+</div>
+<section class="faq">
+	<div class="container">
+		<div ng-bind-html="faqContent"></div>
+	</div>
+</div>
+<!-- <section class="faq">
+		<div class="container">
+			<h2 class="page-header">Frequently Asked Questions (FAQ)</h2>
+			<div class="form-group">
+				<p class="text-bold">What is PromElle?</p>
+				<p class="text-muted">PromElle is a peer-to-peer marketplace where teenage girls can rent and lend formal dresses among each other.  Those who rent save money, and those who lend, make money.</p>
+			</div>
+			<div class="form-group">
+				<p class="text-bold">Is there a sign-up or membership fee for PromElle?</p>
+				<p class="text-muted">No, downloading and using the PromElle app is completely free!</p>
+			</div>
+			<div class="form-group">
+				<p class="text-bold">How do I get started on PromElle?</p>
+				<p class="text-muted">All you have to do is download the PromElle app from the App Store (make sure you have iOS 9 or later), click Sign Up at the bottom of any of the first 4 welcome screens to create an account, and start browsing!</p>
+			</div>
+			<div class="form-group">
+				<p class="text-bold">What email address should I use to sign up?</p>
+				<p class="text-muted">It is best to use your email address provided by your school, if you have one.  If you don’t, please use the email address you most frequently check so that you do not miss any important notifications.</p>
+			</div>
+			<div class="form-group">
+				<p class="text-bold">What do you suggest my Username be?</p>
+				<p class="text-muted">For privacy reasons, we encourage everyone to avoid using their real name as their username, and instead pick a creative username that is not an easy identifier. Usernames can be up to 15 characters long.</p>
+			</div>
+			<div class="form-group">
+				<p class="text-bold">Can I change my username?</p>
+				<p class="text-muted">You cannot change your username after you initially sign up for your account.</p>
+			</div>
+			<div class="form-group">
+				<p class="text-bold">I can’t find my verification code.  What should I do?</p>
+				<p class="text-muted">Your account sign up verification code would be sent to the email address that you entered during sign up.  If you do not see this email, please check your spam folder.  If you are still having trouble, please contact us at <a href="mailto:contact@promelle.com">contact@promelle.com</a>.</p>
+			</div>
+			<div class="form-group">
+				<p class="text-bold">I can’t find my verification code.  What should I do?</p>
+				<p class="text-muted">Your account sign up verification code would be sent to the email address that you entered during sign up.  If you do not see this email, please check your spam folder.  If you are still having trouble, please contact us at <a href="mailto:contact@promelle.com">contact@promelle.com</a>.</p>
+			</div>
+			<div class="form-group">
+				<p class="text-bold">How do I rent on PromElle?</p>
+				<p class="text-muted">To rent a dress, the best place to start is the PromElle Home screen, or the Feed screen. The PromElle feed has thumbnails of all the dress listings. Scroll through items that are posted on the feed or narrow your search using the filter option (the filter icon is on the top left of the screen. Select the thumbnail of the listing you are interested in and click on the flip button on the top right corner to view the Dress Detail screen. Once you have reviewed the dress details and know you want to rent the dress, click on the RENT button at the bottom of the Dress Detail page. After selecting the rental length (4-days or 8-days) and the start date of your rental period using the calendar, you can checkout your rental with credit card payment.</p>
+			</div>
+			<div class="form-group">
+				<p class="text-bold">How do I lend on PromElle?</p>
+				<p class="text-muted">To create a listing for a dress you want to Lend out on PromElle, click "Lend" on the bottom navigation bar in the app. Upload 2-4 photos of your dress - we recommend a clear photo of the dress front, dress back and one of you wearing the dress (you can crop out your face if you wish to). Add all the required details and submit your listing for approval. Once the PromElle team has reviewed and approved your listing, it will be automatically published on the PromElle feed and can be viewed publicly. You will also receive a notification once your listing has been published.</p>
+			</div>
+			<div class="form-group">
+				<p class="text-bold">How can I trust renting on PromElle?</p>
+				<p class="text-muted">As a renter you are protected every time you rent on PromElle. When you rent a dress, your payment is safe with us until you receive your order.</p>
+			</div>
+			<div class="form-group">
+				<p class="text-bold">What is your renter cancellation policy?</p>
+				<p class="text-muted">As a renter, you have<strong> up to 24 hours</strong> after you receive your order to cancel and get a full refund if the dress does not match the description on the listing or if it does not fit well. If you wish to cancel your order, you must notify us (<a href="mailto:contact@promelle.com">contact@promelle.com</a>) <strong>within 24 hours</strong> after you receive your dress. Once we verify your claim, we will refund your payment. If we don’t hear within 24 hours, we will assume that everything is ok.</p>
+			</div>
+			<div class="form-group">
+				<p class="text-bold">What is your lender cancellation policy?</p>
+				<p class="text-muted">As a lender, you have up to <strong>3 hours</strong> after a renter has placed a rental order for your dress, to cancel the order. While we <strong>highly discourage</strong> lenders from canceling once a rental order has been placed, we understand that there might be a rare instance of the dress unexpectedly getting ripped or damaged and hence cannot be available for the dates specified on a rental order.  If you wish to cancel your order, you must notify us (<a href="mailto:contact@promelle.com">contact@promelle.com</a>) <strong>within 3 hours</strong> after rental order is placed. Once we verify your claim, we will cancel the order and notify the renter. We also recommend that you use the in-app messenger and communicate with the renter, informing them of your inability to fulfill the rental order</p>
+			</div>
+			<div class="form-group">
+				<p class="text-bold">Can I lend and rent on PromElle if I am not in the United States?</p>
+				<p class="text-muted">For now, PromElle is only available in the United States, but we have plans to expand further in the future.</p>
+			</div>
+			<div class="form-group">
+				<p class="text-bold">What types of items does PromElle accept?  What can I rent on PromElle?</p>
+				<p class="text-muted">PromElle is a peer to peer marketplace where teens girls can rent and lend <strong>formal</strong> wear for many occasions, such as Prom, homecoming dances, sweet 16s, parties, and dinners.  We do not accept clothing that do not fall in this category such as casual dresses, t-shirts, etc.  The formal dresses available to users should be in very good condition, clean, undamaged and free of visible stains.  All listings details should be an accurate.</p>
+			</div>
+			<div class="form-group">
+				<p class="text-bold">If I have any questions or concerns, who should I contact and how?</p>
+				<p class="text-muted">Please contact PromElle at contact@promelle.com.  You may contact us directly through the app from Me → Settings → Contact Us.  You may also find us by clicking on the “?” icons at the top of any of the app’s screens.</p>
+			</div>
+			<div class="form-group">
+				<p class="text-bold">What does PromElle do to keep its users safe?</p>
+				<p class="text-muted">PromElle places the highest priority to the safety and security of our users and their information.  We constantly monitor our users’ activity and their listings before they are shared with other users, thereby ensuring that PromElle is a safe environment. We implement security measures designed to protect their information from unauthorized access. We further protect their information from potential security breaches by implementing certain technological security measures including encryption, firewalls and secure socket layer technology. The information detailed in our Privacy Policy (found <a ui-sref="privacyPolicy" target="_blank">here</a>) will help explain how we collect, store and use the information you provide us. </p>
+			</div>
+			<div class="form-group">
+				<p class="text-bold">How can I ensure that the dress that I rent will be clean and ready to wear?</p>
+				<p class="text-muted">The lender is responsible for delivering a clean dress every time.  The lender will be charged a dress cleaning penalty fee if the rental dress is not delivered in a clean condition. Our platform is built on trust and feedback and it is important for lenders (and renters) to uphold this trust. As a renter, you can provide feedback via the Ratings and Reviews section which is publicly available for everyone to see. A Lender that receives one or more bad reviews will jeopardize their future rentals. Hence the responsibility lies with the lender to deliver a clean and ready to wear dress each time. The renter is not required to clean or wash the dress after use.</p>
+			</div>
+			<div class="form-group">
+				<p class="text-bold">I rented or lent an item, but haven’t received an email confirmation. What should I do?</p>
+				<p class="text-muted">If you haven’t received an email confirmation within 24 hours of lending or renting an item, please contact PromElle so that we can check the status of the item and rectify the issue.</p>
+			</div>
+			<div class="form-group">
+				<p class="text-bold">What can I do if my dress doesn’t fit?</p>
+				<p class="text-muted">Once you receive the dress, if the dress does not fit please contact the Lender via in-app messaging AND PromElle at <a href="mailto:contact@promelle.com">contact@promelle.com</a> within <strong>24 HOURS</strong> after the delivery of the dress and arrange the return of the dress. If you do so, you will receive a full refund of the price you paid for the dress.  If you fail to notify the lender and PromElle within 24 hours of receiving the dress, we will assume that everything is ok and you will be charged the full rental price of the dress.</p>
+			</div>
+			<div class="form-group">
+				<p class="text-bold">Where can I find my rental orders?</p>
+				<p class="text-muted">You will find your rental history under the My Rental Orders tab in Order History in the Settings section of the app.  You can access this feature by clicking on Me → Settings → Order History → My Rental Orders.</p>
+			</div>
+			<div class="form-group">
+				<p class="text-bold">How does insurance work?</p>
+				<p class="text-muted">Renters are required to pay a small insurance fee to cover minor damages such as minor rips, stains and tears.  If such damage does occur during your rental period, we will cover the repair and you will not be required to pay anything beyond the insurance fee.  However, if an item is damaged beyond repair and needs to be replaced, PromElle will compensate the lender for the current retail value of the dress or replace the item, and you, the renter, will be billed accordingly.</p>
+				<p>PromElle offers the following tiered insurance fee structure based on the dress rental price.</p>
+				<div class="col-sm-3 col-xs-6">
+					<p class="text-muted">
+						<strong>Rental Price</strong><br>
+						$0.00 - $24.99<br>
+						$25.00 - $49.99<br>
+						&gt; $50
+					</p>
+				</div>
+				<div class="col-sm-3 col-xs-6">
+					<p class="text-muted">
+						<strong>Insurance fee</strong><br>
+						$2.99<br>
+						$3.99<br>
+						$6.99
+					</p>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+			<div class="form-group">
+				<p class="text-bold">How can I help my listing rent faster?</p>
+				<p class="text-muted">To help your listing rent faster, we have the following suggestions:</p>
+				<ul class="text-muted">
+					<li>Ensure the dress is in great condition</li>
+					<li>Take photos of your dress in good lighting so that the dress is clearly visible </li>
+					<li>Add a photo that highlights a special feature of the dress</li>
+					<li>Add a photo that highlights a special feature of the dress</li>
+					<li>Add a good description </li>
+					<li>Set the rental price appropriately (don’t overprice!). We recommend a rental price of about 20% - 30% of the retail price. </li>
+				</ul>
+			</div>	
+			<div class="form-group">
+				<p class="text-bold">How do I avoid being charged for item damages that I did not create?</p>
+				<p class="text-muted">It is expected that items that are rented out will have normal wear and tear, and such damage is covered by the insurance that we charge the renters.  If you receive an item that shows existing damage that makes the dress un-wearable, please notify the Lender via in-app messaging AND PromElle at <a href="mailto:contact@promelle.com">contact@promelle.com</a> <strong>WITHIN 24 HOURS</strong> after the delivery of the dress and arrange the return of the dress.  If you do so, we will refund you in full for the rental. If you fail to notify the lender and PromElle within 24 hours of receiving the dress, you will be charged the full rental price of the dress.</p>
+			</div>
+			<div class="form-group">
+				<p class="text-bold">How long can I keep an item?</p>
+				<ul class="text-muted">
+					<li>You can keep your item for the entire rental length you chose (4-days or 8-days). Your rental period starts on the start date you specified. </li>
+					<li>You will need to arrange to return the dress within 24 hours <strong>after</strong> the rental end date. </li>
+				</ul>
+			</div>
+			<div class="form-group">
+				<p class="text-bold">Can I contact a lender if I have questions about a listing?</p>
+				<p class="text-muted">Yes, definitely.  We encourage you to ask questions before renting an item.  You can do this directly through the app using our in-app messaging feature.  On the Dress Details page of a listing, click on the “Ask a Question” link in the About the Lender section. Then, you can type in your question in the text box provided and click on the check mark.  </p>
+			</div>
+			<div class="form-group">
+				<p class="text-bold">When can I expect my rental?</p>
+				<p class="text-muted">You can expect to receive your rental either on the start date of your rental period or one day earlier.  If you have not received your dress within 24 hours of the start of your rental period, please contact the Lender via in-app messaging AND contact us at <a href="mailto:contact@promelle.com">contact@promelle.com.</a> If you need the dress by a certain time on the start date of your rental period, please indicate that to the lender via the in-app messenger. In order to avoid any last minute delivery issues, it is best to start your rental at least 1 day prior to the actual event date.</p>
+			</div>
+			<div class="form-group">
+				<p class="text-bold">How is my rental dress delivered?  </p>
+				<ul class="text-muted">
+					<li>PromElle is currently only available to students from the Harker School. If you are not from the Harker School in San Jose, CA, please contact us with your school details and we will inform you once it is available.</li>
+					<li>If you are Harker student and you wish to rent a dress and the lender also happens to be a Harker student then you will meet in person at school and arrange pickup and drop off. The delivery cost in this case is $0.00</li>
+					<li>If the lender is not a Harker student then PromElle will arrange to have the dress delivered to you either on the rental start date or 1 day earlier and also arrange to pick up the dress within 24 hours after the rental end date. PromElle will also return the dress to the lender. The delivery cost in this case is $5.00 each way. Both, lender and renter pay one-way delivery charges.</li>
+				</ul>
+			</div>
+			<div class="form-group">
+				<p class="text-bold">How much do I receive for each of my items’ rentals?</p>
+				<p class="text-muted">The lender will receive 75% of the rental price of each of their items. Since the lender pays one-way delivery, the delivery charges will be deducted from the earnings before it is redeemed.</p>
+			</div>
+			<div class="form-group">
+				<p class="text-bold">Why should I lend rather than consign?</p>
+				<p class="text-muted">With lending, your items can be rented out several times, increasing your earnings, and, if you choose, you can use your item whenever it isn’t rented out.</p>
+			</div>
+			<div class="form-group">
+				<p class="text-bold">Where can I find my lending orders (my items that have been rented out)?</p>
+				<p class="text-muted">You will find your lending history under the My Lending Orders tab in Order History in the Settings section of the app.  You can access this feature by clicking on Me / Settings / Order History / My Lending Orders.</p>
+			</div>
+			<div class="form-group">
+				<p class="text-bold">What happens if I want to wear my item(s)?</p>
+				<p class="text-muted">If you want to wear your item, you can wear it while it is not being rented (but still listed), but make sure to mark those dates off the calendar.   You can do this initially when you list the dress, or later by editing your listing by clicking on the thumbnail of the dress in your dress Listings on your Profile page.</p>
+			</div>
+			<div class="form-group">
+				<p class="text-bold">When do I receive my earnings after my item is rented out?</p>
+				<p class="text-muted">After the renter returns your item by the end of the rental period, you will receive a notification from PromElle indicating that you can redeem your earnings. At this point, you may click on the Redeem button next to your Order number in Me / Settings / My Earnings.  Once you click on this button, you will be prompted to enter the details for the check.  A check will be sent to you at the address you provide.  It can take up to 2 weeks for the check to reach you.  If you do not receive your check within this timeframe, please feel free to contact us at <a href="mailto:contact@promelle.com">contact@promelle.com</a>.</p>
+			</div>
+			<div class="form-group">
+				<p class="text-bold">What happens if my item gets damaged?</p>
+				<p class="text-muted">Renters are required to pay an insurance fee to cover minor damages and/or general wear and tear. However, if the item needs major repair, the renter will be billed for the cost of that repair. If an item is damaged beyond repair and needs to be replaced, PromElle will compensate the lender for the current retail value of the dress or replace the item, and the renter will be billed accordingly.</p>
+			</div>
+			<div class="form-group">
+				<p class="text-bold">How can I edit my listing?</p>
+				<p class="text-muted">If you would like to edit any details of a listing that you have already submitted, you may do so by clicking on its thumbnail in the Listing section on your Profile page.  You can view the details of your listing by clicking on the flip button at the top right corner of your screen.  At the top right corner of the Dress Details page, you will see an Edit icon.  By clicking this button you can edit any of the details you previously entered.  Once you are satisfied, you will submit the listing for approval.  If all is fine, you should see your listing on the app with the updated details.</p>
+			</div>
+			<div class="form-group">
+				<p class="text-bold">Can I delete a listing?</p>
+				<p class="text-muted">If you would like to delete a listing, you may do so by clicking on its thumbnail in the Listing section on your Profile page.  Once you do so, you can view the details of the listing by clicking on the flip button at the top right corner of your screen.  By scrolling to the bottom of this screen and clicking the Delete button, you will be able to delete your listing from the app.   </p>
+			</div>
+			<div class="form-group">
+				<p class="text-bold">How do I check for messages sent by other users about my listing?</p>
+				<p class="text-muted">Please check for new messages in your Messaging folder.  To access this feature, go to your profile page by clicking on the Me icon (your Profile) on the home screen.  You will see the Messaging icon on the right side of your profile picture.</p>
+			</div>
+			<div class="form-group">
+				<p class="text-bold">When can I expect to get back the item I lent?</p>
+				<p class="text-muted">You should receive the item you lent out on the end date of your rental period. For example, if a dress has been rented for 4 days starting on 2/1/17 then the renter receives the dress no later than 5.00 pm on 1/31/17 and has to return the dress back to the lender no later than 5.00 pm on 2/5/17 ( within 24 hours <strong>after</strong> the rental end date)</p>
+			</div>
+			<div class="form-group">
+				<p class="text-bold">How can I report a bad listing or user?</p>
+				<p class="text-muted">We constantly monitor our user’s activity on the app and review every new and edited listing that is submitted.  However, if you come across a bad listing or user that does not meet our guidelines and/or requirements, please contact us directly and immediately at <a href="mailto:contact@promelle.com">contact@promelle.com</a> so that we can investigate right away.</p>
+			</div>
+			<div class="form-group">
+				<p class="text-bold">How do I delete my account?</p>
+				<p class="text-muted">You may delete your account directly through the app.  To access this feature, go to your profile by clicking Me → Settings → Delete your account.</p>
+			</div>
+			<div class="form-group">
+				<p class="text-bold">How do I sign out of my account?</p>
+				<p class="text-muted">For security reasons, we highly recommend that you sign out of your account when you are not using the app.  You may sign out by going to your profile by clicking Me → Settings → Sign out.</p>
+			</div>
+		</div>			
+	</section> -->

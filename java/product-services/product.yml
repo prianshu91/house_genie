@@ -1,0 +1,70 @@
+# API Version
+services:
+  version: 1.2.1
+
+# Server settings.
+server:
+  applicationConnectors:
+    - type: http
+      port: 8400
+  adminConnectors:
+    - type: http
+      port: 8401
+  rootPath: '/service/*'
+
+# Mongo settings.
+mongo:
+  serverList: localhost:27017
+  dbName: promelle
+
+#Eureka properties 
+eureka:
+  name: product:8400
+  vipAddress: product
+  serverUrl: http://eureka:8080/eureka/v2/
+
+# Kafka settings.
+kafka:
+  zookepperUrl: kafka:2181
+  brokers: kafka:9092
+  handlers:
+    - com.promelle.product.handler.UserDeleteHandler
+    
+  
+# MySQL settings.
+dataSourceFactory:
+  driverClass: com.mysql.jdbc.Driver
+  user: root
+  password: 
+  url: jdbc:mysql://maria:3306/promelle
+  properties:
+    charSet: UTF-8
+  maxWaitForConnection: 1s
+  minSize: 8
+  maxSize: 32
+  checkConnectionWhileIdle: false
+  evictionInterval: 10s
+  minIdleTime: 1 minute
+  checkConnectionOnBorrow: true
+  
+# Logging settings.
+logging:
+
+  # The default level of all loggers. Can be OFF, ERROR, WARN, INFO, DEBUG, TRACE, or ALL.
+  level: INFO
+
+  # Logger-specific levels.
+  loggers:
+    com.promelle: INFO
+
+  appenders:
+    - type: console
+      threshold: INFO
+      logFormat: "%-6level [%d{MM-dd-yyyy HH:mm:ss.SSS}] [%t] %logger{5} - %X{code} %msg %n"
+    - type: file
+      threshold: INFO
+      logFormat: "%-6level [%d{MM-dd-yyyy HH:mm:ss.SSS}] [%t] %logger{5} - %X{code} %msg %n"
+      currentLogFilename: /promelle/logs/product.log
+      archivedLogFilenamePattern: /promelle/logs/product-%d{yyyy-MM-dd}.log.gz
+      archivedFileCount: 5
+      archive: true

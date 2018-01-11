@@ -1,0 +1,126 @@
+<div class="modal-content">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" ng-click="close()" aria-hidden="true">&times;</button>
+		<h4 class="modal-title">Lending Payment Details</h4>
+	</div>
+	<div class="modal-body" style="overflow: auto; display: inline-block;">
+		<fieldset>
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 pad0">
+				<div class="well well-sm">
+					<div class="clearfix"></div>
+					<h5 class="modal-title" style="margin: 0px 15px">Payment Details
+					</h5>
+					<div class="uploadCheck form-horizontal">
+
+						<div class="form-group">
+							<label class="col-xs-6">Lender's Full Name:</label>
+							<div class="col-xs-6">{{lenderFullName}}</div>
+						</div>
+						<div class="form-group" ng-if="lenderMobile">
+							<label class="col-xs-6">Lender's Mobile Number:</label>
+							<div class="col-xs-6">{{lenderMobile}}</div>
+						</div>
+						<div class="form-group">
+							<label class="col-xs-6">Earnings Check Amount:</label>
+							<div class="col-xs-6">{{amount | currency}}</div>
+						</div>
+						<div class="form-group">
+							<label class="col-xs-6">Lending Order #:</label>
+							<div class="col-xs-6">{{lendingOrderId}}</div>
+						</div>
+						<div class="form-group">
+							<label class="col-xs-6">Name on Check:</label>
+							<div class="col-xs-6">{{nameOnCheck}}</div>
+						</div>
+						<div class="form-group">
+							<label class="col-xs-6">Address Check is to be sent at:</label>
+							<div class="col-xs-6">{{checkAddress}}</div>
+						</div>
+						<div class="form-group">
+							<div class="col-xs-6"><label>Notes: </label></div>
+							<div class="col-xs-6"><input class="form-control" type="text" ng-model="notes"></div>
+						</div>
+
+						<!-- <form name="myForm">
+								<input type="file" file-model="picFile" ngf-select
+									ng-model="picFile" name="file" accept="image/*"
+									ngf-max-size="2MB" required ngf-model-invalid="errorFile">
+								<i ng-show="myForm.file.$error.required" style="color: red;">*required</i><br>
+								<i ng-show="myForm.file.$error.maxSize">File too large
+									{{errorFile.size / 1000000|number:1}}MB: max 2MB</i>
+								<div>
+									<span ng-show="myForm.file.$valid"><img
+										ngf-thumbnail="picFile" class="thumb"></span>
+									<button ng-click="picFile = null" ng-show="myForm.file.$valid">Remove</button>
+								</div>
+								<br>
+								<button ng-disabled="!myForm.$valid" ng-click="uploadPic()">Upload</button>
+								</span> <span ng-show="!disabledSave"
+									style="color: #006400; margin-left: 5px">Upload
+									Successful</span> <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
+							</form> -->
+
+						<!-- <div class="form-group">
+							<label>Check number</label><span
+								style="color: red; font-size: 16px">* </span><input type="text"
+								maxlength="10" ng-model="checkNumber" required
+								onkeypress='return validateQty(event);'
+								placeholder="Enter numbers only"
+								style="display: inline-block; width: auto" class="form-control">
+						</div> -->
+
+
+						<div>
+							<div>
+								<input type="radio" name="checkType" value="true" ng-model="isOnlineChecked.valueV" ng-change="clearFields(isOnlineChecked.valueV)">								Online Banking PromElle Check
+								<div class="form-group">
+									<div class="col-xs-6">
+										<label>Check Date: </label><span class="mandatory">*</span>
+									</div>
+									<div class="col-xs-6">
+										<input type="text" name="onlineCheckDate" id="popup1" class="form-control" uib-datepicker-popup="MM/dd/yyyy" ng-model="onlineCheck.checkDate"
+										 is-open="opened1" ng-click="opened1=true" datepicker-options="dateOptions" ng-disabled="isOnlineChecked.valueV=='false'"
+										 onkeydown="return dateFieldOnTab(event)">
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="col-xs-6">
+										<label>Check #: </label><span class="mandatory">*</span>
+									</div>
+									<div class="col-xs-6">
+										<input ng-disabled="isOnlineChecked.valueV=='false'" class="form-control" type="text" ng-model="onlineCheck.checkNumber">
+									</div>
+								</div>
+							</div>
+							<div>
+								<input type="radio" name="checkType" value="false" ng-model="isOnlineChecked.valueV" ng-change="clearFields(isOnlineChecked.valueV)">								Handwritten PromElle Check
+								<div class="form-group">
+									<div class="col-xs-6">
+										<label>Check Date: </label><span class="mandatory">*</span>
+									</div>
+									<div class="col-xs-6">
+										<input type="text" name="handWrittenCheckDate" id="popup2" class="form-control" uib-datepicker-popup="MM/dd/yyyy" ng-model="handWrittenCheck.checkDate"
+										 is-open="opened2" ng-click="opened2=true" datepicker-options="dateOptions" ng-disabled="isOnlineChecked.valueV=='true'"
+										 onkeydown="return dateFieldOnTab(event)">
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="col-xs-6">
+										<label>Check #: </label><span class="mandatory">*</span>
+									</div>
+									<div class="col-xs-6">
+										<input class="form-control" type="text" ng-model="handWrittenCheck.checkNumber" ng-disabled="isOnlineChecked.valueV=='true'">
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</fieldset>
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-primary" ng-click="save()" ng-disabled="!((onlineCheck.checkDate && onlineCheck.checkNumber) || (handWrittenCheck.checkDate && handWrittenCheck.checkNumber))">Save</button>
+		<button type="button" class="btn btn-default" ng-click="close()">Cancel</button>
+	</div>
+</div>

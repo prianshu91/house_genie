@@ -1,0 +1,46 @@
+<h2 class="sub-header">Payment Options</h2>
+
+<div class="form-group row pad0">
+	<div class="col-xs-5">
+		<form name="searchForm" ng-submit="search()">
+			<div class="input-group">
+				<div>
+					<label>Search:</label>
+				</div>
+				<input type="text" class="form-control" placeholder="Search for order # and username" ng-model="searchText" ng-change="searchButtonState(searchText)">
+				<span class="input-group-btn" style="vertical-align: bottom;">
+					<button class="btn btn-danger" type="button"
+						ng-click="clearSearch()" ng-if="searchClicked">
+						<i class="fa fa-times" aria-hidden="true"></i>
+					</button>
+					<button class="btn btn-default" type="button" ng-click="search()"
+						ng-if="!searchClicked">
+						<i class="fa fa-search" aria-hidden="true"></i>
+					</button>
+				</span>
+			</div>
+		</form>
+	</div>
+
+	<div class="col-xs-3 pull-right">
+		<label for="sel1">Select status:</label> <select
+			class="form-control" ng-model="selectedPaymentTypeOption"
+			ng-change="changePaymentTypeSelection(selectedPaymentTypeOption)"
+			ng-options="paymentTypeOption.type as paymentTypeOption.value for paymentTypeOption in paymentTypeOptionsDropdown">
+			<option>{{selectedPaymentTypeOption}}</option>
+		</select>
+	</div>
+	
+	<!--<div class="col-xs-3 pull-right">
+		<label for="sel1">Select status:</label> <select class="form-control" ng-model="selectedUserTypeOption" ng-change="changeUserTypeSelection(selectedUserTypeOption)"
+		 ng-options="userTypeOption.type as userTypeOption.value for userTypeOption in userTypeOptionsDropdown">
+			<option>{{selectedUserTypeOption}}</option>
+		</select>
+	</div>-->
+</div>
+
+<div class="form-group col-xs-12 pad0">
+	<div ui-grid="userListOptions" ui-grid-resize-columns ui-grid-auto-resize ui-grid-pagination class="gridTable">
+		<div class="watermark" ng-if="!userListOptions.data.length && noData">No results found</div>
+	</div>
+</div>

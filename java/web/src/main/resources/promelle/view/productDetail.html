@@ -1,0 +1,134 @@
+<section>
+		<div class="container">
+		<br>
+			<div class="row">
+				<div class="col-sm-5">
+					<div class="preview">
+						<div class="preview-pic tab-content">
+							<div class="tab-pane" id="pic-{{$index}}" ng-class="{'active': $first}" ng-repeat="img in images track by $index">
+							  	<div class="productinfo text-center">
+									<div class="product-image" title="{{img.caption}}" style="min-height: 330px" ng-style="{'background-image':'url({{img.url}})'}"></div>
+									<div class="clearfix"></div>
+								</div>
+							</div>
+						</div>
+						<ul class="preview-thumbnail nav nav-tabs">
+							<li ng-class="{'active': $first}" ng-repeat="thumbImg in images track by $index">
+								<a data-target="#pic-{{$index}}" data-toggle="tab" class="productinfo text-center">
+									<div class="product-image" style="cursor: pointer; height: 80px" ng-style="{'background-image':'url({{thumbImg.thumbUrl}})'}"></div>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>				
+				<div class="col-sm-7">
+					<h4 class="sub-header">{{dressData.title}}</h4>
+					<div class="form-group">
+						<div class="row">
+							<div class="col-sm-6">
+								<p><strong>4 Day Rental Price:</strong><span class="clr-aqua"> {{rental4days}}</span> </p>
+								<p><strong>8 Day Rental Price:</strong><span class="clr-aqua"> {{rental8days}}</span> </p>
+								<p><strong>Original Price:</strong><span class="clr-aqua"> {{dressData.originalPrice}}</span> </p>
+							</div>
+							<div class="col-sm-6">
+								<p><strong>Size:</strong>
+									<span ng-repeat="size in sizeArr" class="clr-aqua">{{size}} {{$last ? '' : ($index==sizeArr.length-2) ? ' and ' : ', '}}</span>
+								</p>
+								<p><strong>Type:</strong>
+									<span ng-repeat="type in typeArr" class="clr-aqua">{{type}} {{$last ? '' : ($index==typeArr.length-2) ? ' and ' : ', '}}</span>
+								</p>						
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<p><strong>Brand:</strong> <span class="clr-aqua">{{dressData.brand}}</span></p>
+						<p><strong>Colors:</strong> 
+									<span ng-repeat="color in dressData.color" class="clr-aqua">{{color}} {{$last
+						? '' : ($index==dressData.color.length-2) ? ' and ' : ', '}}</span>
+								</p>
+						<p>
+							<strong>Care Instructions:</strong>
+							<span ng-repeat="careInstruction in dressData.careInstruction" class="clr-aqua">{{careInstruction}} {{$last ? '' : ($index==dressData.careInstruction.length-2) ? ' and ' : ', '}}</span> 
+						</p>
+						<p><strong>Occasion:</strong> 
+							<span ng-repeat="occasionVal in dressData.occasion" class="clr-aqua">  {{occasionVal}}{{$last ? '' : ($index==dressData.occasion.length-2) ? ' and ' : ',  '}}</span> </p>
+						<p><strong>Category:</strong> 
+							<span ng-repeat="categoryVal in dressData.category" class="clr-aqua">  {{categoryVal}}{{$last ? '' : ($index==dressData.category.length-2) ? ' and ' : ',  '}}</span> </p>
+					</div>
+					<div class="form-group">
+						<p><strong>Description</strong></p>
+						<p class="clr-aqua">{{dressData.description}}</p>
+					</div>
+					<div class="form-group">
+						<p><strong>About The Lender</strong></p>
+						<div class="row">
+							<div class="col-sm-2">
+								<img class="img-circle img-thumbnail" alt="" ng-src="{{ownerData.picture}}" style="height: 70px; width: 70px">
+							</div>
+							<div class="col-sm-10 row">
+								<p>
+									<div ng-if="ownerData.username">
+										<span class="clr-aqua"><i class="fa fa-user" aria-hidden="true"></i> {{ownerData.name}}</span>
+									</div>
+									<div ng-if="ownerData.homeAddress.city || ownerData.homeAddress.state">
+										<span class="clr-aqua"><i class="fa fa-map-marker" aria-hidden="true"></i> {{ownerData.homeAddress.city}}{{ownerData.homeAddress.state}}</span>
+									</div>
+									<div ng-if="schoolName">
+										<span class="clr-aqua"><i class="fa fa-graduation-cap" aria-hidden="true"></i> {{schoolName}}</span>
+									</div>
+								</p>
+							</div>
+							<div class="clearfix"></div>
+						</div>
+					</div>
+
+					<!-- reviews -->
+					<div class="form-group" ng-if="isReadyResponse">
+						<!-- <span><a class="btn btn-coral">{{averageRatingCount}} <i class="fa fa-star"></i></a></span> -->
+						<span star-rating rating="averageRatingCount" read-only="true" max-rating="5"></span>
+						<span ng-if="reviewCount > 1" class="clr-aqua">{{reviewCount}} Ratings & {{reviewCount}} Reviews</span>
+						<span ng-if="reviewCount <= 1" class="clr-aqua">{{reviewCount}} Rating & {{reviewCount}} Review</span>
+					</div>
+					<h4 ng-if="reviewCount > 1" class="sub-header" style="margin-bottom:0">{{reviewCount}} Reviews</h4>
+					<h4 ng-if="reviewCount == 1" class="sub-header" style="margin-bottom:0">{{reviewCount}} Review</h4>
+					<h4 ng-if="reviewCount == 0" class="sub-header" style="margin-bottom:0">Review</h4>
+					<div class="review" ng-repeat="review in dressReviewData | limitTo: reviewLimit">
+						<p><span class="star">{{review.rating}} <i class="fa fa-star"></i></span> {{review.userName}}</p>
+						<p>{{review.description}}</p>
+						<div class="review-bottom">
+							<div>
+								{{review.timestamp | date}}
+							</div>
+							<!-- <div class="pull-right">
+								<div class="pull-left mr30">
+									<span><i class="fa fa-thumbs-o-up"></i></span>
+									<span>10</span>
+								</div>
+								<div class="pull-left mr30">
+									<span><i class="fa fa-thumbs-o-down"></i></span>
+									<span>2</span>
+								</div>
+								<div class="pull-right">
+									<div class="dropdown">
+									  <a id="rew1" data-target="#" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+										<i class="fa  fa-angle-down"></i>
+									  </a>
+
+									  <ul class="dropdown-menu" aria-labelledby="rew1">
+										<li><a href="#">Permalink</a></li>
+										<li><a href="#">Report Abuse</a></li>
+									  </ul>
+									</div>
+								</div>
+								<div class="clearfix"></div>
+							</div> -->
+							<div class="clearfix"></div>
+						</div>
+					</div>
+					<a href="" ng-click="showAllReviews(dressData.id)" ng-if="reviewCount > reviewLimit">Show All {{reviewCount}} Reviews</a>
+					<h5 class="text-center" ng-if="reviewCount < 1">No Reviews Found</h5>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+	</section>

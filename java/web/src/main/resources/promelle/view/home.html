@@ -1,0 +1,236 @@
+<!-- <div class="banner">
+	<h1>It's Prom Time!</h1>
+	<h3>Rent your Prom Dress on PromElle and enter a raffle to win exciting prizes</h3>
+	<p>
+		<a href="" class="btn btn-primary" data-toggle="modal" data-target="#banner">click for details</a>
+	</p>
+</div> -->
+<section class="carousel-slider">			
+	<div uib-carousel active="active" interval="myInterval" no-wrap="noWrapSlides">
+      	<div uib-slide ng-repeat="slide in slides track by slide.id" index="slide.id">
+	        <img ng-src="{{slide.image}}">
+	        <div class="carousel-caption">
+	          <div>{{slide.caption}}</div>
+	          <p>{{slide.sub_caption}}</p>
+	        </div>
+      	</div>
+    </div>
+</section><!--/slider-->
+
+<section class="get-app">
+	<div class="container">
+		<div class="text-center">
+			<h2 class="get text-center rel">Get the App</h2>
+			<p>House Genie is available on the app store.<br>Download the free app!</p>
+			<a href="https://itunes.apple.com/us/app/promelle/id1185788494?mt=8" target="_blank"><img src="images/download-mac.png" alt="Download the free app!" title="Download the free app!"></a>
+		</div>
+	</div>
+</section>
+
+<section class="testimonial">
+    <div class="container">
+       	<h1 class="text-center">What They Say</h1>
+    	<div class="row">
+    		<div class="col-sm-4">
+    			<div class="testimonial-wrapper">
+    				<img class="img-circle img-thumbnail" src="images/testimonial-avtar-1.png" alt="">
+    				<h4>Rani Yadav</h4>
+    				<small>Housewife</small>
+    				<p>
+    					<span class="quote-icon"><i class="fa fa-quote-left"></i></span>
+    					<span>I have used Housegenie for domestic help. It is easy, fun , reliable ,secure and a great way to save money.</span></p>
+				</div>
+			</div>
+			<div class="col-sm-4">
+    			<div class="testimonial-wrapper">
+    				<img class="img-circle img-thumbnail" src="images/testimonial-avtar-2.PNG" alt="">
+    				<h4>Anika Rajamani</h4>
+    				<small>Corporate Employee</small>        				
+    				<p><span class="quote-icon"><i class="fa fa-quote-left"></i></span>
+    					<span>I loved that it was so easy for me to find a driver for me for dropping me office and vice -versa. The app had a lot of options to choose from. I absolutely loved the service I recieved and I will definitely come back to 
+Housegenie for future needs!"</span></p>
+				</div>
+			</div>
+			<div class="col-sm-4">
+    			<div class="testimonial-wrapper">
+    				<img class="img-circle img-thumbnail" src="images/testimonial-avtar-3.png" alt="">
+    				<h4>Angela Wardlaw</h4>
+    				<small>Mom</small>
+    				<p><span class="quote-icon"><i class="fa fa-quote-left"></i></span>
+    					<span>As a mom, I think this is just an incredible idea and so timely. I am always buzy with my kids and needed a helping hand for domestic chores. But as i am new to India, I am very much afraid to hire one seeing the crime rate. Luckily i found this app and this totally worked for me. I will be happy to recommend this app to others!</span></p>
+				</div>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+    </div>
+</section><!--/#testimonial-->
+
+<!-- <section class="view-all">
+    <div class="container text-center">
+       	<button class="btn btn-browse btn-lg" ng-click="viewAllTestimonials()" type="button">View more</button>
+    </div>
+</section> -->
+
+<section class="works">
+        <div class="container">
+        	<h1 class="text-center">How It Works</h1>
+			<h2 align="center"><small>Finding your genie</small></h2>
+        	<div class="row mt40">
+        		<div class="col-sm-3">
+        			<div class="works-item">
+						<img src="images/search.png" alt="" >
+						<h3>Browse</h3>
+						<p>So many employees who are ready to be hired</p>
+					</div>
+				</div>
+				<div class="col-sm-3">
+        			<div class="works-item">
+						<img class = "modified-image" src="images/contact.png" alt="" >
+						<h3>Contact</h3>
+						<p>Connect with your selected genie in seconds!</p>
+					</div>
+				</div>
+				<div class="col-sm-3">
+        			<div class="works-item">
+						<img class = "modified-image" src="images/app.png" alt="" >
+						<h3>Fix Appoitment</h3>
+						<p>enjoy your service as per your needs</p>
+					</div>
+				</div>
+				<div class="col-sm-3">
+        			<div class="works-item last">
+						<img class = "modified-image" src="images/pay.png" alt="" >
+						<h3>Pay</h3>
+						<p>Pay after you get all the help you needed!</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="row text-center video-iframe">
+				<div class="caption">Watch the Rent demo!</div>
+				<iframe style="margin-bottom: 15px" src="https://www.youtube.com/embed/xws4j5Pwmhw" frameborder="0" allowfullscreen></iframe>
+			</div>
+			
+			<hr>
+			
+			<div class="mt40">
+				<h2 align="center"><small>Working With House Genie</small></h2>
+			</div>
+			
+			<div class="row mt40" align="center">
+        		<div class="col-sm-3 mg-center">
+        			<div class="works-item">
+						<img src="images/post.png" alt="" >
+						<h3>Register</h3>
+						<p>Create your profile</p>
+					</div>
+				</div>
+				<div class="col-sm-3">
+        			<div class="works-item">
+						<img src="images/camera.png" alt="" >
+						<h3>Verification</h3>
+						<p>Upload Documents for verification!</p>
+					</div>
+				</div>
+				<!-- <div class="col-sm-3">
+        			<div class="works-item">
+						<img src="images/dress.png" alt="" >
+						<h3>Earn</h3>
+						<p>clean and get your item ready</p>
+					</div>
+				</div> -->
+				<div class="col-sm-3">
+        			<div class="works-item last">
+						<img src="images/earn.png" alt="" >
+						<h3>Earn</h3>
+						<p>$$ every time someone hire you!</p>
+					</div>
+				</div>
+			</div>
+			<div class="row text-center video-iframe">
+				<div class="caption">Watch the Lend demo!</div>
+				<iframe src="https://www.youtube.com/embed/pMGUfULw-0w" frameborder="0" allowfullscreen></iframe>
+			</div>
+		</div>
+    </section><!--/#testimonial-->
+
+<!-- <section class="recommend">
+	<div class="container">
+		<h1 class="text-center">Latest Listings</h1>
+		<div data-ride="carousel" class="carousel slide" id="recommended-item-carousel">
+			<div class="carousel-inner">
+			  	<div class="item active">
+					<div class="col-sm-4 product-card" ng-repeat="dress1 in listingData | slice:0:3">
+						<div class="product-image-wrapper outer-shadow" ng-class="($index % 3 == 0?'shadow-effect2':($index % 2 == 0?'shadow-effect3':'shadow-effect1'))">
+							<div class="shadow-wrapper">
+							  	<div class="single-products">
+									<div class="productinfo text-center">
+										<div class="product-image" ng-click="openDressDetails(dress1)" style="cursor: pointer;" ng-style="{'background-image':'url({{dress1.imageUrl}})'}"></div>
+										<p class="ellipsis" title="{{dress1.title}}">{{dress1.title}}</p>
+										<p class="pull-left">{{dress1.rentalPrice | currency}}</p>
+										<p class="pull-right">{{dress1.size}}</p>
+										<div class="clearfix"></div>
+									</div>
+							  	</div>
+							</div>
+						</div>
+					</div>
+			  	</div>
+				<div class="item">
+					<div class="col-sm-4 product-card" ng-repeat="dress2 in listingData | slice:3:6">
+						<div class="product-image-wrapper outer-shadow" ng-class="($index % 3 == 0?'shadow-effect2':($index % 2 == 0?'shadow-effect3':'shadow-effect1'))">
+							<div class="shadow-wrapper">
+							  	<div class="single-products">
+									<div class="productinfo text-center">
+										<div class="product-image" ng-click="openDressDetails(dress2)" style="cursor: pointer;" ng-style="{'background-image':'url({{dress2.imageUrl}})'}"></div>
+										<p class="ellipsis" title="{{dress2.title}}">{{dress2.title}}</p>
+										<p class="pull-left">{{dress2.rentalPrice | currency}}</p>
+										<p class="pull-right">{{dress2.size}}</p>
+										<div class="clearfix"></div>
+									</div>
+							  	</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="item">
+					<div class="col-sm-4 product-card" ng-repeat="dress3 in listingData | slice:6:9">
+						<div class="product-image-wrapper outer-shadow" ng-class="($index % 3 == 0?'shadow-effect2':($index % 2 == 0?'shadow-effect3':'shadow-effect1'))">
+							<div class="shadow-wrapper">
+							  	<div class="single-products">
+									<div class="productinfo text-center">
+										<div class="product-image" ng-click="openDressDetails(dress3)" style="cursor: pointer;" ng-style="{'background-image':'url({{dress3.imageUrl}})'}"></div>
+										<p class="ellipsis" title="{{dress3.title}}">{{dress3.title}}</p>
+										<p class="pull-left">{{dress3.rentalPrice | currency}}</p>
+										<p class="pull-right">{{dress3.size}}</p>
+										<div class="clearfix"></div>
+									</div>
+							  	</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<a data-slide="prev" href="#recommended-item-carousel" class="left recommended-item-control"> <i class="fa fa-angle-left"></i> </a>
+			<a class="right recommended-item-control" href="#recommended-item-carousel" data-slide="next"> <i class="fa fa-angle-right"></i> </a>
+		</div>
+	</div>
+</section> /recommend
+ -->
+<section class="browse-all">
+    <div class="container text-center">
+       	<button type="button" class="btn btn-browse btn-lg" ng-click="browseProducts()">BROWSE ALL CATEGORIES</button>
+    </div>
+</section><!--/rent-->
+<!-- Modal -->
+	<div class="modal fade" id="banner" tabindex="-1" role="dialog">
+	  <div class="modal-dialog" role="document">
+		<div class="modal-content">
+		  <div class="modal-body">
+		  	<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			<img src="images/banner.jpg" alt="" usemap="#banner" class="img-responsive">
+			<a href="https://itunes.apple.com/us/app/promelle/id1185788494?mt=8" target="_blank"><img class="download" src="images/download.png" alt=""></a>
+		  </div>
+		</div>
+	  </div>
+	</div>

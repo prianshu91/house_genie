@@ -1,0 +1,190 @@
+<div ng-controller="dressListingDetailsCtrl" class="dressDetails">
+	<fieldset>
+		<form class="form-horizontal">
+			<div class="form-group bdr-btm">
+				<label for="example-text-input" class="col-xs-2 col-form-label">Listing
+					Title:</label>
+				<div class="col-xs-9">{{dressData.title}}</div>
+				<div class="col-xs-1">
+					<input type="checkbox" ng-model="dressTitle" ng-disabled="disabledDressCheckbox" ng-if="isReadyToActive" ng-change="stateChanged('Listing Title')">
+				</div>
+			</div>
+
+			<div class="form-group bdr-btm">
+				<label for="example-text-input" class="col-xs-2 col-form-label">Description:</label>
+				<div class="col-xs-9">{{dressData.description}}</div>
+				<div class="col-xs-1">
+					<input type="checkbox" ng-model="dressDesc" ng-disabled="disabledDressCheckbox" ng-if="isReadyToActive" ng-change="stateChanged('Description')">
+				</div>
+			</div>
+
+			<div class="form-group bdr-btm">
+				<label for="example-text-input" class="col-xs-2 col-form-label">Owner:</label>
+				<div class="col-xs-9">{{fullName}}</div>
+				<div class="col-xs-1">
+					<input type="checkbox" ng-model="dressOwner" ng-disabled="disabledDressCheckbox" ng-if="isReadyToActive" ng-change="stateChanged('Owner')">
+				</div>
+			</div>
+
+			<div class="form-group bdr-btm">
+				<label for="example-text-input" class="col-xs-2 col-form-label">Username:</label>
+				<div class="col-xs-9">{{userName}}</div>
+				<div class="col-xs-1">
+					<input type="checkbox" ng-model="dressUserName" ng-disabled="disabledDressCheckbox" ng-if="isReadyToActive" ng-change="stateChanged('Username')">
+				</div>
+			</div>
+
+			<div class="form-group bdr-btm">
+				<label for="example-text-input" class="col-xs-2 col-form-label">Category:</label>
+				<div class="col-xs-9">
+					<span ng-repeat="category in dressData.category">{{category}}
+						{{$last ? '' : ($index==dressData.category.length-2) ? ' and ' :
+						', '}}</span>
+				</div>
+				<div class="col-xs-1">
+					<input type="checkbox" ng-model="dressCategory" ng-disabled="disabledDressCheckbox" ng-if="isReadyToActive" ng-change="stateChanged('Category')">
+				</div>
+			</div>
+
+			<div class="form-group bdr-btm">
+				<label for="example-text-input" class="col-xs-2 col-form-label">Size:</label>
+				<div class="col-xs-9">
+					<span ng-repeat="item in size">{{item}} {{$last
+						? '' : ($index==size.length-2) ? ' and ' : ', '}}</span>
+				</div>
+				<div class="col-xs-1">
+					<input type="checkbox" ng-if="isReadyToActive" ng-disabled="disabledDressCheckbox" ng-model="dressSize" ng-change="stateChanged('Size')">
+				</div>
+			</div>
+
+			<div class="form-group bdr-btm">
+				<label for="example-text-input" class="col-xs-2 col-form-label">Color:</label>
+				<div class="col-xs-9">
+					<span ng-repeat="color in dressData.color">{{color}} {{$last
+						? '' : ($index==dressData.color.length-2) ? ' and ' : ', '}}</span>
+				</div>
+				<div class="col-xs-1">
+					<input type="checkbox" ng-if="isReadyToActive" ng-disabled="disabledDressCheckbox" ng-model="dressColor" ng-change="stateChanged('Color')">
+				</div>
+			</div>
+
+			<div class="form-group bdr-btm">
+				<label for="example-text-input" class="col-xs-2 col-form-label">Brand:</label>
+				<div class="col-xs-9">{{dressData.brand}}</div>
+				<div class="col-xs-1">
+					<input type="checkbox" ng-if="isReadyToActive" ng-disabled="disabledDressCheckbox" ng-model="dressBrand" ng-change="stateChanged('Brand')">
+				</div>
+			</div>
+
+			<div class="form-group bdr-btm">
+				<label for="example-text-input" class="col-xs-2 col-form-label">Type:</label>
+				<div class="col-xs-9">
+					<span ng-repeat="type in dressData.type">{{type}} {{$last
+						? '' : ($index==dressData.type.length-2) ? ' and ' : ', '}}</span>
+				</div>
+				<div class="col-xs-1">
+					<input type="checkbox" ng-if="isReadyToActive" ng-disabled="disabledDressCheckbox" ng-model="dressType" ng-change="stateChanged('Type')">
+				</div>
+			</div>
+
+
+			<div class="form-group bdr-btm">
+				<label for="example-text-input" class="col-xs-2 col-form-label">Length:</label>
+				<div class="col-xs-9">
+					<span ng-repeat="length in dressData.length">{{length}} {{$last
+						? '' : ($index==dressData.length.length-2) ? ' and ' : ', '}}</span>
+				</div>
+				<div class="col-xs-1">
+					<input type="checkbox" ng-if="isReadyToActive" ng-disabled="disabledDressCheckbox" ng-model="dressLength" ng-change="stateChanged('Length')">
+				</div>
+			</div>
+
+
+			<!-- adding fit -->
+			<div class="form-group bdr-btm">
+				<label for="example-text-input" class="col-xs-2 col-form-label">Fit:</label>
+				<div class="col-xs-9">
+					<div class="col-xs-12">
+						<label class="col-xs-3 col-form-label" for="example-text-input">Dress Length: </label>
+						<span>{{dressLength}}</span>
+					</div>
+					<div class="col-xs-12">
+						<label class="col-xs-3 col-form-label" for="example-text-input">Bust Fit: </label>
+						<span ng-repeat="fit in bustFit">{{fit}}" {{$last? '' : ($index==bustFit.length-2) ? ' and ' : ', '}}</span>
+					</div>
+					<div class="col-xs-12">
+						<label class="col-xs-3 col-form-label" for="example-text-input">Height Fit: </label>
+						<span ng-repeat="height in heightFit">{{height}} {{$last? '' : ($index==heightFit.length-2) ? ' and ' : ', '}}</span>
+					</div>
+				</div>
+				<div class="col-xs-1">
+					<input type="checkbox" ng-if="isReadyToActive" ng-disabled="disabledDressCheckbox" ng-model="dressFit" ng-change="stateChanged('Fit')">
+				</div>
+
+			</div>
+
+			<div class="form-group bdr-btm">
+				<label for="example-text-input" class="col-xs-2 col-form-label">Waist:</label>
+				<div class="col-xs-9" ng-if="dressData.waist.length">
+					<span ng-repeat="waist in dressData.waist">{{waist}}
+						{{$last ? '' : ($index==dressData.waist.length-2) ? ' and ' :
+						', '}}</span>
+				</div>
+				<div class="col-xs-9" ng-if="!dressData.waist.length">N/A</div>
+				<div class="col-xs-1">
+					<input type="checkbox" ng-if="isReadyToActive" ng-disabled="disabledDressCheckbox" ng-model="dressDataOccasion" ng-change="stateChanged('Occasion')">
+				</div>
+			</div>
+
+			<div class="form-group bdr-btm" ng-if="dressData.sleeve.length">
+				<label for="example-text-input" class="col-xs-2 col-form-label">Sleeve:</label>
+				<div class="col-xs-9">
+					<span ng-repeat="sleeve in dressData.sleeve">{{sleeve}}
+						{{$last ? '' : ($index==dressData.sleeve.length-2) ? ' and ' :
+						', '}}</span>
+				</div>
+				<div class="col-xs-1">
+					<input type="checkbox" ng-if="isReadyToActive" ng-disabled="disabledDressCheckbox" ng-model="dressDataOccasion" ng-change="stateChanged('Occasion')">
+				</div>
+			</div>
+
+			<div class="form-group bdr-btm">
+				<label for="example-text-input" class="col-xs-2 col-form-label">Care
+					Instructions:</label>
+				<div class="col-xs-9">
+					<span ng-repeat="careInstruction in dressData.careInstruction">{{careInstruction}}
+						{{$last ? '' : ($index==dressData.careInstruction.length-2) ? '
+						and ' : ', '}}</span>
+				</div>
+				<div class="col-xs-1">
+					<input type="checkbox" ng-if="isReadyToActive" ng-disabled="disabledDressCheckbox" ng-model="dressDataCareInstruction" ng-change="stateChanged('Care Instructions')">
+				</div>
+			</div>
+
+			<div class="form-group bdr-btm">
+				<label for="example-text-input" class="col-xs-2 col-form-label">Occasion:</label>
+				<div class="col-xs-9">
+					<span ng-repeat="occasionVal in dressData.occasion">{{occasionVal}}
+						{{$last ? '' : ($index==dressData.occasion.length-2) ? ' and ' :
+						', '}}</span>
+				</div>
+				<div class="col-xs-1">
+					<input type="checkbox" ng-if="isReadyToActive" ng-disabled="disabledDressCheckbox" ng-model="dressDataOccasion" ng-change="stateChanged('Occasion')">
+				</div>
+			</div>
+			<div class="form-group bdr-btm">
+				<label for="example-text-input" class="col-xs-2 col-form-label">Dress Location:</label>
+				<div class="col-xs-10" ng-show="dressData.dressLocation">
+						<span class="col-form-label" for="example-text-input" ng-show="dressData.dressLocation.addressLine1"> {{dressData.dressLocation.addressLine1}}</span>
+						<span class="col-form-label" for="example-text-input" ng-show="dressData.dressLocation.addressLine2">,{{dressData.dressLocation.addressLine2}}</span>
+						<span class="col-form-label" for="example-text-input" ng-show="dressData.dressLocation.city">,{{dressData.dressLocation.city}}</span>
+						<span class="col-form-label" for="example-text-input" ng-show="dressData.dressLocation.state">,{{dressData.dressLocation.state}}</span>
+						<span class="col-form-label" for="example-text-input" ng-show="dressData.dressLocation.zipCode"> {{dressData.dressLocation.zipCode}}</span>
+					</div>
+				<div class="col-xs-10" ng-hide="dressData.dressLocation">N/A</div>
+			</div>
+
+
+		</form>
+	</fieldset>
+</div>

@@ -1,0 +1,53 @@
+# Server settings.
+server:
+  applicationConnectors:
+    - type: http
+      port: 8900
+  adminConnectors:
+    - type: http
+      port: 8901
+
+# Mongo settings.
+mongo:
+  serverList: localhost:27017
+  dbName: promelle
+
+sessionTimeOutMillis: 3600000
+
+#Eureka properties 
+eureka:
+  name: ui:8900
+  vipAddress: ui
+  serverUrl: http://eureka:8080/eureka/v2/
+
+registry:
+  user: localhost:8200
+  role: localhost:8200
+  group: localhost:8200
+  permission: localhost:8200
+  account: localhost:8200
+  communication: localhost:8800
+  product: localhost:8400
+  review: localhost:8400
+
+# Logging settings.
+logging:
+
+  # The default level of all loggers. Can be OFF, ERROR, WARN, INFO, DEBUG, TRACE, or ALL.
+  level: INFO
+
+  # Logger-specific levels.
+  loggers:
+    com.promelle: INFO
+
+  appenders:
+    - type: console
+      threshold: INFO
+      logFormat: "%-6level [%d{MM-dd-yyyy HH:mm:ss.SSS}] [%t] %logger{5} - %X{code} %msg %n"
+    - type: file
+      threshold: INFO
+      logFormat: "%-6level [%d{MM-dd-yyyy HH:mm:ss.SSS}] [%t] %logger{5} - %X{code} %msg %n"
+      currentLogFilename: /promelle/logs/ui.log
+      archivedLogFilenamePattern: /promelle/logs/ui-%d{yyyy-MM-dd}.log.gz
+      archivedFileCount: 5
+      archive: true

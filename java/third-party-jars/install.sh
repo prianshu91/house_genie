@@ -1,0 +1,1 @@
+mvn install:install-file -Dfile=elasticsearch-sql-2.3.0.0.jar -DgroupId=org.nlpcn -DartifactId=elasticsearch-sql -Dversion=2.3.0.0 -Dpackaging=jar

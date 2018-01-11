@@ -1,0 +1,123 @@
+<div ng-if="!isPageLoading">
+	<h2 class="sub-header">Lending Order Details</h2>
+	<div class="form-group">
+		<div class="col-xs-12 bdr-btm">
+			<h4 class="pull-left">
+				<b>{{dressTitle}}</b>
+			</h4>
+		</div>
+		<div class="clearfix"></div>
+		<div class="order-description form-horizontal" style="padding-top: 15px;">
+			<div class="col-xs-2">
+				<img ng-src="{{dressImage}}" alt="" class="img-rounded img-responsive" />
+			</div>
+			<div class="col-xs-4">
+				<div class="form-group">
+					<label class="col-xs-7 col-form-label">Size:</label>
+					<div class="col-xs-5">
+						<span ng-repeat="item in size">{{item}} {{$last
+						? '' : ($index==size.length-2) ? ' and ' : ', '}}</span>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-xs-7 col-form-label">Brand name:</label>
+					<div class="col-xs-5">{{brand}}</div>
+				</div>
+				<div class="form-group">
+					<label class="col-xs-7 col-form-label">Lender's username:</label>
+					<div class="col-xs-5">{{lenderUserName}}</div>
+				</div>
+				<div class="form-group">
+					<label class="col-xs-7 col-form-label">Renter's username:</label>
+					<div class="col-xs-5">{{renterUserName}}</div>
+				</div>
+				<div class="form-group">
+					<label class="col-xs-7 col-form-label">Rental Period:</label>
+					<div class="col-xs-5">{{rentalPeriod}}</div>
+				</div>
+				<div class="form-group">
+					<label class="col-xs-7 col-form-label">Order #:</label>
+					<div class="col-xs-5">{{orderId}}</div>
+				</div>
+				<div class="form-group">
+					<label class="col-xs-7 col-form-label">Order Date:</label>
+					<div class="col-xs-5">{{orderDate | date}}</div>
+				</div>
+				<div class="form-group">
+					<label class="col-xs-7 col-form-label">Rental Start Date:</label>
+					<div class="col-xs-5">{{rentalStartDate | date}}</div>
+				</div>
+				<div class="form-group">
+					<label class="col-xs-7 col-form-label">Rental End Date:</label>
+					<div class="col-xs-5">{{rentalEndDate | date}}</div>
+				</div>
+				<div class="form-group" ng-show="dressLocation && (ownerSchoolId != userSchoolId)">
+					<label class="col-xs-7 col-form-label">Dress Location:</label>
+					<div class="col-xs-5">{{dressLocation.addressLine1}}, {{dressLocation.addressLine2}}, {{dressLocation.city}}, {{dressLocation.state}}, {{dressLocation.zipCode}}</div>
+				</div>
+				
+			</div>
+			<div class="col-xs-3 bdr-side">
+				<div class="form-group">
+					<label class="col-form-label">Order Status:</label>
+					<div class="shipmentCheckbox">
+						<label ng-repeat="status in orderStatus" class="checkbox-inline">
+							<input type="checkbox" name="selectedStatus[]" value="{{status}}"
+							ng-checked="orderSelection.indexOf(status) > -1"
+							ng-disabled="(orderDisable.indexOf(status) > -1) || orderCheckboxDisable"
+							ng-click="toggleOrderSelection(status)"> {{status}}
+						</label>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-form-label">Delivery Status:</label>
+					<div class="shipmentCheckbox">
+						<label ng-repeat="status in deliveryStatus" class="checkbox-inline"> <input type="checkbox"
+							name="selectedStatus[]" value="{{status}}"
+							ng-checked="deliverySelection.indexOf(status) > -1"
+							ng-disabled="(deliveryDisable.indexOf(status) > -1) || deliveryCheckboxDisable"
+							ng-click="toggleDeliverySelection(status)"> {{status}}
+						</label>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-form-label">Delivery Option:</label>
+					<div>{{deliveryOption}}</div>
+				</div>
+				<div class="form-group">
+					<label class="col-form-label">Delivery Address:</label>
+					<div><span ng-show="(userSchoolId == ownerSchoolId)">{{schoolName}}<br/></span>{{deliveryAddress}}</div>
+				</div>
+			</div>
+			<div class="col-xs-3">
+				<div class="form-group">
+					<label class="col-xs-9 col-form-label">Rental Price:</label>
+					<div class="col-xs-3">{{rentalPrice | currency}}</div>
+				</div>
+				<div class="form-group">
+					<label class="col-xs-9 col-form-label">Earnings:</label>
+					<div class="col-xs-3">{{earnings | currency}}</div>
+				</div>
+				<div class="form-group">
+					<label class="col-xs-9 col-form-label">Shipping/Delivery
+						Charges:</label>
+					<div class="col-xs-3">{{shippingCharges | currency}}</div>
+				</div>
+				<div class="form-group" ng-if="redeemableEarnings !== null">
+					<label class="col-xs-9 col-form-label">Total Redeemable
+						Earnings:</label>
+					<div class="col-xs-3">{{redeemableEarnings | currency}}</div>
+				</div>
+				<div class="form-group" ng-if="paymentStatus">
+					<label class="col-xs-9 col-form-label">Earning Payment
+						Status:</label>
+					<div class="col-xs-3">{{paymentStatus}}</div>
+				</div>
+			</div>
+		</div>
+		<div class="clearfix"></div>
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-primary" ng-click="save()" ng-disabled="disableSave">Save</button>
+	</div>
+</div>

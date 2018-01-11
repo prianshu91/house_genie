@@ -1,0 +1,21 @@
+<h2 class="sub-header">{{dressTitle}}</h2>
+<div class="form-group">
+	<uib-tabset active="active"> 
+		<uib-tab index="0"
+			heading="Listing Details" select="setFlag('showTab1')">
+		<div ng-include="'views/admin/dressDetails/dressListingDetails.html'"
+			ng-if="showTab1"></div>
+		</uib-tab> <uib-tab index="1" heading="Rental Options"
+			select="setFlag('showTab2')">
+		<div ng-include="'views/admin/dressDetails/dressRentalOptions.html'"
+			ng-if="showTab2"></div>
+		</uib-tab> <uib-tab index="2" heading="Review and Ratings"
+			select="setFlag('showTab3')">
+		<div ng-include="'views/admin/dressDetails/dressReviewAndRatings.html'"
+			ng-if="showTab3"></div>
+		</uib-tab> 
+		<uib-tab index="3" heading="Listing Images" select="setFlag('showTab4')">
+			<div ng-include="'views/admin/dressDetails/dressListingImages.html'" ng-if="showTab4"></div>
+		</uib-tab>
+	</uib-tabset>
+</div>

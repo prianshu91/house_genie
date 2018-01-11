@@ -1,0 +1,60 @@
+<div class="modal-content">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal"
+			ng-click="close()" aria-hidden="true">&times;</button>
+		<h4 class="modal-title">Notify User</h4>
+	</div>
+	<div class="modal-body" style="overflow: auto; display: inline-block;">
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+			<fieldset>
+				<form name="rejectForm" class="form-horizontal">
+					<div class="form-group">
+						<label for="example-text-input" class="col-xs-2 col-form-label"><i class="fa fa-envelope fa-lg mr10" aria-hidden="true"></i> To:</label> 
+						<div class="col-xs-10">
+							{{emailId}}
+						</div>
+					</div>
+					<!-- <div class="form-group">
+					  	<label for="example-text-input" class="col-xs-2 col-form-label">Subject:</label>
+					  	<div class="col-xs-10">
+					    	<input type="text" class="form-control" ng-model="subject">
+					  	</div>
+					</div> -->				
+					<div class="form-group" ng-if="rejectListingData.length">
+						<label for="example-text-input" class="col-xs-2 col-form-label">Rejected Fields:</label>
+						<div class="col-xs-10">
+							<div class="form-control bdr">
+					    		<div ng-repeat="list in rejectListingData track by $index">
+					    			<div ng-if="list.type ==='text'" class="form-group">
+					    				<span style="margin-bottom: 5px; display: inline-block">{{list.value}}</span>
+					    				<span>
+					    					<input type="text" name="reason{{$index}}" class="form-control" ng-model="list.text" placeholder="Reason of Rejection" required>
+					    					<span class="help-inline" style="color: red;" ng-show="submitted && rejectForm.reason{{$index}}.$error.required">Required</span></span>
+					    			</div>
+					    			<div ng-if="list.type ==='image'" class="form-group">
+					    				<span style="margin-bottom: 5px; display: inline-block"><img style="max-height: 150px; max-width: 150px;" ng-src="{{list.value}}"></img></span>
+					    				<span>{{list.caption}}</span>
+					    				<span>
+					    					<input type="text" class="form-control" name="reason{{$index}}" ng-model="list.text" placeholder="Reason of Rejection" required>
+					    					<span class="help-inline" style="color: red;" ng-show="submitted && rejectForm.reason{{$index}}.$error.required">Required</span>
+					    				</span>
+					    			</div>
+					    		</div>
+					    	</div>
+				    	</div>
+				    </div>
+				    <div class="form-group">
+						<label for="example-text-input" class="col-xs-2 col-form-label">Additional Comments:</label>
+						<div class="col-xs-10">
+					    	<textarea class="form-control" rows="5" placeholder="Additional Comments" ng-model="additionalMessage"></textarea>
+					    </div>
+					</div>
+				</form>
+			</fieldset>
+		</div>
+	</div>
+	<div class="modal-footer">
+		<button type="submit" class="btn btn-primary" ng-click="sendRejectListingEmail()"><i class="fa fa-paper-plane" aria-hidden="true"></i> Send</button>
+		<button type="button" class="btn btn-default" ng-click="close()">Cancel</button>
+	</div>
+</div>

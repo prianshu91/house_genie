@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html lang="en" ng-app="peAdminApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" ng-app="peAdminApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" ng-app="peAdminApp" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html lang="en" ng-app="peAdminApp" class="no-js">
+<!--<![endif]-->
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="icon" href="images/favicon.ico">
+	<title>PromElle</title>
+	<base href="/ui/promelle/">
+	<link rel="stylesheet" href="lib/html5-boilerplate/dist/css/normalize.css">
+	<link rel="stylesheet" href="lib/html5-boilerplate/dist/css/main.css">
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/toaster.min.css">
+	<link rel="stylesheet" href="css/ui-grid.min.css">
+	<link rel="stylesheet" href="css/angular-datatables.css">
+	<link rel="stylesheet" href="css/angular-bootstrap-lightbox.min.css">
+	<link rel="stylesheet" href="css/loading-bar.min.css">
+	<link rel="stylesheet" href="css/app.css">
+	<link rel='stylesheet' href='lib/textAngular/dist/textAngular.css'>
+	<link rel='stylesheet' href='css/ng-img-crop.css'>
+
+	<script src="lib/tinymce.min.js"></script>
+	<script src="lib/angular/angular.js"></script>
+	<script src="lib/angular-route/angular-route.js"></script>
+	<script src="lib/jquery-1.11.3.min.js"></script>
+	<script src="lib/jquery.dataTables.min.js"></script>
+	<script src="lib/angular-datatables.min.js"></script>
+
+	<script src='lib/textAngular/dist/textAngular-rangy.min.js'></script>
+	<script src='lib/textAngular/dist/textAngular-sanitize.min.js'></script>
+	<script src='lib/textAngular/dist/textAngular.min.js'></script>
+
+	<script src="lib/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
+	<script src="lib/angular-local-storage.js"></script>
+	<script src="lib/angular-ui-router.js"></script>
+	<script src="lib/angular-ui-router.min.js"></script>
+	<script src="lib/angular-resource.min.js"></script>
+	<script src="lib/angular-bootstrap-lightbox.min.js"></script>
+	<script src="lib/loading-bar.min.js"></script>
+	<script src="lib/tinymce.js"></script>
+	<script src="lib/toaster.min.js"></script>
+	<script src="lib/dirPagination.js"></script>
+	<script src="lib/ng-img-crop.js"></script>
+	<script src="app.js"></script>
+	<script type="text/javascript" src="lib/bootstrap.min.js"></script>
+	<script type="text/javascript" src="lib/ui-bootstrap-tpls-2.1.1.min.js"></script>
+	<script type="text/javascript" src="lib/ui-grid.min.js"></script>
+	<script type="text/javascript" src="lib/ng-file-upload.min.js"></script>
+	<script type="text/javascript" src="lib/ng-file-upload-shim.min.js"></script>
+
+	<script src="config/routing-config.js"></script>
+	<script src="config/peAdminConfig.js"></script>
+	<script src="js/run/peAdminRun.js"></script>
+	<script>
+	$(document).ready(function () {
+		$(".nav li").on("click", function () {
+			$(".nav li").removeClass("active");
+			$(this).addClass("active");
+		});
+	});
+</script>
+<script src="js/utils/utils.js"></script>
+
+<!-- services -->
+<script src="js/service/adminService.js"></script>
+<script src="js/service/cmsService.js"></script>
+<script src="js/service/productService.js"></script>
+<script src="js/service/paymentService.js"></script>
+<script src="js/service/authService.js"></script>
+<script src="js/service/sessionRecoverer.js"></script>
+
+
+<script src="js/directive/starRating.js"></script>
+<script src="js/directive/headerDirective.js"></script>
+<script src="js/directive/fileUpload.js"></script>
+
+<!-- controllers -->
+<script src="js/controller/login/loginCtrl.js"></script>
+<script src="js/controller/admin/userDetails/adminHomCtrl.js"></script>
+<script src="js/controller/admin/dressDetails/dressListingHomeCtrl.js"></script>
+<script src="js/controller/admin/userDetails/userProfileCtrl.js"></script>
+<script src="js/controller/admin/userDetails/userListingsCtrl.js"></script>
+<script src="js/controller/admin/userDetails/userDetailsCtrl.js"></script>
+<script src="js/controller/admin/userDetails/userLendingOrdersCtrl.js"></script>
+<script src="js/controller/admin/userDetails/userRentalOrdersCtrl.js"></script>
+
+<script src="js/controller/admin/emailUserCtrl.js"></script>
+<script src="js/controller/admin/deleteEntityCtrl.js"></script>
+<script src="js/controller/admin/dressDetails/dressDetailsCtrl.js"></script>
+<script src="js/controller/admin/dressDetails/dressListingDetailsCtrl.js"></script>
+<script src="js/controller/admin/dressDetails/dressListingImagesCtrl.js"></script>
+<script src="js/controller/admin/dressDetails/dressRentalOptionsCtrl.js"></script>
+<script src="js/controller/admin/dressDetails/dressReviewAndRatingsCtrl.js"></script>
+<script src="js/controller/admin/dressDetails/modal/reviewModalCtrl.js"></script>
+<script src="js/controller/admin/broadcasts/broadcastsCtrl.js"></script>
+<script src="js/controller/admin/cms/cmsCtrl.js"></script>
+<script src="js/controller/admin/dressDetails/modal/rejectDressListingModalCtrl.js"></script>
+<script src="js/controller/admin/dressDetails/modal/deleteDressConfirmCtrl.js"></script>
+<script src="js/controller/admin/dressDetails/modal/deleteDressListingEmailCtrl.js"></script>
+<script src="js/controller/admin/userDetails/modal/rentalOrderDetailsCtrl.js"></script>
+<script src="js/controller/admin/userDetails/modal/lendingOrderDetailsCtrl.js"></script>
+<script src="js/controller/admin/userDetails/modal/listingDetailsCtrl.js"></script>
+<script src="js/controller/admin/userDetails/modal/userAccountBlockedEmailCtrl.js"></script>
+<script src="js/controller/admin/userDetails/modal/userAccountDeletedEmailCtrl.js"></script>
+
+<script src="js/controller/admin/paymentDetails/paymentDetailsHomeCtrl.js"></script>
+<script src="js/controller/admin/paymentDetails/modal/lenderPaymentCtrl.js"></script>
+<script src="js/controller/admin/paymentDetails/modal/renterPaymentCtrl.js"></script>
+<script src="js/controller/admin/paymentDetails/modal/lenderPaidCtrl.js"></script>
+<script src="js/controller/admin/promelleSettings/promelleSettingsHomeCtrl.js"></script>
+<script src="js/controller/admin/addSchoolDetails/addSchoolDetailsHomeCtrl.js"></script>
+<script src="js/controller/admin/dressRentalDetails/dressRentalDetailsHomeCtrl.js"></script>
+<script src="js/controller/admin/dressRentalDetails/modal/rentalOrderCancelCtrl.js"></script>
+<script src="js/controller/admin/dressRentalDetails/modal/lenderOrderCancelledEmailCtrl.js"></script>
+<script src="js/controller/admin/dressRentalDetails/modal/rentalOrderCancelledEmailCtrl.js"></script>
+
+<!-- PODS -->
+<script src="js/controller/admin/pods/podsListCtrl.js"></script>
+<script src="js/controller/admin/pods/podDetailCtrl.js"></script>
+<script src="js/controller/admin/pods/modal/uploadPodLogoModalCtrl.js"></script>
+
+<!-- Promo Codes -->
+<script src="js/controller/admin/promoCodes/promoCodesHomeCtrl.js"></script>
+<script src="js/controller/admin/promoCodes/createPromoCodesCtrl.js"></script>
+<script src="js/controller/admin/promoCodes/promoCodeInUseCtrl.js"></script>
+<script src="js/controller/admin/promoCodes/expiredPromoCodesCtrl.js"></script>
+
+</head>
+
+<body>
+	<div>
+		<header-directive></header-directive>
+		<toaster-container toaster-options="{'time-out': 2000, 'position-class': 'toast-bottom-right'} "></toaster-container>
+		<div class="container-fluid">
+			<div class="row row-offcanvas row-offcanvas-left" id="mainContainer">
+				<div class="col-sm-3 col-md-2 sidebar offcanvas-sidebar-enable" id="sidebar" role="navigation" ng-if="showSidebar">
+					<ul class="nav nav-sidebar">
+						<li ng-class="isActive == 'users' ? 'active' : ' '">
+							<a ui-sref="admin">
+								<i class="fa fa-users fa-lg" aria-hidden="true"></i> UserManagement
+							</a>
+						</li>
+						<li ng-class="isActive == 'dressListing' ? 'active' : ' '">
+							<a ui-sref="dressLists">
+								<i class="fa fa-shopping-basket fa-lg" aria-hidden="true"></i> Dress Listings
+							</a>
+						</li>
+						<li ng-class="isActive == 'payment' ? 'active' : ' '">
+							<a ui-sref="paymentOptions">
+								<i class="fa fa-credit-card fa-lg" aria-hidden="true"></i> Payment Options
+							</a>
+						</li>
+						<!-- <li ng-class="isActive == 'addSchool' ? 'active' : ' '">
+							<a ui-sref="addSchool">
+								<i class="fa fa-graduation-cap fa-lg" aria-hidden="true"></i> Add School
+							</a>
+						</li> -->
+						<li ng-class="isActive == 'dressRental' ? 'active' : ' '">
+							<a ui-sref="dressRental">
+								<i class="fa fa-shopping-bag fa-lg" aria-hidden="true"></i> Dress Rental
+							</a>
+						</li>
+						<li ng-class="isActive == 'broadcasts' ? 'active' : ' '">
+							<a ui-sref="broadcasts">
+								<i class="fa fa-bullhorn fa-lg" aria-hidden="true"></i> Broadcasts
+							</a>
+						</li>
+						<li ng-class="isActive == 'cms' ? 'active' : ' '">
+							<a ui-sref="cms">
+								<i class="fa fa-dashboard fa-lg" aria-hidden="true"></i> CMS
+							</a>
+						</li>
+						<li ng-class="isActive == 'pods' ? 'active' : ' '">
+							<a ui-sref="pods">
+								<i class="fa fa-university fa-lg" aria-hidden="true"></i> Pods
+							</a>
+						</li>
+						<!--<li ng-class="isActive == 'promoCodes' ? 'active' : ' '">
+							<a ui-sref="promoCodes">
+								<i class="fa fa-tag fa-lg" aria-hidden="true"></i> Promo Codes
+							</a>
+						</li>-->
+						<!-- <li ng-class="isActive == 'promelleSettings' ? 'active' : ' '">
+							<a ui-sref="promelleSettings">
+								<i class="fa fa-cog fa-lg" aria-hidden="true"></i> Promelle Settings
+							</a>
+						</li> -->
+					</ul>
+				</div>
+				<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main offcanvas-sidebar-active">
+					<div ui-view></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- In production use:
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
+    -->
+</body>
+
+</html>

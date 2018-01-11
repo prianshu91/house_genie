@@ -1,0 +1,31 @@
+<div class="container">
+		<h2 class="page-header">Ratings & Reviews</h2>
+		<div class="equal-height">
+			<div class="equal-outer">
+				<div class="equal-inner col-sm-4 col-md-3 side-bdr">
+					<p>{{dressData.title}}</p>
+					<img class="img-responsive preview-pic" ng-src="{{dressData.imageUrl}}" alt=""/>
+				</div>
+				
+				<div class="equal-inner col-sm-8 col-md-9">
+					<div class="review" ng-repeat="review in reviewData">
+						<p><span class="star"><i class="fa fa-star"></i> {{review.rating}}</span> {{review.userName}}</p>
+						<p>{{review.description}}</p>
+						<div class="review-bottom">
+							<div class="pull-left">
+								{{review.timestamp | date}}
+							</div>
+							<div class="clearfix"></div>
+						</div>
+					</div>
+					<div class="col-md-12">
+						<ul uib-pagination onclick="backToTop()" total-items="totalItems" ng-if="!isLoading && reviewData.length" ng-model="currentPage" ng-change="pageChanged(currentPage)" items-per-page="itemsPerPage"></ul>
+					</div>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+		<div class="loader">
+			<img src="images/spinner.gif" alt="loading..." ng-if="isLoading">
+		</div>
+	</div>

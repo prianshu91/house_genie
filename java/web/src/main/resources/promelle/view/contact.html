@@ -1,0 +1,78 @@
+<section class="faq">
+		<div class="container">
+			<div class="col-sm-8">
+				<h2 class="page-header">Contact Us</h2>
+				<p>At PromElle, we are passionate about connecting with our members and building our experience around their needs. We welcome feedback, comments, suggestions and compliments! </p>
+				<p>Please contact us using the form below:</p>
+					
+				<form ng-submit="sendEmail()" name="contactForm" novalidate ng-if="!showSuccess">
+					<div class="row">
+						<div class="col-sm-6">
+							<div class="form-group" ng-class="{ 'has-error' : contactForm.name.$invalid && !contactForm.name.$pristine }">
+								<input type="text" ng-model="user.name" name="name" class="form-control" placeholder="Full Name" required>
+								<p ng-show="contactForm.name.$invalid && !contactForm.name.$pristine" class="help-block">This field is required.</p>
+							</div>
+						</div>
+						<div class="col-sm-6">
+							<div class="form-group" ng-class="{ 'has-error' : contactForm.email.$invalid && !contactForm.email.$pristine }">
+								<input type="email" ng-model="user.email" name="email" class="form-control" placeholder="Email" required>
+								<p ng-show="contactForm.email.$invalid && !contactForm.email.$pristine" class="help-block">Enter a valid email.</p>
+							</div>
+						</div>
+						<div class="clearfix"></div>
+					</div>
+					<div class="row">
+						<div class="col-sm-6">
+							<div class="form-group" ng-class="{ 'has-error' : contactForm.subject.$invalid && !contactForm.subject.$pristine }">
+								<input type="text" ng-model="user.subject" name="subject" class="form-control" ng-model="subject" placeholder="Subject" required>
+								<p ng-show="contactForm.subject.$invalid && !contactForm.subject.$pristine" class="help-block">This field is required.</p>
+							</div>
+						</div>
+						<!-- <div class="col-sm-6">
+							<div class="form-group">
+								<div class="checkbox">
+									<label>
+									  <input type="checkbox" ng-model="user.reciveUpdates"> Check here to receive email updates
+									</label>
+						  		</div>
+							</div>
+						</div> -->
+						<div class="clearfix"></div>
+					</div>
+					<div class="form-group" ng-class="{ 'has-error' : contactForm.message.$invalid && !contactForm.message.$pristine }">
+						<textarea class="form-control" rows="3" ng-model="user.message" name="message" placeholder="Enter your comment here" required></textarea>
+						<p ng-show="contactForm.message.$invalid && !contactForm.message.$pristine" class="help-block">This field is required.</p>
+					</div>
+					<button type="submit" class="btn btn-primary pull-right" ng-submit="sendEmail()" ng-disabled="contactForm.$invalid">Submit</button>
+					<div class="clearfix"></div>
+				</form>
+				<!-- <div class="col-sm-4">
+					<h4 class="page-header">Get in touch</h4>
+					<p><strong>PromElle LLC</strong><br>
+					14747 N Northsight Blvd Suite 111, PMB 309<br>
+					Arizona-85260 USA<br>
+					Phone: +1.4806242599
+					Email: <a target="_top" href="mailto: contact@promelle.com"> contact@promelle.com</a>
+					</p>
+					<div class="social-networks">
+							<ul>
+								<li>
+									<a href="https://www.facebook.com/promelle.rentlend/" target="_blank"><i class="fa fa-facebook"></i></a>
+								</li>
+								<li>
+									<a href="#"><i class="fa fa-twitter"></i></a>
+								</li>
+								<li>
+									<a href="#"><i class="fa fa-google-plus"></i></a>
+								</li>
+							</ul>
+	    				</div>
+				</div> -->
+				<div class="col-sm-12 text-center clr-aqua" ng-if="showSuccess">
+					<h3>Thanks!</h3>
+					<div>We appreciate that you’ve taken the time to write us. We’ll get back to you very soon. Please come back and see us often.</div>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>			
+	</section>

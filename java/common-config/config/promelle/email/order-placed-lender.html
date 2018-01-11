@@ -1,0 +1,31 @@
+<div class="mail" style="font-size:14px;color #0a0a0a;font-family: Arial;max-width: 600px;float: left;">
+    <div style="height: 5px;background-color: #ff8b7f;"></div>
+    <div class="img" style="float: right;"><img src="http://nebula.wsimg.com/da4075db270e4bbdc83824e9e43abba4?AccessKeyId=E8004760A1EA743B3DBC&amp;disposition=0&amp;alloworigin=1" style="vertical-align:middle;width:113px;height:113px;"></div>
+    <div style="clear:both"></div>
+    <div style="padding: 15px;border: 2px solid #ddd;margin-top: 10px;">
+        
+        <p style="line-height: 30px;">Hi <b>{{ownerName}}</b>!
+        	<br>
+			Great News - your listing "<b>{{order.product.title}}</b>" just got rented on PromElle by <b>{{order.userName}}</b>. Your order # is {{orderIdValue}}; Item # is {{shipId}}.
+			<br>
+			Here are your next steps:
+		</p>
+		<ul>
+			<li style="padding-bottom: 10px;">Please contact the renter, <b>{{order.userName}}</b> no later than <b>{{rentalStartDate}}</b> to arrange in-person delivery of the item at school. You can contact the renter via the in-app messenger link on the Order Details page found in Me/Settings/Order History/My Lending Orders.</li>
+			<li style="padding-bottom: 10px;">The item must be cleaned, and packed in an appropriate bag prior to delivery.</li>
+			<li style="padding-bottom: 10px;">Please contact the renter on or before <b>{{rentalEndDate}}</b> to arrange pickup of your item.</li>
+			<li>Once the rental process is complete and you receive your item back, you can redeem your earnings through the app (Me/Settings/My Earnings).</li>
+		</ul>
+		<br>
+		The renter has up to 24 hours after receiving the item, to cancel the order and receive a full refund. Our order cancellation policy can be viewed <a href="http://www.promelle.com/#/faq" target="_blank">here</a>.
+		<br>
+		<br>
+		Please <a href="mailto:contact@promelle.com">Contact Us</a> if you have any questions.
+		<br>
+        <p style="color:#000;line-height: 24px;font-size:15px;margin-bottom: 0px;">
+            Regards,
+            <br>
+            Team PromElle
+        </p>
+    </div>
+</div>
