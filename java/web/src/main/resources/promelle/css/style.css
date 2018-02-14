@@ -1532,14 +1532,112 @@ h4.clr-aqua small {
   margin-left: 10em;
 }
 
+//Css for Profile Page
+table, th , td  {
+  border: 1px solid grey;
+  border-collapse: collapse;
+  padding: 5px;
+}
+table tr:nth-child(odd) {
+  background-color: #f1f1f1;
+}
+table tr:nth-child(even) {
+  background-color: #ffffff;
+}
+.profile_image
+ {
+   width: 200px; /* make sure to define width to fill container */
+   height: 200px; /* define the height in pixels or make sure   */
+}
+
+.search
+{
+    padding-top: 15px;
+    display: inline-block;
+    background-color: transparent !important;
+    padding-bottom: 15px;
+    background-size: cover;
+    background: contain;
+    width: auto; /* make sure to define width to fill container */
+    height: auto; /* define the height in pixels or make sure   */
+                   /* you have something in your div with height */
+                   /* so you can see your image */
+    max-width:1400px;  /* define the max width */
+ }
+
+
+.overview
+{
+    padding-top: 15px;
+    display: inline-block;
+    color: #fffff;
+    padding-bottom: 15px;
+    background-size: cover;
+    background: contain;
+    width: 65%; /* make sure to define width to fill container */
+    height: 140px; /* define the height in pixels or make sure   */
+                   /* you have something in your div with height */
+                   /* so you can see your image */
+    max-width:1400px;  /* define the max width */
+ }
+
+
+.profile
+{
+    padding-top: 15px;
+    display: inline-block;
+    color: #fffff;
+    padding-bottom: 15px;
+    background-size: cover;
+    background: contain;
+    width: 50%; /* make sure to define width to fill container */
+    height: 140px; /* define the height in pixels or make sure   */
+                   /* you have something in your div with height */
+                   /* so you can see your image */
+    max-width:1400px;  /* define the max width */
+ }
+
+ .ratings {
+   padding-top: 15px;
+   display: inline-block;
+   color: #fffff;
+   padding-bottom: 15px;
+   background-size: cover;
+   background: contain;
+   width: auto /* make sure to define width to fill container */
+   height: auto; /* define the height in pixels or make sure   */
+                  /* you have something in your div with height */
+                  /* so you can see your image */
+   max-width:1400px;
+
+
+ }
 
 
 
+ .table, .borderless td, .borderless th, .borderless tr {
+    border: none;
+
+}
+.borderless {
+     width: 500px;
+}
+
+.borderless td, .borderless th {
+   padding: 5;
+}
+
+main {
+  overflow-y: auto;
+}
 
 
-
-
-
-
-
-
+.tabsdemoDynamicHeight md-content {
+  background-color: transparent !important; }
+  .tabsdemoDynamicHeight md-content md-tabs {
+    background: #f6f6f6;
+    border: 1px solid #e1e1e1; }
+    .tabsdemoDynamicHeight md-content md-tabs md-tabs-wrapper {
+      background: white; }
+  .tabsdemoDynamicHeight md-content h1:first-child {
+    margin-top: 0; }

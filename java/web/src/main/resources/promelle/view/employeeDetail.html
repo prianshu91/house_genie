@@ -1,87 +1,56 @@
-<section class="mt40">
-<div class="container ">
-    <div class="jumbotron overview">
-        <div class="col-4">
-            <span><img class="profile_image" src = "{{details.image}}"/></span>
+<div ng-cloak>
+    <md-content class="md-padding" layout-md="column" layout="row">
+        <div flex-xs="" flex-gt-xs="500" layout="row">
+            <md-card>
+                <img class="profile_image md-card-image" ng-src="{{details.image}}" />
+                <md-card-title>
+                    <md-card-title-text>
+                        <span class="md-headline">{{details.full_name}}</span>
+                        <span class="md-subhead">{{details.city}}</span>
+                        <span class="md-subhead">{{details.state}}</span>
+                    </md-card-title-text>
+                </md-card-title>
+            </md-card>
         </div>
-        <br/>
-        <div class="col">
-            <div>
-                <span><h2><b>{{details.full_name }}</b></h2></span>
-            </div>
-            <div>
-                <span><h4>{{details.overview}}<h4></span>
-            </div>
-        </div>
-
-    </div>
-    <div>
-        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-            <li class="nav-item" ng-click="showRating = false">
-                <a class="nav-link active" id="pills-home-tab" class="font-weight-bold" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Overview</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" id="pills-review-tab" data-toggle="pill" href="#pills-review" role="tab" aria-controls="pills-profile" aria-selected="false">Reviews({{reviews.total}})</a>
-            </li>
-            <li class="nav-item" ng-click="showRating = false">
-                <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Contact</a>
-            </li>
-        </ul>
-        <div class="jumbotron profile">
-            <div class="tab-content" id="pills-tabContent">
-                <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-                    <div><span class="font-weight-bold"><h4>{{overview}}</h6></span></div>
+    </md-content>
+    <md-content class="md-padding">
+        <md-input-container>
+            <form name="appForm">
+            <p class="md-subhead">Enter the mobile number</p>
+            <input name= "phone" placeholder="" ng-model="phone" ng-focus = "show()" ng-keypress="hide()"/>
+              <div ng-messages="appForm.phone.$error">
+                  <div ng-show ="isRequired === true" ng-hide ="isRequired === false">This is required.</div>
+                  <div ng-show ="isValid === true" ng-hide ="isValid === false">Please enter a valid phone number.</div>
                 </div>
-                <div class="tab-pane fade" id="pills-review" role="tabpanel" aria-labelledby="pills-review-tab">
-
-                    <div><span><h5>Total Reviews: {{reviews.total}}</h5></span></div>
-                    <div><span><h5>Average Reviews: {{reviews.avg}}</h5></span></div>
-                    <div class="text-left">
-                        <button type="button" class="btn btn-link btn-md" ng-click="viewReviews()">Show Reviews</button>
-                    </div>
-                </div>
-                <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
-                    <div>
-                        <span class="font-weight-bold"><h4>{{details.address}}</h6></span>
-                    </div>
-                    <div>
-                        <span class="font-weight-bold"><h4>{{details.contact_number}}</h6></span>
-                    </div>
-                    <div>
-                        <span class="font-weight-bold"><h4>{{details.secondary_contact_number}}</h6></span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row" ng-show="showRating">
-        <div>
-            <label>Sort By</label>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <select ng-model="sortingOption" ng-options="x for x in options" ng-change="sortRatings(sortingOption)">
-                <option value="">Select</option>
-            </select>
-        </div>
-        <br/>
-        <div class="text-left">
-            <table class="table table-responsive-sm borderless" align="left">
-                <tr ng-repeat-start="x in ratingData | orderBy:sort">
-                    <td>
-                        <button ng-click="expanded = !expanded" expand>
-                            <span ng-bind="expanded ? '-' : '+'"></span>
-                        </button>
-                    </td>
-                    <td class="font-weight-bold">{{x.user}}</td>
-                    <td class="font-weight-bold">{{x.comment_date}}</td>
-                </tr>
-                <tr ng-show="expanded" ng-repeat-end="">
-                    <td class="font-weight-bold">{{x.comment}}</td>
-                    <td class="font-weight-bold">{{x.ratings}}</td>
-                </tr>
-            </table>
-        </div>
-
-    </div>
+              </br>
+             <div>
+               <button class="btn btn-primary" ng-click="sendLink(phone)">Send the App Link</md-button>
+             </div>
+          </form>
+        </md-input-container>
+    </md-content>
+    <md-content>
+        <md-tabs md-dynamic-height="" md-border-bottom="">
+            <md-tab label="Overview">
+                <md-content class="md-padding">
+                    <p class="md-headline">{{details.overview}}</p>
+                </md-content>
+            </md-tab>
+            <md-tab label="Reviews">
+                <md-content class="md-padding">
+                    <p class="md-subhead">Total Reviews: {{reviews.total}}</p>
+                    <p class="md-subhead" star-rating rating="reviews.avg" read-only="true" max-rating="5"></p>
+                    <md-button class="md-primary" ng-click="viewReviews($event)">Show Ratings</md-button>
+                </md-content>
+            </md-tab>
+            <md-tab label="Contact">
+                <md-content class="md-padding">
+                    <p class="md-subhead">{{details.house_number}}, {{details.street}}, {{details.area}}</p>
+                    <p class="md-subhead" >{{details.city}}</p>
+                </md-content>
+            </md-tab>
+        </md-tabs>
+    </md-content>
+    <md-content>
 
 </div>
-</section>

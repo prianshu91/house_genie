@@ -1,5 +1,5 @@
 var promelleApp = angular.module("promelleApp", [ 'ngAnimate', 'ngTouch', 'ncy-angular-breadcrumb', 'ui.bootstrap',
-		'infinite-scroll', 'ui.router', 'rzModule', 'LocalStorageModule']);
+		'infinite-scroll', 'ui.router', 'rzModule', 'LocalStorageModule','ngMaterial', 'ngMessages']);
 
 promelleApp.config([
 		'$stateProvider',
@@ -78,6 +78,16 @@ promelleApp.config([
 				friendlyName : 'Product Detail',
 				ncyBreadcrumb: {
 		        	label: 'Dress Detail',
+		        	parent: 'productList'
+		        }
+			}).
+			state('employeeDetail', {
+				url : '/profile',
+				templateUrl : 'view/employeeDetail.html',
+				controller : 'employeeDetailCtrl',
+				friendlyName : 'Employee Detail',
+				ncyBreadcrumb: {
+		        	label: 'Empoloyee Detail',
 		        	parent: 'productList'
 		        }
 			}).state('reviewDetail', {

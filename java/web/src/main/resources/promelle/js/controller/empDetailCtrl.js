@@ -7,11 +7,14 @@ promelleApp
             'employeeService',
             '$stateParams',
             '$state',
-            function($scope, employeeService, $stateParams, $state,
+            function($scope, employeeService, $stateParams, $state, $uibModalInstance, $uibModal,
                 $location) {
                 $scope.reviewLimit = 3;
                 $scope.employeeData = {};
-
+                $scope.isValid = false;
+                $scope.isRequired = false;
+                $scope.isFocussed = false;
+                
                 $scope.empData = {
                     "image": "http://graph.facebook.com/v2.5/301/picture?height=200&height=200",
                     "description": "Quia in rerum qui assumenda minima.Sint numquam cupiditate qui architecto dolores ex.Non autem qui ab et mollitia iusto doloremque.Incidunt dicta excepturi nam sint cum ut.Adipisci voluptas enim qui.",
@@ -1495,12 +1498,65 @@ promelleApp
                         .getSortingOrder(order);
 
                 }
+                	console.log($uibModal);
+              //Function to view all reviews
+				$scope.viewReviews = function(ev) {
+					$scope.showRating = true;
+					$uibModal.open({
+						controller: "reviewDetailCtrl",
+						templateUrl: 'view/reviewDetail.html',
+						$scope : $scope,
+					});
 
-                //Function to view all reviews
-                $scope.viewReviews = function() {
-                    $scope.showRating = true;
-                    $scope.ratingData = $scope.empData.all_review;
-                }
+					employeeService.setRatings($scope.details.all_review);
+				}
+				
+				$scope.close = function() {
+					$uibModalInstance.close();
+				} 
+				
+                $scope.show = function() {
+					$scope.isValid = false;
+					$scope.isFocussed = true;
+					if ($scope.phone === undefined) {
+						$scope.isRequired = true;
+					} else
+						if ($scope.phone != undefined) {
+							if ($scope.phone.length === 0) {
+								$scope.isRequired = true;
+							}
+						}
+
+				}
+
+				$scope.hide = function() {
+					$scope.isRequired = false;
+					if ($scope.phone != undefined) {
+						if ($scope.phone.length > 10) {
+							$scope.isValid = false;
+						}
+
+					}
+				}
+				$scope.sendLink = function(phone) {
+
+					if (!$scope.isFocussed) {
+						if ($scope.phone === undefined) {
+							$scope.isRequired = true;
+						}
+					} else if ($scope.isFocussed) {
+						$scope.isRequired = false;
+						if ($scope.phone !== undefined) {
+							var size = $scope.phone.length;
+							if (size > 10) {
+								$scope.isValid = true;
+							} else if (size === 0) {
+								$scope.isRequired = true;
+							}
+						}
+
+					}
+				}
 
             }
         ]);
