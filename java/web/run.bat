@@ -1,0 +1,1 @@
+call java -jar target/web-2.0.0.jar server web.yml
